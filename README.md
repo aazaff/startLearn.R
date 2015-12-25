@@ -51,7 +51,7 @@ To do this you should always leave **thorough comments** in your code. Comments 
 ## The Second Rule of R-Club
 "The computer is always right."
 
-As beginners, you will often encounter errors. It is easy to become frustrated when the computer does not do what you want. However, remember that the computer "'tis naught but clockwork" and can only do what you tell it to do. If you are getting an error, it is almost certainly **your** fault. Don't despair and don't get mad. Take a deep breath, think about what you are trying to do, and try again.
+As a beginner, you will often encounter errors. It is easy to become frustrated when the computer does not do what you want. However, remember that the computer "'tis naught but clockwork" and can only do what you tell it to do. If you are getting an error, it is almost certainly **your** fault. Don't despair and don't get mad. Take a deep breath, think about what you are trying to do, and try again.
 
 ## Mathematical Operations
 If you have ever used a scientific or graphing calculator, then you already intuitively know all the basics of doing arithmetic in R. Yay, you've learned about 20% of R without doing anything! But, let's just start with a quick review anyway.
@@ -98,7 +98,7 @@ You can also perform what are called logical operations. A logical returns a val
 	> 5 == (1/2 * 10)
 	[1] TRUE
 	
-Notice that we used **==**  to ask if these two quantities are equal. Most **operators** in R are quite straightforward, but some aren't what you'd intuitively expect. Here's a simple list.
+Notice that we used **==**  to ask if these two quantities are equal, rather than a single **=** sign. Most **operators** in R are quite straightforward, but some aren't what you'd intuitively expect. Here's a simple list.
 
 + x **>**  y 	Is x greater than y
 + x **>=** y	Is x greter than or equal to y
