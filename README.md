@@ -46,6 +46,7 @@ To do this you should always leave **thorough comments** in your code. Comments 
 	> # 2 * 5; everything on this line is a comment none of this will execute if you copy it into R
 	
 	> 2 * 5 # comments can be placed after a statement. Whatever is in front of the # WILL execute.
+	[1] 10
 
 ## The Second Rule of R-Club
 "The computer is always right."
