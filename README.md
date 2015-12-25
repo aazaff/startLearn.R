@@ -6,24 +6,23 @@ The home page for R is [http://www.r-project.org](http://www.r-project.org). You
 ## Basics Concepts
 Throughout this tutorial there will be references to **objects** and **functions**. These are the two fundamental units of the R programming language. R stores information as objects and uses functions to interact with the objects. The following quote (not mine) summarizes the relationship quite well.
 
-**“Everything that exists in R is an object.**
-**Everything that you do in R is a function.”**
+“Everything that **exists** in R is an object.
+Everything that you **do** in R is a function.”
 
 The line between objects and functions can become somewhat blurred because all functions are stored as objects and all objects can only be interacted with via functions. Don't be discouraged by this complexity, just remember the above quote and you will be fine.
 
 ## Why use R?
-If you are ever feeling overwhelmed by what you are learning or doing in R, never forget that everything you do in R is just a **function** designed for one of the following **five** purposes. Determine which step you are trying to perform, and proceed from there. 
+If you are ever feeling overwhelmed by what you are learning or doing in R, never forget that everything you do in R is just a **function** designed for one of the following **four** purposes. Determine which step you are trying to perform, and proceed from there. 
 
 1. Mathematical Operations - Using R as a glorified calculator
 2. Storing Data - Storing data in a format that allows you do a mathematical operation on it.
 3. Reshaping Data - Changing the format of previously stored data so you can perform a different kind of operation on it.
-4. Script Operations - Design **functions** that stores data, reshape data, and/or apply a mathematical operation to data all at once.
-5. Visualize Data - Methods to make graphs or other representations of stored data.
+4. Visualize Data - Methods to make graphs or other representations of stored data.
 
-Although there are literally hundred (if not thousands) of ways to do each of these 5 steps in R, so long as you know a handful of basic methods for each you can accomplish anything.
+Although there are literally hundred (if not thousands) of ways to do each of these four steps in R, so long as you know a handful of basic methods for each you can accomplish anything.
 
-## The First Rule of R
-The first rule of R is: Always talk about R!
+## The First Rule of R-Club
+"Always talk about R!"
 
 Spell things out for future readers of your programs as explicitly as possible – especially for me, because I’m grading you! You want other programmers to easily recognize what you are trying to accomplish with a particular line of code. A quote that I quite like is:
 
@@ -72,46 +71,49 @@ If you have ever used a scientific or graphing calculator, then you already intu
 You can also perform what are called logical operations. A logical returns a value of either **TRUE** or **FALSE**. Logicals are extraordinarily important in R.
 
 	# Let's ask R if 1 is greater than 0
-	> 0>1
+	> 0 > 1
 	[1] FALSE
 	
 	# What about if 5 is 1/2 of 10?
-	> 5==(1/2*10)
+	> 5 == (1/2 * 10)
 	[1] TRUE
 	
+Notice that we used **==**  to ask if these two quantities are equal. Most **operators** in R are quite straightforward, but some aren't what you'd intuitively expect. Here's a simple list.
 
++ x **>**  y 	Is x greater than y
++ x **>=** y	Is x greter than or equal to y
++ x **<**  y 	Is x less than y
++ x **<=** y 	Is x less than or equal to y
++ x **==** y 	Is x equal to y
++ x **!=** y 	Is x *not* equal to y
 
-##############################
-#### Arithmetic Shortcuts ####
-##############################
-#	Of course, writing out the arithmetic every time wouldn't be any better than just using a calculator. 
-# The first benefit that R has over a calculator is it has many functions for arithmetic expressions that 
-# you can use as shortcuts.
+There are a few other special operators in R, but we will worry about them later.
 
-# For example, if I wanted to take the square root of a number. I could just write out the expression.
-> 4^(1/2)
-[1] 2
+## Using functions to perform operations
+Of course, writing out the arithmetic every time wouldn't be any better than just using a calculator. The first benefit that R has over a calculator is it has many **functions** for arithmetic expressions that you can use as shortcuts.
 
-# But, but I can use sqrt() function to do this as well. Note that all functions have two parts. 
-# The function name - i.e., sqrt - and a set of function arguments – i.e., the object that you want 
-# the function to evaluate, in this case, the number 4. Function arguments are always placed in
-# parentheses.
-> sqrt(4)
-[1] 2
+	# For example, if I wanted to take the square root of a number. I could just write out the expression.
+	> 4^(1/2)
+	[1] 2
 
-# Now you might be thinking, that doesn't really save any time compared to writing out the expression. 
-# True, but arithmetic shortcuts/functions will save you time on more complex expressions.
+	# But, but I can use sqrt() function to do this as well. Note that all functions have two parts. 
+	# The function name - i.e., sqrt - and a set of function arguments – i.e., the object that you want 
+	# the function to evaluate, in this case, the number 4. Function arguments are always placed in
+	# parentheses.
+	> sqrt(4)
+	[1] 2
 
-# Let's try typing out 10!
-> 10*9*8*7*6*5*4*3*2*1
-[1] 3628800
+Now you might be thinking, that doesn't really save any time compared to writing out the expression. True, but functions will save you time on more complex expressions.
 
-# Versus using the factorial function
-> factorial(10) # much clearer!
-[1] 3628800
+	# Let's try typing out 10!
+	> 10*9*8*7*6*5*4*3*2*1
+	[1] 3628800
 
-# The second most important benefit of functions is that they explicitly say what your code is doing.
-# Seeing factorial(10) makes it immediately obvious that you are calculating the factorial of ten.
+	# Versus using the factorial function
+	> factorial(10) # much clearer!
+	[1] 3628800
+
+The second most important benefit of functions is that they explicitly say what your code is doing - remember the first rule of R! Seeing factorial(10) makes it immediately obvious that you are calculating the factorial of ten.
 
 ######################
 #### Data Storage ####
