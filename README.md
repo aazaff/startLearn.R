@@ -77,6 +77,7 @@ If you have ever used a scientific or graphing calculator, then you already intu
 
 	> (1+3)/(5/6)
 	[1] 4.8
+	
 	> 1+3/5/6
 	[1] 1.1
 
