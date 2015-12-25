@@ -181,7 +181,7 @@ An array is essentially a set of values saved to your computer memory that is re
 	[1] 15 33 61 99
 
 #### ASIDE 1: A brief refresher on the basic concepts
-Remember that everything that **exists** in R is an **object** and everything that you **do** is a **function**. In the above example, "MyArray" is an object that you created with the function "Array".
+Remember that everything that **exists** in R is an **object** and everything that you **do** is a **function**. In the above example, "MyArray" is an object that you created with the function "array".
 
 Any time that you want to store the output of a function as an object, you use the "**<-**" operator. In the "MyArray" example, the "**<-**" symbol tells R to store the output of the function on the right, "array( )", under the name on the left - i.e., "MyArray". 
 	
