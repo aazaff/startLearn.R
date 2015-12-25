@@ -1,9 +1,19 @@
 # An Introduction to R
 
+## Table of Contents
++ [Intalling R](#installing-r)
++ [Basic Concepts](#basic-concepts)
++ [Why use R?](#why-use-r)
++ [Mathematical Operations](#mathematical-operations)
++ [Using Functions](#using-functions-to-perform-operations)
++ [Data Storage I](#data-storage)
++ [Data Storage II](#data-storage-continued)
++ [Data Types](#data-types)
+
 ## Installing R
 The home page for R is [http://www.r-project.org](http://www.r-project.org). You can download the installation file by clicking on the homepage and finding the “download R” link. 
 
-## Basics Concepts
+## Basic Concepts
 Throughout this tutorial there will be references to **objects** and **functions**. These are the two fundamental units of the R programming language. R stores information as objects and uses functions to interact with the objects. The following quote (not mine) summarizes the relationship quite well.
 
 “Everything that **exists** in R is an object.
@@ -258,7 +268,8 @@ Because the the matrix and vector terminology are so ubiquitous, many R users do
 	> x == y
 	[1] TRUE
 
-	# Based on what you've seen above, you may think that you have deduced the appropriate pattern for writing out a vector.
+	# Based on what you've seen above, you may think that you have deduced the appropriate 
+	# pattern for writing out a vector.
 	> z<-vector(data=c(1,2,3,4),dim=4)
 	Error in vector(data = c(1, 2, 3, 4), dim = 4) : 
   	unused arguments (data = c(1, 2, 3, 4), dim = 4)
@@ -295,12 +306,16 @@ By the way, you may have noticed that I did not specify the arguments "data=" or
 	> z<-array(c(1,2,3,4),4)
 	
 	# Very different! Therefore, you should always define the arguments unless if you KNOW the default order.
+	# If you ever want to know the arguments for a function, you can open its help page using "?".
+	> ?array
+	> ?sqrt
 
-## Data Storage Continued
-What if I want to store something other than a number? There are a variety of data types in R, but there are only a few that you really need to know.
+## Data Types
+What if I want to store something other than a number? There are a variety of data **types** in R, but there are only a few that you really need to know.
 
-+ numeric - Numbers
-+ character = letters, numbers, and symbols
 + logical = TRUE or FALSE
++ character = letters, numbers, and symbols
++ numeric - Numbers
 + factor = letters, numbers, and symboles that are actually numbers
 
+Type logical 
