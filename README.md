@@ -1,82 +1,85 @@
 # An Introduction to R
 
-# Installing R
-# 		The home page for R is http://www.r-project.org. You can download the installation file by 
-# clicking on the homepage and finding the “download R” link. 
+## Installing R
+The home page for R is [http://www.r-project.org](http://www.r-project.org). You can download the installation file by clicking on the homepage and finding the “download R” link. 
 
-# Basics Concepts
-# 		R stores data as objects, which is why it is called an “object-oriented” language. R then uses 
-# functions to interact with the objects. The line between objects and functions can become somewhat 
-# blurred because all functions are stored as objects and all objects can only be interacted with via 
-# functions, but a simple way of remembering the difference can be summarized in the following quote.
+## Basics Concepts
+Throughout this tutorial there will be references to **objects** and **functions**. These are the two fundamental units of the R programming language. R stores information as objects and uses functions to interact with the objects. The following quote (not mine) summarizes the relationship quite well.
 
-#	“Everything that exists in R is an object.
-#	Everything that you do in R is a function.”
+**“Everything that exists in R is an object.**
+**Everything that you do in R is a function.”**
+
+The line between objects and functions can become somewhat blurred because all functions are stored as objects and all objects can only be interacted with via functions. Don't be discouraged by this complexity, just remember the above quote and you will be fine.
+
+## Why use R?
+If you are ever feeling overwhelmed by what you are learning or doing in R, never forget that everything you do in R is just a **function** designed for one of the following **five** purposes. Determine which step you are trying to perform, and proceed from there. 
+
+1. Mathematical Operations - Using R as a glorified calculator
+2. Storing Data - Storing data in a format that allows you do a mathematical operation on it.
+3. Reshaping Data - Changing the format of previously stored data so you can perform a different kind of operation on it.
+4. Script Operations - Design **functions** that stores data, reshape data, and/or apply a mathematical operation to data all at once.
+5. Visualize Data - Methods to make graphs or other representations of stored data.
+
+Although there are literally hundred (if not thousands) of ways to do each of these 5 steps in R, so long as you know a handful of basic methods for each you can accomplish anything.
+
+## The First Rule of R
+The first rule of R is: Always talk about R!
+
+Spell things out for future readers of your programs as explicitly as possible – especially for me, because I’m grading you! You want other programmers to easily recognize what you are trying to accomplish with a particular line of code. A quote that I quite like is:
+
+"Always annotate your code, because the **sucker** trying to figure what you did six months from now is going to be **you**."
+
+To do this you should always leave **thorough comments** in your code. Comments in R are always preceded by the # symbol. Anything that follows a # symbol will not be executed by the software.
+
+	> # 2 * 5; everything on this line is a comment none of this will execute if you copy it into R
 	
-#	At its core, R is for storing data as one or more objects and then analyzing it in some way with one or more functions. 
+	> 2 * 5 # comments can be placed after a statement. Whatever is in front of the # WILL execute.
 
-# Even More Basic
-#	If you are ever feeling overwhelmed by what you are learning or doing in R, never forget that everything you do in R is just a function designed for one of the following six purposes. Determine which step you are trying to perform, and proceed from there. 
+## Mathematical Operations
+If you have ever used a scientific or graphing calculator, then you already intuitively know all the basics of doing arithmetic in R. Yay, you've learned about 20% of R without doing anything! But, let's just start with a quick review anyway.
 
-#	1) Arithmetic: Addition, Subtraction, Division, Multiplication
-#	2) Arithmetic Shortcuts: pre-programmed shortcuts that evaluate an arithmetic expression without you
-#	having to write out the equation each time.
-#	3) Data Storage: Methods to store data: numbers, letters, or symbols.
-#	4) Data Shaping: Methods to describe, reshape, or subset stored data.
-#	5) Iteration: Methods to apply arithmetic or arithmetic shortcuts to stored data.
-#	6) Plotting: Methods to make graphs or other visual representations of stored data.
+	# Addition
+	> 2+2
+	[1] 4
 
-#	One last thing before we begin. Always remember, "The first rule of R is always talk about R".	Spell things out for future readers of your programs as explicitly as possible – especially for me, because I’m grading you! You want other programmers to easily recognize what you are trying to accomplish with a particular line of code. A popular saying in computer programming is: 
+	# Subtraction
+	> 5-3
+	[1] 2
 
-#	"Always annotate your code, because the sucker trying to figure what you did six months from now
-#	is going to be you."
+	# Multiplication
+	> 3*4
+	[1] 12
 
-#	To do this you should always leave thorough comments in your code. Comments in R are always preceded by the # symbol. Anything that follows a # symbol will not be executed by the software.
+	# Division
+	> 1/5
+	[1] 0.2
 
-# x <- 2 * 5; everything on this line is a comment 
-# none of this will execute if you copy it into R
->
+	# Make sure you always pay attention to the order of operations (i.e., PEMDAS). Compare the following two 
+	# expressions.
 
-> 2 * 5 # comments can be placed after a statement. Whatever is in front of the # WILL execute.
-[1] 10
+	> (1+3)/(5/6)
+	[1] 4.8
+	> 1+3/5/6
+	[1] 1.1
 
-######################
-##### Arithmetic #####
-######################
-# If you have ever used a scientific or graphing calculator, then you already intuitively know all the 
-# basics of doing arithmetic in R. Yay, you've learned about 1/6 of R without doing anything! 
-# But, let's just start with a quick review anyway.
+	# Also, be careful about those tricksy negative signs!
+	> -5^2
+	[1] -25
 
-# Addition
-> 2+2
-[1] 4
+	> (-5)^2
+	[1] 25
 
-# Subtraction
-> 5-3
-[1] 2
+You can also perform what are called logical operations. A logical returns a value of either **TRUE** or **FALSE**. Logicals are extraordinarily important in R.
 
-# Multiplication
-> 3*4
-[1] 12
+	# Let's ask R if 1 is greater than 0
+	> 0>1
+	[1] FALSE
+	
+	# What about if 5 is 1/2 of 10?
+	> 5==(1/2*10)
+	[1] TRUE
+	
 
-# Division
-> 1/5
-[1] 0.5
-
-# Make sure you always pay attention to the order of operations (i.e., PEMDAS). Compare the following two 
-# expressions.
-
-> (1+3)/(5/6)
-[1] 4.8
-> 1+3/5/6
-[1] 1.1
-
-# Also, be careful about those tricksy negative signs!
-> -5^2
-[1] -25
-
-> (-5)^2
-[1] 25
 
 ##############################
 #### Arithmetic Shortcuts ####
