@@ -115,64 +115,68 @@ Now you might be thinking, that doesn't really save any time compared to writing
 
 The second most important benefit of functions is that they explicitly say what your code is doing - remember the first rule of R! Seeing factorial(10) makes it immediately obvious that you are calculating the factorial of ten.
 
-######################
-#### Data Storage ####
-######################
+## Data Storage
 
-#	These shortcuts probably still don't seem that impressive if you consider that most calculators 
-# already have buttons for square roots, factorials, and the like. However, the arithmetic shortcuts 
-# (i.e., functions) in R don't really shine unless if they're paired with stored data.
+These simple functions probably still don't seem that impressive if you consider that most calculators already have buttons for square roots, factorials, and the like. However, fucntions in R don't really shine until they are paired with stored data.
 
-# Let's consider a quadratic equation, 5x^2+3x+7. Let's say we want to solve this equation for x=4
-# that's easy to do in the way we've already learned.
+Let's consider a quadratic equation, 5x^2+3x+7. Let's say we want to solve this equation for x=4 that's easy to do in the way we've already learned.
 
-> 5*(4^2)+(3*4)+7
-[1] 99
+	# 5x^2+3x+7, where x=4
+	> 5*(4^2)+(3*4)+7
+	[1] 99
 
-# But what if we want to solve this equation for multiple values of x? Let's try solving for x = 1,2,3, and 4.
+	# But what if we want to solve this equation for multiple values of x? Let's try solving for x = 1,2,3, and 4.
+	# We can do this by telling R to perform the function on all four numbers at once using the c() command. 
+	# The c() function tells R to treat the values inside the parentheses, separated by commas, as a single unit.
 
-# We can do this by telling R to perform the function on all four numbers at once using the c() command. 
-# The c() function tells R to treat the values inside the parentheses, separated by commas, as a single unit.
+	> 5*c(1,2,3,4)^2+3*c(1,2,3,4)+7
+	[1] 15 33 61 99
 
-> 5*c(1,2,3,4)^2+3*c(1,2,3,4)+7
-[1] 15 33 61 99
+	# But what if we had a very long equation and/or a very long list of x values we want solve for? Typing out 
+	# all of the x values with c() every time x appears in the equation could get very hard to read very quickly.
 
-# But what if we had a very long equation and/or a very long list of x values we want solve for? Typing out 
-# all of the x values with c() every time x appears in the equation could get very hard to read very quickly.
+	> 9*c(1,2,3,4,5,6,7,8,9,10)^3+6*c(1,2,3,4,5,6,7,8,9,10)^2+8*c(1,2,3,4,5,6,7,8,9,10)+2
+	[1]   25  114  323  706 1317 2210 3439 5058 7121 9682
 
-> 9*c(1,2,3,4,5,6,7,8,9,10)^3+6*c(1,2,3,4,5,6,7,8,9,10)^2+8*c(1,2,3,4,5,6,7,8,9,10)+2
-[1]   25  114  323  706 1317 2210 3439 5058 7121 9682
+A better alternative involves learning how to store data as an **object**, and then plug the object into equations. The most fundamental type of data object computer science is an **array**. 
 
-# A better alternative involves learning how to store data as an object, and then plug the object into 
-# equations. The most fundamental type of data object in R, and computer science, is an array.
+An array is essentially a set of values saved to your computer memory that is referenced by a name.
 
-# An array is essentially a set of values saved to your computer memory that is referenced by a name.
+	# Here's an example of how to make an array named "MyArray"
+	> MyArray<-array(data=c(1,2,3,4),dim=4)
 
-# Here's an example of how to make an array named "x"
-> x<-array(data=c(1,2,3,4),dim=4)
+	# Once we've made the array named MyArray, then typing MyArray will return the values in the array.
+	> MyArray
+	[1] 1 2 3 4
 
-# Let's break each of the steps in the above example. "x" represents the name of the array. 
-# Once we've made the array named x, then typing x will return the values in the array.
+	# Similarly performing arithmetic on MyArray will apply that expression to all elements in MyArray 
+	> MyArray+4
+	[1] 5 6 7 9
 
-> x
-[1] 1 2 3 4
+	# You can input MyArray into a function, and the function will be applied to each element (number) in the array
+	> factorial(MyArray)
+	[1]  1  2  6 24
 
-# Similarly performing arithmetic on x will apply that expression to all values in x
-> x+4
-[1] 5 6 7 9
+	> 5*MyArray^2+3*MyArray+7
+	[1] 15 33 61 99
 
-> factorial(x)
-[1]  1  2  6 24
+## A refresher on the basic concepts
+Remember that everything that **exists** in R is an **object** and everything that you **do** is a **function**. In the above example, "MyArray" is an object that you created with the function "Array".
 
-> 5*x^2+3*x+7
-[1] 15 33 61 99
+Any time that you want to store the output of a function as an object, you use the "**<-**" operator. In the "MyArray" example, the "**<-**" symbol tells R to store the output of the function on the right, "array( )", under the name on the left - i.e., "MyArray". 
+	
+	# Here are some other examples
+	> BestExample <- sqrt(5)
+	> BestExample
+	[1] 2.236068
+	
+	> WinningExample <- factorial(BestExample^2)
+	> WinningExample
+	[1] 120
 
-# The "<-" symbol tells R to store the output of the command on the right, "array()", under the variable 
-# name on the left - i.e., "x". You can also use arrows in the opposite direction "->". 
-# However, the "<-" is overwhelmingly the convention, and is strongly preferred – i.e., I will be really 
-# disappointed in you as a human being if you write things out in the wrong direction.
 
-> array(data=c(1,2,3,4),dim=4)->x
+
+## An 
 
 # The "data=" is your way of telling it what values you want stored in the array. In this case, the four 
 # numbers c(1,2,3,4), but you could substitute any list of values or even a single value.
