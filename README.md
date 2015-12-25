@@ -28,7 +28,7 @@ The line between objects and functions can become somewhat blurred because all f
 If you are ever feeling overwhelmed by what you are learning or doing in R, never forget that everything you do in R is just a **function** designed for one of the following **four** purposes. Determine which step you are trying to perform, and proceed from there. 
 
 1. Mathematical Operations - Using R as a glorified calculator
-2. Storing Data - Storing data in a format that allows you do a mathematical operation on it.
+2. Storing Data - Storing data in a format that allows you to perform a mathematical operation on it.
 3. Reshaping Data - Changing the format of previously stored data so you can perform a different kind of operation on it.
 4. Visualize Data - Methods to make graphs or other visual representations of stored data.
 
