@@ -1,14 +1,17 @@
 # An Introduction to R
 
 ## Table of Contents
-+ [Intalling R](#installing-r)
-+ [Basic Concepts](#basic-concepts)
-+ [Why use R?](#why-use-r)
-+ [Mathematical Operations](#mathematical-operations)
-+ [Using Functions](#using-functions-to-perform-operations)
-+ [Data Storage I](#data-storage)
-+ [Data Storage II](#data-storage-continued)
-+ [Data Types](#data-types)
++ [Intalling R](#installing-r) # Instructions on how to install R
++ [Basic Concepts](#basic-concepts) # A review of basic concepts
++ [Why use R?](#why-use-r) # Why you should use R
++ [Mathematical Operations](#mathematical-operations) # Basic arithmetic and operators
++ [Using Functions](#using-functions-to-perform-operations) # Using functions to perform mathematical operations
++ [Data Storage I](#data-storage) # How to store and use stored data
++ [Data Storage II](#data-storage-continued) # Complexities of Data Storage
++ [Data Types](#data-types) # Different types of data that can be stored
++ [Data Storage III](#advanced-data-storage) # Creating complex arrays
++ [Reshaping Data](#reshaping data) # How to reference elements within a data object
++ [Parting Advice](#parting advice) # Words of wisdom from the ancients
 
 ## Installing R
 The home page for R is [http://www.r-project.org](http://www.r-project.org). You can download the installation file by clicking on the homepage and finding the “download R” link. 
