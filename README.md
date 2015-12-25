@@ -205,7 +205,8 @@ The "**data=**" is your way of telling it what data you want stored in the array
 	# Single value example
 	> SingleArray<-array(data=5,dim=1)
 
-In other words data is the **argument** name, and you're telling it what values you want that argument to take. Another way of thinking about this is that you're telling R to temporarily create an object named "data" that the function array( ) should use.  	 
+In other words data is the **argument** name, and you're telling it what values you want that argument to take. Another way of thinking about this is that you're telling R to **temporarily** create an **object** named "data" that the function array( ) should use. 
+
 Similarly, "dim=" (short for dimensions) indicates how many values you want in the array. If you indicate more values to the array then you provide, R will simply repeat the values you did give it until the array is full.
 
 	> MyArray<-array(data=c(1,2,3,4,5),dim=10)
