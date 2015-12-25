@@ -17,9 +17,9 @@ If you are ever feeling overwhelmed by what you are learning or doing in R, neve
 1. Mathematical Operations - Using R as a glorified calculator
 2. Storing Data - Storing data in a format that allows you do a mathematical operation on it.
 3. Reshaping Data - Changing the format of previously stored data so you can perform a different kind of operation on it.
-4. Visualize Data - Methods to make graphs or other representations of stored data.
+4. Visualize Data - Methods to make graphs or other visual representations of stored data.
 
-Although there are literally hundred (if not thousands) of ways to do each of these four steps in R, so long as you know a handful of basic methods for each you can accomplish anything.
+Although there are literally hundreds (if not thousands) of ways to do each of these four steps in R, so long as you know a handful of basic methods for each you can accomplish anything.
 
 ## The First Rule of R-Club
 "Always talk about R!"
