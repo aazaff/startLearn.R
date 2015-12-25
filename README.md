@@ -47,6 +47,11 @@ To do this you should always leave **thorough comments** in your code. Comments 
 	
 	> 2 * 5 # comments can be placed after a statement. Whatever is in front of the # WILL execute.
 
+## The Second Rule of R-Club
+"The computer is always right."
+
+As beginners, you will often encounter errors. It is easy to become frustrated when the computer does not do what you want. However, remember that the computer "'tis naught but clockwork" and can only do what you tell it to do. If you are getting an error, it is almost certainly **your** fault. Don't despair and don't get mad. Take a deep breath, think about what you are trying to do, and try again.
+
 ## Mathematical Operations
 If you have ever used a scientific or graphing calculator, then you already intuitively know all the basics of doing arithmetic in R. Yay, you've learned about 20% of R without doing anything! But, let's just start with a quick review anyway.
 
@@ -314,11 +319,65 @@ By the way, you may have noticed that I did not specify the arguments "data=" or
 	> ?sqrt
 
 ## Data Types
-What if I want to store something other than a number? There are a variety of data **types** in R, but there are only a few that you really need to know.
+What if we want to store something other than a number? There are a variety of data **types** in R, but there are only a few that you really need to know. Let's begin with the three most basic types.
 
-+ logical = TRUE or FALSE
-+ character = letters, numbers, and symbols
-+ numeric - Numbers
-+ factor = letters, numbers, and symboles that are actually numbers
++ **logical** = **TRUE** or **FALSE**
++ **character** = letters, numbers, and symbols that act like letters
++ **numeric** - numbers that act like numbers
 
-Type logical 
+Type **logical** is fairly straightforward it is simply a **TRUE** or a **FALSE** value. Note, however, that if you try to perform basic mathematical operations on a logical vector that R will convert **TRUE** to **1** and **FALSE** to **0**.
+
+	> MyLogical<-c(TRUE,TRUE,FALSE,TRUE,FALSE,TRUE)
+	> MyLogical
+	[1]  TRUE  TRUE FALSE  TRUE FALSE  TRUE
+	
+	>MyLogical*3
+	[1] 3 3 0 3 0 3
+	
+	# You can check what type of data you have using the typeof( ) function.
+	> typeof(MyLogical)
+	[1] "logical"
+	
+Type **character** is also fairly straightforward. It is basicaly a way of "de-mathing" something. You tell R that something is meant to be a character by using quotation marks "".
+
+	# Create a vector of characters made of letters
+	> MyCharacters<-c("Bob","Loves","Lucy","Almost","As","Much","As","He","Loves","R")
+	> MyCharacters
+	[1] "Bob"    "Loves"  "Lucy"   "Almost" "As"     "Much"   "As"     "He"     "Loves"  "R"
+	
+	# Create a vector of numbers as characters
+	> MyCharacters<-c("1","2","3","4")
+	[1] "1" "2" "3" "4"
+	
+	# Check the type
+	> typeof(MyCharacters)
+	[1] "character"
+
+By "de-mathing", I mean that R will reject any attempts to do math on your array of characters.
+
+	> sum(MyCharacters)
+	Error in sum(MyCharacters) : invalid 'type' (character) of argument
+	
+**Numeric** is both the simplest and most complicated data type. Basically, numeric data are, you guessed it, numbers that you want to do math on.
+
+	> MyNumeric<-c(1,2,3,4)
+	> sum(MyNumeric)
+	[1] 10
+	
+	# Check if MyNumeric is of type numeric
+	> is(MyNumeric,"numeric") # Remember the is( ) function from before?
+	[1] TRUE
+	
+	# Check its data type
+	> typeof(MyNumeric)
+	[1] "double"
+	
+It gives "double" instead of "numeric"! There are actually several types of numeric data. For our intents and purposes, however, we can consider "double" (the default) to be synonymous with "numeric".
+	
+## The Third Rule of R-Club
+As you progress with R you will learn that keeping track of what **type** of data you are using becomes increasingly important. Most errors that beginners and intermediate useRs encounter are, on some level, a result of using the wrong data type. Therefore, one of the first things you should do when you get an error is double check that you are using the right type of data.
+
+This is worth doing even if you are sure that you entered the data correctly. This is because some R functions, for better or worse, will sometimes **coerce** (convert) your array from one data type into another without your realizing it. In most cases, this is actually convenient, but in other cases it can be the source of much frustration.
+
+## Advanced Data Storage
+
