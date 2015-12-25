@@ -96,7 +96,7 @@ Of course, writing out the arithmetic every time wouldn't be any better than jus
 	> 4^(1/2)
 	[1] 2
 
-	# But, but I can use sqrt() function to do this as well. Note that all functions have two parts. 
+	# But, but I can use the sqrt() function to do this as well. Note that all functions have two parts. 
 	# The function name - i.e., sqrt - and a set of function arguments – i.e., the object that you want 
 	# the function to evaluate, in this case, the number 4. Function arguments are always placed in
 	# parentheses.
@@ -160,7 +160,7 @@ An array is essentially a set of values saved to your computer memory that is re
 	> 5*MyArray^2+3*MyArray+7
 	[1] 15 33 61 99
 
-## A refresher on the basic concepts
+#### ASIDE 1: A brief refresher on the basic concepts
 Remember that everything that **exists** in R is an **object** and everything that you **do** is a **function**. In the above example, "MyArray" is an object that you created with the function "Array".
 
 Any time that you want to store the output of a function as an object, you use the "**<-**" operator. In the "MyArray" example, the "**<-**" symbol tells R to store the output of the function on the right, "array( )", under the name on the left - i.e., "MyArray". 
@@ -174,137 +174,133 @@ Any time that you want to store the output of a function as an object, you use t
 	> WinningExample
 	[1] 120
 
+## Data Storage Continued
+Let's talk some more about the array( ) function, and functions in general. Aside from the **primitive** operations described above (e.g., **+**, **-**, **/**, **>**, **!=**, etc.), functions follow a simple format. They have a name (e.g., sqrt, factorial, array) that is followed by parentheses. Within these parentheses you place one or more **arguments** that tell the function what to do. 
 
+	# Let's review the "MyArray" example again
+	> MyArray<-array(data=c(1,2,3,4),dim=4)
 
-## An 
+The "**data=**" is your way of telling it what data you want stored in the array. In this case, the numbers one, two, three, and four, but you could substitute any list of values or even a single value. 
 
-# The "data=" is your way of telling it what values you want stored in the array. In this case, the four 
-# numbers c(1,2,3,4), but you could substitute any list of values or even a single value.
+	# Single value example
+	> SingleArray<-array(data=5,dim=1)
 
-# Single value
-> x<-array(data=5,dim=1)
+In other words data is the **argument** name, and you're telling it what values you want that argument to take. Another way of thinking about this is that you're telling R to temporarily create an object named "data" that the function array( ) should use.  	 
+Similarly, "dim=" (short for dimensions) indicates how many values you want in the array. If you indicate more values to the array then you provide, R will simply repeat the values you did give it until the array is full.
 
-# The final part of array, "dim=" indicates how many values you want in the array. If you indicate more 
-# values to the array then you provide, R will simply repeat the values you did give it until the array 
-# is full.
-> x<-array(data=c(1,2,3,4,5),dim=10)
-> x
-[1] 1 2 3 4 5 1 2 3 4 5
+	> MyArray<-array(data=c(1,2,3,4,5),dim=10)
+	> MyArray
+	[1] 1 2 3 4 5 1 2 3 4 5
 
-# This is a really bad behavior that most computer languages would not allow. The potential for introducing 
-# error into your calculation in this way isn't trivial, so be careful!
+Beware! This is a really bad behavior that most computer languages would not allow. The potential for introducing error into your calculation in this way isn't trivial, so be precise when defining your array size!
 
-# Perhaps the most interesting aspect of "dim=" is that you can also give it multiple values with c().
-> x<-array(data=c(0,1),dim=c(4,6))
-> x
-     [,1] [,2] [,3] [,4] [,5] [,6]
-[1,]    0    0    0    0    0    0
-[2,]    1    1    1    1    1    1
-[3,]    0    0    0    0    0    0
-[4,]    1    1    1    1    1    1
+Perhaps the most interesting aspect of "dim=" is that you can **also** give it multiple values with c().
 
-# Eseentialy, you told R to make 6 arrays with 4 values and store them within a single object x.
+	# Two dimensional array
+	> TwoArray<-array(data=c(0,1),dim=c(4,6))
+	> TwoArray
+	     [,1] [,2] [,3] [,4] [,5] [,6]
+	[1,]    0    0    0    0    0    0
+	[2,]    1    1    1    1    1    1
+	[3,]    0    0    0    0    0    0
+	[4,]    1    1    1    1    1    1
 
-# You can do this as many times as you'd like. 
-# For example, 2 sets of 6 sets of arrays with 4 values.
+Eseentialy, you told R to make 6 arrays with 4 values and store them within a single object named "TwoArray".
 
-> x<-array(data=c(0,1),dim=c(4,6,2))
-, , 1
+	# You can do this as many times as you'd like. For example, 2 sets of 6 sets of arrays with 4 values.
+	> ThreeArray<-array(data=c(0,1),dim=c(4,6,2))
+	> ThreeArray
+	, , 1
 
-     [,1] [,2] [,3] [,4] [,5] [,6]
-[1,]    0    0    0    0    0    0
-[2,]    1    1    1    1    1    1
-[3,]    0    0    0    0    0    0
-[4,]    1    1    1    1    1    1
+	     [,1] [,2] [,3] [,4] [,5] [,6]
+	[1,]    0    0    0    0    0    0
+	[2,]    1    1    1    1    1    1
+	[3,]    0    0    0    0    0    0
+	[4,]    1    1    1    1    1    1
 
-, , 2
+	, , 2
 
-     [,1] [,2] [,3] [,4] [,5] [,6]
-[1,]    0    0    0    0    0    0
-[2,]    1    1    1    1    1    1
-[3,]    0    0    0    0    0    0
-[4,]    1    1    1    1    1    1
+	     [,1] [,2] [,3] [,4] [,5] [,6]
+	[1,]    0    0    0    0    0    0
+	[2,]    1    1    1    1    1    1
+	[3,]    0    0    0    0    0    0
+	[4,]    1    1    1    1    1    1
 
-# We therefore describe arrays based on the number of arrays referenced within them. A single array is a
-# 1-dimensional array. An array of arrays is a 2 dimensional array. An array of arrays of arrays is a 
-# 3-dimensional array, and so forth. 
+We therefore describe arrays based on the number of arrays referenced within them. A single array is a **1-dimensional array**. An array of arrays is a **2-dimensional array**. An array of arrays of arrays is a **3-dimensional array**, and so forth. 
 
-# The majority of work done in R is either 1- or 2-dimensional. This has led to the emergence of shorthand 
-# terms. A “vector” is a one-dimensional array and a “matrix” is a 2-dimensional array. The overwhelming 
-# majority of R users exclusively use vectors or matrices rather than arrays. Importantly, not only is there 
-# a difference in terminology, there are actually separate functions, for convenience, that specifically use 
-# these terms.
+The majority of work done in R is either 1- or 2-dimensional. This has led to the emergence of shorthand terms. A “vector” is a one-dimensional array and a “matrix” is a 2-dimensional array. The overwhelming majority of R users exclusively use vectors or matrices rather than arrays. Importantly, not only is there a difference in terminology, there are actually separate functions, for convenience, that specifically use these terms.
 
-# Because the the matrix and vector terminology are so ubiquitous, many R users do not even know about
-# the array() function, and how it relates to vectors and matrices.
+Because the the matrix and vector terminology are so ubiquitous, many R users do not even know about the array() function, and how it relates to vectors and matrices.
 
-# Compare a 2-dimensional array
-> x<-array(data=c(0,1),dim=c(4,6))
-> x
-     [,1] [,2] [,3] [,4] [,5] [,6]
-[1,]    0    0    0    0    0    0
-[2,]    1    1    1    1    1    1
-[3,]    0    0    0    0    0    0
-[4,]    1    1    1    1    1    1
+	# Compare a 2-dimensional array
+	> x<-array(data=c(0,1),dim=c(4,6))
+	> x
+		[,1] [,2] [,3] [,4] [,5] [,6]
+	[1,]    0    0    0    0    0    0
+	[2,]    1    1    1    1    1    1
+	[3,]    0    0    0    0    0    0
+	[4,]    1    1    1    1    1    1
 
-# With a Matrix
-> y<-matrix(data=c(0,1),nrow=4,ncol=6)
-> y
-     [,1] [,2] [,3] [,4] [,5] [,6]
-[1,]    0    0    0    0    0    0
-[2,]    1    1    1    1    1    1
-[3,]    0    0    0    0    0    0
-[4,]    1    1    1    1    1    1
+	# With a Matrix
+	> y<-matrix(data=c(0,1),nrow=4,ncol=6)
+	> y
+		[,1] [,2] [,3] [,4] [,5] [,6]
+	[1,]    0    0    0    0    0    0
+	[2,]    1    1    1    1    1    1
+	[3,]    0    0    0    0    0    0
+	[4,]    1    1    1    1    1    1
 
-# We can check if these two objects are identical with the identical() function.
-> identical(x,y)
-[1] TRUE
+	# We can check if these two objects are identical with the identical() function.
+	> identical(x,y)
+	[1] TRUE
+	
+	# Or we can use the "**==**" operator
+	> x == y
+	[1] TRUE
 
-# Based on what you've seen above, you may think that you have deduced the appropriate pattern for writing out
-# a vector
-> z<-vector(data=c(1,2,3,4),dim=4)
-Error: unexpected '>' in ">"
+	# Based on what you've seen above, you may think that you have deduced the appropriate pattern for writing out a vector.
+	> z<-vector(data=c(1,2,3,4),dim=4)
+	Error in vector(data = c(1, 2, 3, 4), dim = 4) : 
+  	unused arguments (data = c(1, 2, 3, 4), dim = 4)
 
-# NOPE! Doesn't work.
+Nope, doesn't work. Vectors are somewhat more primitive than 1-dimensional arrays, and even though they are **conceptually identical** to a **1-dimensional array**, they are not operationally identical. You can make them just by using the c( ) function we've been using all along.
+	
+	# Make a vector 
+	> MyVector<-c(1,2,3,4)
+	> MyVector
+	[1] 1 2 3 4
 
-# Vectors are somewhat more primitive than 1-dimensional arrays. You can make them just by using the c()
-# function we've been using all along.
-> z<-c(1,2,3,4)
-> z
-[1] 1 2 3 4
+	# Let's make a 1-dimensional array.
+	> MyArray<-array(c(1,2,3,4),4)
+	> MyArray
+	[1] 1 2 3 4
 
-# You can what type of array something is by using is()
-> is(z,"vector")
-[1] TRUE
+	# You can what type of array something is by using the is()
+	> is(MyVector,"vector")
+	[1] TRUE
 
-# Even more confusingly, although 1-dimensional arrays and vectors should, in principle, be identical, 
-# this is not true in R.
+	# Let's test if the 1-D array, MyArray, is identical with the previous vector, MyVector.
+	> identical(MyVector,MyArray)
+	[1] FALSE
 
-# Let's make a 1-dimensional array.
-> q<-array(c(1,2,3,4),4)
-> q
-[1] 1 2 3 4
+So, fair warning, be careful as to whether you are using vectors, matrices, or arrays.
 
-# Let's test if the 1-D array, q, is identical with the previous vector, z.
-> identical(z,q)
-[1] FALSE
+#### ASIDE 2: To define arguments or not to define arguments
+By the way, you may have noticed that I did not specify the arguments "data=" or "dim=" in the above example of the array( ) function. In fact, you may have noticed that for several of the fuctions I have presented thus far that sometimes I defined arguments and sometimes I did not. That is because R is "**smart**" and knows what I meant so long as I put each argument in the **correct order**.
 
-# So, fair warning, be careful as to whether you are using vectors, matrices, or arrays.
+	# This will give me 4-dimensional array, all with the number 4
+	> q<-array(4,c(1,2,3,4))
 
-# By the way, you may have noticed that I did not specify the arguments "data=" or "dim=", 
-# that I wanted to plug in. That's because R is smart and knows what I meant so long as I put each
-# argument in the correct order.
+	# This will give me a 1-dimensional array with the numbers 1,2,3, and 4.
+	> z<-array(c(1,2,3,4),4)
+	
+	# Very different! Therefore, you should always define the arguments unless if you KNOW the default order.
 
-# This will give me 1 array of 2 arrays of 3 arrays of 4 arrays, all with the number 4
-> q<-array(4,c(1,2,3,4))
+## Data Storage Continued
+What if I want to store something other than a number? There are a variety of data types in R, but there are only a few that you really need to know.
 
-# Altneratively I can put the arguments in out of order so long as I specify what they are.
-> q<-array(dim=4,data=c(1,2,3,4))
-> q
-[1] 1 2 3 4
-
-########################
-#### Data Storage 2 ####
-########################
-# What if I want to store something other than a number?
++ numeric - Numbers
++ character = letters, numbers, and symbols
++ logical = TRUE or FALSE
++ factor = letters, numbers, and symboles that are actually numbers
 
