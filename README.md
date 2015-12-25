@@ -116,7 +116,7 @@ Of course, writing out the arithmetic every time wouldn't be any better than jus
 	> 4^(1/2)
 	[1] 2
 
-	# But, but I can use the sqrt() function to do this as well. Note that all functions have two parts. 
+	# But, I can use the sqrt() function to do this as well. Note that all functions have two parts. 
 	# The function name - i.e., sqrt - and a set of function arguments – i.e., the object that you want 
 	# the function to evaluate, in this case, the number 4. Function arguments are always placed in
 	# parentheses.
