@@ -6,8 +6,8 @@
 + [Why use R?](#why-use-r) # Why you should use R
 + [Mathematical Operations](#mathematical-operations) # Basic arithmetic and operators
 + [Using Functions](#using-functions-to-perform-operations) # Using functions to perform mathematical operations
-+ [Data Storage I](#data-storage) # How to store and use stored data
-+ [Data Storage II](#data-storage-continued) # Complexities of Data Storage
++ [Basic Data Storage](#data-storage) # How to store and use stored data
++ [Data Storage Functions](#data-storage-functions) # Complexities of Data Storage
 + [Data Types](#data-types) # Different types of data that can be stored
 + [Data Storage III](#advanced-data-storage) # Creating complex arrays
 + [Reshaping Data](#reshaping data) # How to reference elements within a data object
@@ -194,7 +194,7 @@ Any time that you want to store the output of a function as an object, you use t
 	> WinningExample
 	[1] 120
 
-## Data Storage Continued
+## Data Storage Functions
 Let's talk some more about the array( ) function, and functions in general. Aside from the **primitive** operations described above (e.g., **+**, **-**, **/**, **>**, **!=**, etc.), functions follow a simple format. They have a name (e.g., sqrt, factorial, array) that is followed by parentheses. Within these parentheses you place one or more **arguments** that tell the function what to do. 
 
 	# Let's review the "MyArray" example again
