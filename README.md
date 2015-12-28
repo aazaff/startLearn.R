@@ -5,7 +5,7 @@
 + [How to install R](#how-to-install-r)
 + [The most basic R concepts](#the-most-basic-r-concepts)
 + [Why should you use R?](#why-should-you-use-r)
-+ [R is a fancy scientific calculator?](#r-is-a-fancy-scientific-calculator)
++ [R is a fancy scientific calculator](#r-is-a-fancy-scientific-calculator)
 + [Using functions for basic math](#using-functions-for-basic-math)
 + [Storing data in an array](#storing-data-in-an-array)
 + [The different types of data](#the-different-types-of-data)
@@ -484,12 +484,12 @@ What about those commas we saw before in the 2 and 3-dimensional array examples?
 	> ThreeArray[3,5,2]
 	[1] 43
 
-The figure below depicts several other ways you can reference the elements within an array using bracket notation. Bracket notation, by the way, is known in R as **subscripting**. If you get an error that mentions **subscripts** then you know that somewhere along the line you made a mistake in referencing an element somewhere. This is a very common source of error, don't be discouraged if you get a lot of them when you're first starting out.
+The figure below depicts several other ways you can reference the elements within an array using bracket notation. Bracket notation, by the way, is known in R as **subscripting**. If you get an error that mentions **subscripts** then you know you used the wrong **index** when attempting to reference one or more elements of an array. This is a very common source of error, don't be discouraged if you get a lot of them when you're first starting out.
 
 <a href="url"><img src="https://raw.githubusercontent.com/aazaff/startLearn.R/master/Figures/Array.png" align="center" height="450" width="500" ></a>
 
 ### The Fourth Rule of R-Club
-***"R uses arrays too!"***
+***"R uses arrays too. Take advantage!"***
 
 You may have noticed that throughout this tutorial R generally prefaces its answers to our questions with **[1]**. That is its way of telling you that its response is the first element of an array - i.e., the invisible answer array. Because its answer is an array you can also **subscript** the answer.
 
@@ -517,7 +517,7 @@ An important property of arrays is that they will ***only allow you to store one
 	> typeof(MultiArray)
 	[1] "character"
 
-Notice that R simply **coerced** everything to type character. This is R's default behavior when you mix data types. If you want to store **multiple types** of data in a **single object** you are going to have to use a special type of array known as a **list**. Lists are created using the **list( )** function.
+Notice that R simply **coerced** everything to type **character**. This is R's default behavior when you mix data types. If you want to store **multiple types** of data in a **single object** you are going to have to use a special type of array known as a **list**. Lists are created using the **list( )** function.
 
 Lists are the most versatile form of data object. You can store multiple types of data in a variety of formats within a single list. You can even get fancy and have lists of lists. This is both a boon and an a bane, because this versatility makes them much more complex and difficult to use. Let's try to make MultiArray again using **list( )**.
 
@@ -542,4 +542,76 @@ Lists are the most versatile form of data object. You can store multiple types o
 	[[6]]
 	[1] "Bob"
 
+Although this output seems a bit cluttered and confusing with all of this extra brackets, it is actually qutie explicity if you think back to the relationship of vectors and arrays.
 
+***All arrays are ultimately one-dimensional arrays (i.e., vectors)*** - in fact, properly speaking, there is no other kind of array in R or any computer language. We *simulate* two (or more) dimensional arrays by creating a one dimensional array whose **elements** are also arrays. There can be as many arrays nested within arrays as you want - e.g., a four dimensional array is an array of arrays of arrays of arrays.
+
+**Lists** are just more explicit about this relationship than standard arrays. Let's try and illustrate this relationship more closely.
+
+	# Create a 2-dimensional array of characters.
+	> MyCharacter<-array(c("a","b","c","d","e"),dim=c(5,5))
+	> MyCharacter
+	     [,1] [,2] [,3] [,4] [,5]
+	[1,] "a"  "a"  "a"  "a"  "a" 
+	[2,] "b"  "b"  "b"  "b"  "b" 
+	[3,] "c"  "c"  "c"  "c"  "c" 
+	[4,] "d"  "d"  "d"  "d"  "d" 
+	[5,] "e"  "e"  "e"  "e"  "e" 
+	
+	# Create a 1-dimensional array of logicals
+	> MyLogicals<-array(c(TRUE,FALSE),dim=20)
+	> MyLogicals
+	[1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE
+	
+	# Create a 2-dimensional array of numerics
+	> MyNumerics<-array(c(1,2,3,4,5),dim=c(3,4))
+	> MyNumerics
+	     [,1] [,2] [,3] [,4]
+	[1,]    1    4    2    5
+	[2,]    2    5    3    1
+	[3,]    3    1    4    2
+	
+	# Bind each of these arrays together in a list.
+	> MyList<-list(MyCharacter,MyLogicals,MyNumerics)
+	> MyList
+	[[1]]
+	     [,1] [,2] [,3] [,4] [,5]
+	[1,] "a"  "a"  "a"  "a"  "a" 
+	[2,] "b"  "b"  "b"  "b"  "b" 
+	[3,] "c"  "c"  "c"  "c"  "c" 
+	[4,] "d"  "d"  "d"  "d"  "d" 
+	[5,] "e"  "e"  "e"  "e"  "e" 
+
+	[[2]]
+ 	[1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  		TRUE FALSE  TRUE FALSE  TRUE
+
+	[[3]]
+	    [,1] [,2] [,3] [,4]
+	[1,]    1    4    2    5
+	[2,]    2    5    3    1
+	[3,]    3    1    4    2
+	
+Presumably you can deduce from the output of **MyList** what the **[[ ]]** mean. Just as single **[ ]** identify an element within an array, the **[[ ]]** identify an array within a list.
+
+	# Find the first array in MyList
+	> MyList[[1]]
+	     [,1] [,2] [,3] [,4] [,5]
+	[1,] "a"  "a"  "a"  "a"  "a" 
+	[2,] "b"  "b"  "b"  "b"  "b" 
+	[3,] "c"  "c"  "c"  "c"  "c" 
+	[4,] "d"  "d"  "d"  "d"  "d" 
+	[5,] "e"  "e"  "e"  "e"  "e" 
+	
+	# See if it is identical to MyCharacter
+	> identical(MyList[[1]],MyCharacter)
+	[1] TRUE
+	
+	# Access row 1, column 2 of the MyNumeric array in MyList
+	> MyList[[3]][1,2]
+	[1] 4
+
+You might think that since lists are so flexible that you should just use them for everything. However, as you may have noticed in the above examples, their output can be quite complex. Remember the first rule of R, clarity is king. Complex lists should be avoided whenever a simple array will suffice. Lists are also substantially slower in terms of computation, so there is that consideration as well.
+
+In addition to lists and arrays, there is a special kind of hybrid between 2-dimensional arrays (matrices) and lists known as **data frames** (often written as **data.frames**). Data frame maintain the same structure as two-dimensional arrays (matrix), but they allow you to have different types of data in each column. 
+
+This is extraordinarily useful in data science where you might want one or more columns for some kind of numeric measurement (e.g., height, weight, age) and another column denoting other types of information say a logical (e.g., TRUE = given real treatment, FALSE = given placebo), or other columns denoting character data (e.g., names, place of birth).
