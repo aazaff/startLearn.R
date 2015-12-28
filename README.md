@@ -274,7 +274,7 @@ Data Type | Definition
 **character** | Letters, numbers, and symbols that act like letters
 **numeric** | Numbers that act like numbers
 
-Type **logical** is fairly straightforward. It is simply a **TRUE** or a **FALSE** value. Note, however, that  will convert **TRUE** to **1** and **FALSE** to **0** if you try to perform basic mathematical operations on an array of logical data.
+Type **logical** is fairly straightforward. It is simply a **TRUE** or a **FALSE** value. Note, however, that R will convert **TRUE** to **1** and **FALSE** to **0** if you try to perform basic mathematical operations on an array of logical data.
 
 	# Create an array of logical values
 	> MyLogical<-array(data=c(TRUE,TRUE,FALSE,TRUE,FALSE,TRUE),dim=6)
