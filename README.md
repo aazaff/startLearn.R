@@ -12,7 +12,7 @@
 + [The different types of data](#the-different-types-of-data)
 + [Irregularly shaped arrays](#irregularly-shaped-arrays)
 + [How to reference data elements in arrays](#reshaping-data)
-+ [Parting Advice](#parting-advice)
++ [Parting advice from the ancients](#parting-advice)
 
 ## How to install R
 
@@ -38,8 +38,8 @@ If you are ever feeling overwhelmed by what you are learning or doing in R, neve
 
 Although there are literally hundreds (if not thousands) of ways to do each of these four steps in R, so long as you know a handful of basic methods for each you can accomplish anything.
 
-## The First Rule of R-Club
-"Always talk about R!"
+### The First Rule of R-Club
+***"Always talk about R!"***
 
 Spell things out for future readers of your programs as explicitly as possible – especially for me, because I’m grading you! You want other programmers to easily recognize what you are trying to accomplish with a particular line of code. A quote that I quite like is:
 
@@ -52,9 +52,9 @@ To do this you should always leave **thorough comments** in your code. Comments 
 	> 2 * 5 # comments can be placed after a statement. Whatever is in front of the # WILL execute.
 	[1] 10
 
-## The Second Rule of R-Club
+### The Second Rule of R-Club
 
-"The computer is always right."
+***"The computer is always right."***
 
 As a beginner, you will often encounter errors. It is easy to become frustrated when the computer does not do what you want. However, remember that the computer "'tis naught but clockwork" and can only do what you tell it to do. If you are getting an error, it is almost certainly **your** fault. Don't despair and don't get mad. Take a deep breath, think about what you are trying to do, and try again.
 
@@ -187,21 +187,35 @@ An array is essentially a set of values saved to your computer memory that is re
 	> 5*MyArray^2+3*MyArray+7
 	[1] 15 33 61 99
 
-#### ASIDE 1: A brief refresher on the basic concepts
-Remember that everything that **exists** in R is an **object** and everything that you **do** is a **function**. In the above example, "MyArray" is an object that you created with the function "array".
+## Differences between array (the object) and array( ) the function.
+
+Remember that everything that **exists** in R is an **object** and everything that you **do** is a **function**. In the above example, "MyArray" is an object that you created with the function array( ).
 
 Any time that you want to store the output of a function as an object, you use the "**<-**" operator. In the "MyArray" example, the "**<-**" symbol tells R to store the output of the function on the right, "array( )", under the name on the left - i.e., "MyArray". 
 	
 	# Here are some other examples
-	> BestExample <- sqrt(5)
-	> BestExample
+	> FirstObject <- sqrt(5)
+	> FirstObject
 	[1] 2.236068
 	
-	> WinningExample <- factorial(BestExample^2)
-	> WinningExample
+	# Note that an existing object can be used to make a new object.
+	> SecondObject <- factorial(FirstObject^2)
+	> SecondObject
 	[1] 120
 
-## Data Storage Functions
+By the way, you may have noticed that I did not specify the arguments "data=" or "dim=" in the above example of the array( ) function. In fact, you may have noticed that for several of the fuctions I have presented thus far that sometimes I defined arguments and sometimes I did not. That is because R is "**smart**" and knows what I meant so long as I put each argument in the **correct order**.
+
+	# This will give me 4-dimensional array, all with the number 4
+	> q<-array(4,c(1,2,3,4))
+
+	# This will give me a 1-dimensional array with the numbers 1,2,3, and 4.
+	> z<-array(c(1,2,3,4),4)
+	
+	# Very different! Therefore, you should always define the arguments unless if you KNOW the default order.
+	# If you ever want to know the arguments for a function, you can open its help page using "?".
+	> ?array
+	> ?sqrt
+
 Let's talk some more about the array( ) function, and functions in general. Aside from the **primitive** operations described above (e.g., **+**, **-**, **/**, **>**, **!=**, etc.), functions follow a simple format. They have a name (e.g., sqrt, factorial, array) that is followed by parentheses. Within these parentheses you place one or more **arguments** that tell the function what to do. 
 
 	# Let's review the "MyArray" example again
@@ -255,6 +269,8 @@ Eseentialy, you told R to make 6 arrays with 4 values and store them within a si
 	[4,]    1    1    1    1    1    1
 
 We therefore describe arrays based on the number of arrays referenced within them. A single array is a **1-dimensional array**. An array of arrays is a **2-dimensional array**. An array of arrays of arrays is a **3-dimensional array**, and so forth. 
+
+## Specialized array formats
 
 The majority of work done in R is either 1- or 2-dimensional. This has led to the emergence of shorthand terms. A “vector” is a one-dimensional array and a “matrix” is a 2-dimensional array. The overwhelming majority of R users exclusively use vectors or matrices rather than arrays. Importantly, not only is there a difference in terminology, there are actually separate functions, for convenience, that specifically use these terms.
 
@@ -313,20 +329,6 @@ Nope, doesn't work. Vectors are somewhat more primitive than 1-dimensional array
 	[1] FALSE
 
 So, fair warning, be careful as to whether you are using vectors, matrices, or arrays.
-
-#### ASIDE 2: To define arguments or not to define arguments
-By the way, you may have noticed that I did not specify the arguments "data=" or "dim=" in the above example of the array( ) function. In fact, you may have noticed that for several of the fuctions I have presented thus far that sometimes I defined arguments and sometimes I did not. That is because R is "**smart**" and knows what I meant so long as I put each argument in the **correct order**.
-
-	# This will give me 4-dimensional array, all with the number 4
-	> q<-array(4,c(1,2,3,4))
-
-	# This will give me a 1-dimensional array with the numbers 1,2,3, and 4.
-	> z<-array(c(1,2,3,4),4)
-	
-	# Very different! Therefore, you should always define the arguments unless if you KNOW the default order.
-	# If you ever want to know the arguments for a function, you can open its help page using "?".
-	> ?array
-	> ?sqrt
 
 ## Data Types
 What if we want to store something other than a number? There are a variety of data **types** in R, but there are only a few that you really need to know. Let's begin with the three most basic types.
