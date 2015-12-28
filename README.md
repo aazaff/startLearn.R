@@ -344,6 +344,9 @@ Type **numeric** is both a simple and complicated data type. Basically, numeric 
 It gives **double** instead of **numeric**! There are actually several types of numeric data. For our intents and purposes, however, we will just consider **double** to be synonymous with **numeric** and leave it there for now.
 	
 ### The Third Rule of R-Club
+
+***"Data! Data! Data! I cannot add letters together."***
+
 As you progress with R you will learn that keeping track of what **type** of data you are using becomes increasingly important. Most errors that beginners and intermediate useRs encounter are, on some level, a result of using the wrong data type. Therefore, one of the first things you should do when you get an error is double check that you are using the right type of data.
 
 This is worth doing even if you are sure that you entered the data correctly. This is because some R functions will **coerce** (convert) your array from one data type into another without your realizing it. In most cases, this is actually a very convenient feature of R, but in other cases it can be the source of much frustration.
