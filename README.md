@@ -60,7 +60,7 @@ As a beginner, you will often encounter errors. It is easy to become frustrated 
 
 ## R is a fancy scientific calculator?
 
-If you have ever used a scientific or graphing calculator, then you already intuitively know all the basics of doing arithmetic in R. Yay, you've learned about 20% of R without doing anything! But, let's just start with a quick review anyway.
+If you have ever used a scientific or graphing calculator, then you already intuitively know all the basics of doing arithmetic in R. Yay, you've learned about 25% of R without doing anything! But, let's just start with a quick review anyway.
 
 	# Addition
 	> 2+2
@@ -104,7 +104,7 @@ You can also perform what are called logical operations. A logical returns a val
 	> 5 == (1/2 * 10)
 	[1] TRUE
 	
-Notice that we used **==**  to ask if these two quantities are equal, rather than a single **=** sign. Most **operators** in R are quite straightforward, but some aren't what you'd intuitively expect. Here's a simple list.
+Notice that we used **==**  to ask if these two quantities are equal, rather than a single **=** sign. Most **operators** in R are quite straightforward. Here is a list of the basics.
 
 + x **>**  y 	Is x greater than y
 + x **>=** y	Is x greter than or equal to y
@@ -113,7 +113,7 @@ Notice that we used **==**  to ask if these two quantities are equal, rather tha
 + x **==** y 	Is x equal to y
 + x **!=** y 	Is x *not* equal to y
 
-There are a few other special operators in R, but we will worry about them later.
+There are a few other operators in R, but we will worry about them later.
 
 ## Using functions for basic math
 
@@ -189,7 +189,7 @@ An array is essentially a set of values saved to your computer memory that is re
 
 ## Differences between array (the object) and array( ) the function.
 
-Remember that everything that **exists** in R is an **object** and everything that you **do** is a **function**. In the above example, "MyArray" is an object that you created with the function array( ).
+Remember that everything that **exists** in R is an **object** and everything that you **do** is a **function**. In the above example, "MyArray" is an object (specifically an array) that you created with the function array( ).
 
 Any time that you want to store the output of a function as an object, you use the "**<-**" operator. In the "MyArray" example, the "**<-**" symbol tells R to store the output of the function on the right, "array( )", under the name on the left - i.e., "MyArray". 
 	
@@ -202,19 +202,6 @@ Any time that you want to store the output of a function as an object, you use t
 	> SecondObject <- factorial(FirstObject^2)
 	> SecondObject
 	[1] 120
-
-By the way, you may have noticed that I did not specify the arguments "data=" or "dim=" in the above example of the array( ) function. In fact, you may have noticed that for several of the fuctions I have presented thus far that sometimes I defined arguments and sometimes I did not. That is because R is "**smart**" and knows what I meant so long as I put each argument in the **correct order**.
-
-	# This will give me 4-dimensional array, all with the number 4
-	> q<-array(4,c(1,2,3,4))
-
-	# This will give me a 1-dimensional array with the numbers 1,2,3, and 4.
-	> z<-array(c(1,2,3,4),4)
-	
-	# Very different! Therefore, you should always define the arguments unless if you KNOW the default order.
-	# If you ever want to know the arguments for a function, you can open its help page using "?".
-	> ?array
-	> ?sqrt
 
 Let's talk some more about the array( ) function, and functions in general. Aside from the **primitive** operations described above (e.g., **+**, **-**, **/**, **>**, **!=**, etc.), functions follow a simple format. They have a name (e.g., sqrt, factorial, array) that is followed by parentheses. Within these parentheses you place one or more **arguments** that tell the function what to do. 
 
@@ -272,9 +259,9 @@ We therefore describe arrays based on the number of arrays referenced within the
 
 ## Specialized array formats
 
-The majority of work done in R is either 1- or 2-dimensional. This has led to the emergence of shorthand terms. A “vector” is a one-dimensional array and a “matrix” is a 2-dimensional array. The overwhelming majority of R users exclusively use vectors or matrices rather than arrays. Importantly, not only is there a difference in terminology, there are actually separate functions, for convenience, that specifically use these terms.
+The majority of work done in R is either 1- or 2-dimensional. This has led to the emergence of shorthand terms. A **vector** is a **one-dimensional** array and a **matrix** is a **two-dimensional array**. The overwhelming majority of R users exclusively use vectors or matrices rather than arrays. Importantly, not only is there a difference in terminology, there are actually separate functions, for convenience, that specifically use these terms.
 
-Because the the matrix and vector terminology are so ubiquitous, many R users do not even know about the array() function, and how it relates to vectors and matrices.
+Because the **matrix** and **vector** terminology are so ubiquitous, many R users do not even know about the array( ) function, and how it relates to vectors and matrices.
 
 	# Compare a 2-dimensional array
 	> x<-array(data=c(0,1),dim=c(4,6))
