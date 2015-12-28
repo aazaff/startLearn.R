@@ -17,7 +17,7 @@
 
 ## How to install R
 
-The home page for R is [http://www.r-project.org](http://www.r-project.org). You can download the installation file by clicking on the homepage and finding the “download R” link. 
+The home page for R is [http://www.r-project.org](http://www.r-project.org). You can download the installation file by clicking on the homepage and finding the **download R** link. 
 
 ## The most basic R concepts
 
