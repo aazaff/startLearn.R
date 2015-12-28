@@ -338,8 +338,9 @@ In the above example, **MyArray** has six **elements**, the numbers 5, 6, 7, 8, 
 	# Reference the 3rd element of MyArray
 	> MyArray[3]
 	[1] 7
-	
 
+![Figure](https://raw.githubusercontent.com/aazaff/startLearn.R/master/Figures/Array.png)
+	
 ## The different types of data
 
 What if we want to store something other than a number? There are a variety of data **types** in R, but there are only a few that you really need to know. Let's begin with the three most basic types.
