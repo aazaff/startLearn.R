@@ -544,7 +544,7 @@ Lists are the most versatile form of data object. You can store multiple types o
 
 Although this output seems a bit cluttered and confusing with all of the extra brackets, it is actually very straightforward.
 
-***All arrays are ultimately one-dimensional arrays (i.e., vectors)*** - in fact, properly speaking, there is no other kind of array in R or any computer language. We *simulate* two (or more) dimensional arrays by creating a one dimensional array whose **elements** are also arrays. There can be as many arrays nested within arrays as you want - e.g., a four dimensional array is an array of arrays of arrays of arrays.
+***All arrays are ultimately one-dimensional arrays*** (i.e., vectors) - in fact, properly speaking, there is no other kind of array in R or any computer language. We *simulate* two (or more) dimensional arrays by creating a one dimensional array whose **elements** are also arrays. There can be as many arrays nested within arrays as you want - e.g., a four dimensional array is an array of arrays of arrays of arrays.
 
 **Lists** are just more explicit about this relationship than standard arrays. Let's try and illustrate this relationship with an example.
 
