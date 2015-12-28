@@ -8,9 +8,9 @@
 + [R is a fancy scientific calculator?](#r-is-a-fancy-scientific-calculator)
 + [Using functions for basic math](#using-functions-for-basic-math)
 + [Storing data in an array](#storing-data-in-an-array)
-+ [Specialized array formats](#specialized-array-formats)
-+ [Referencing elements of an array](#referencing-elements-of-an-array)
 + [The different types of data](#the-different-types-of-data)
++ [Vectors and matrices as special arrays](#Vectors-and-matrices-as-special-arrays)
++ [Referencing elements of an array](#referencing-elements-of-an-array)
 + [Multiple data types in an array](#multiple-data-types-in-an-array)
 + [Parting advice from the ancients](#parting-advice)
 + [Other R Tutorials and Resources](#other-r-tutorials)
@@ -264,7 +264,91 @@ Incidentally if you ever want to check the dimensions of an array, you can use t
 	> dim(MyArray)
 	[1] 4 6 2
 
-## Specialized array formats
+## The different types of data
+
+What if we want to store something other than a number? There are a variety of data **types** in R, but there are only a few that you really need to know. Let's begin with the three most basic types.
+
+Data Type | Definition
+--------- | ----------
+**logical** | **TRUE** or **FALSE**
+**character** | Letters, numbers, and symbols that act like letters
+**numeric** | Numbers that act like numbers
+
+Type **logical** is fairly straightforward. It is simply a **TRUE** or a **FALSE** value. Note, however, that  will convert **TRUE** to **1** and **FALSE** to **0** if you try to perform basic mathematical operations on an array of logical data.
+
+	# Create an array of logical values
+	> MyLogical<-array(data=c(TRUE,TRUE,FALSE,TRUE,FALSE,TRUE),dim=6)
+	> MyLogical
+	[1]  TRUE  TRUE FALSE  TRUE FALSE  TRUE
+	
+	# Multiply your 1-dimensional array of logicals by 3
+	>MyLogical*3
+	[1] 3 3 0 3 0 3
+	
+	# You can check what type of data you have using the typeof( ) function.
+	> typeof(MyLogical)
+	[1] "logical"
+	
+	# Or if you have a specific guess you can use the is( ) function.
+	> is(MyLogical,"logical")
+	[1] TRUE
+	
+Type **character** is also fairly straightforward. It is basicaly a way of "de-mathing" something. You tell R that something is meant to be a character by using quotation marks **""**.
+
+	# Create an array of characters made of letters
+	> MyCharacters<-array(data=c("Bob","Loves","Lucy","Almost","As","Much","As","He","Loves","R"),dim=10)
+	> MyCharacters
+	[1] "Bob"    "Loves"  "Lucy"   "Almost" "As"     "Much"   "As"     "He"     "Loves"  "R"
+	
+	# Check the type
+	> typeof(MyCharacters)
+	[1] "character"
+
+By "de-mathing", I mean that R will reject any attempts to do math on your array of characters, ***even if those characters are numbers***.
+
+	# Create a vector of numbers as characters
+	> MyCharacters<-array(c("1","2","3","4"),dim=4)
+	[1] "1" "2" "3" "4"
+	
+	# Attempt to add these numbers together using the sum( ) function.
+	> sum(MyCharacters)
+	Error in sum(MyCharacters) : invalid 'type' (character) of argument
+	
+We need to use **""** marks so that R know you are not referencing an object.
+
+	# Without " " marks.
+	> WithoutQuotes
+	Error: object 'WithoutQuotes' not found
+	
+	# With " " marks.
+	> "WithQuotes"
+	[1] "WithQuotes"
+
+Type **numeric** is both a simple and complicated data type. Basically, numeric data are, you guessed it, numbers that you want to do math on.
+
+	# Create a numeric array
+	> MyNumeric<-array(data=c(1,2,3,4),dim=4)
+
+	# Attempt to add all numbers in MyNumeric together
+	> sum(MyNumeric)
+	[1] 10
+
+	# Check if MyNumeric is of type numeric
+	> is(MyNumeric,"numeric") # Remember the is( ) function from before?
+	[1] TRUE
+
+	# Check its data type
+	> typeof(MyNumeric)
+	[1] "double"
+	
+It gives **double** instead of **numeric**! There are actually several types of numeric data. For our intents and purposes, however, we will just consider **double** to be synonymous with **numeric** and leave it there for now.
+	
+### The Third Rule of R-Club
+As you progress with R you will learn that keeping track of what **type** of data you are using becomes increasingly important. Most errors that beginners and intermediate useRs encounter are, on some level, a result of using the wrong data type. Therefore, one of the first things you should do when you get an error is double check that you are using the right type of data.
+
+This is worth doing even if you are sure that you entered the data correctly. This is because some R functions will **coerce** (convert) your array from one data type into another without your realizing it. In most cases, this is actually a very convenient feature of R, but in other cases it can be the source of much frustration.
+
+## Vectors and Matrices as Special Arrays
 
 The majority of work done in R is either 1- or 2-dimensional. This has led to the emergence of shorthand terms. A **vector** is a **one-dimensional** array and a **matrix** is a **two-dimensional array**. The overwhelming majority of R users exclusively use the **vector** and **matrix** terminology rather than **n-dimensional array** terminology. Importantly, not only is there a difference in terminology, there are actually separate functions, for convenience, that specifically use these terms.
 
@@ -328,81 +412,7 @@ Nope, doesn't work! Vectors are somewhat more primitive than 1-dimensional array
 	>length(MyVector)
 	[1] 4
 	
-Generally, vectors are used more often than 1-dimensional arrays, even though they are more primitive. So, fair warning, be careful as to whether you are using **vectors**, **matrices**, or **arrays**.
-
-## The different types of data
-
-What if we want to store something other than a number? There are a variety of data **types** in R, but there are only a few that you really need to know. Let's begin with the three most basic types.
-
-Data Type | Definition
---------- | ----------
-**logical** | **TRUE** or **FALSE**
-**character** | Letters, numbers, and symbols that act like letters
-**numeric** | Numbers that act like numbers
-
-Type **logical** is fairly straightforward. It is simply a **TRUE** or a **FALSE** value. Note, however, that if you try to perform basic mathematical operations on a logical vector that R will convert **TRUE** to **1** and **FALSE** to **0**.
-
-	# Create a vector of logical values
-	> MyLogical<-c(TRUE,TRUE,FALSE,TRUE,FALSE,TRUE)
-	> MyLogical
-	[1]  TRUE  TRUE FALSE  TRUE FALSE  TRUE
-	
-	# Multiply your 1-dimensional array of logicals by 3
-	>MyLogical*3
-	[1] 3 3 0 3 0 3
-	
-	# You can check what type of data you have using the typeof( ) function.
-	> typeof(MyLogical)
-	[1] "logical"
-	
-	# Or if you have a specific guess you can use the is( ) function.
-	> is(MyLogical,"logical")
-	[1] TRUE
-	
-Type **character** is also fairly straightforward. It is basicaly a way of "de-mathing" something. You tell R that something is meant to be a character by using quotation marks **""**.
-
-	# Create a vector of characters made of letters
-	> MyCharacters<-c("Bob","Loves","Lucy","Almost","As","Much","As","He","Loves","R")
-	> MyCharacters
-	[1] "Bob"    "Loves"  "Lucy"   "Almost" "As"     "Much"   "As"     "He"     "Loves"  "R"
-	
-	# Check the type
-	> typeof(MyCharacters)
-	[1] "character"
-
-By "de-mathing", I mean that R will reject any attempts to do math on your array of characters, ***even if those characters are numbers***.
-
-	# Create a vector of numbers as characters
-	> MyCharacters<-c("1","2","3","4")
-	[1] "1" "2" "3" "4"
-	
-	# Attempt to add these numbers together using the sum( ) function.
-	> sum(MyCharacters)
-	Error in sum(MyCharacters) : invalid 'type' (character) of argument
-	
-Type **numeric** is both the simplest and most complicated data type. Basically, numeric data are, you guessed it, numbers that you want to do math on.
-
-	# Create a numeric vector
-	> MyNumeric<-c(1,2,3,4)
-
-	# Attempt to add all numbers in MyNumeric together
-	> sum(MyNumeric)
-	[1] 10
-
-	# Check if MyNumeric is of type numeric
-	> is(MyNumeric,"numeric") # Remember the is( ) function from before?
-	[1] TRUE
-
-	# Check its data type
-	> typeof(MyNumeric)
-	[1] "double"
-	
-It gives **double** instead of **numeric**! There are actually several types of numeric data. For our intents and purposes, however, we will just consider **double** to be synonymous with **numeric** and leave it there for now.
-	
-### The Third Rule of R-Club
-As you progress with R you will learn that keeping track of what **type** of data you are using becomes increasingly important. Most errors that beginners and intermediate useRs encounter are, on some level, a result of using the wrong data type. Therefore, one of the first things you should do when you get an error is double check that you are using the right type of data.
-
-This is worth doing even if you are sure that you entered the data correctly. This is because some R functions will **coerce** (convert) your array from one data type into another without your realizing it. In most cases, this is actually a very convenient feature of R, but in other cases it can be the source of much frustration.
+Although it might seem like vectors are inferior to one-dimensional arrays, because they are more primitive, this is actually their strength. If you look at carefully at how we define arrays, you will notice that we need to first create a vector using the function **c( )** - MyArray<-array(**c(1,2,3,4)**,4).  Generally, vectors are used more often than 1-dimensional arrays because vectors . This is because vectorsSo, fair warning, be careful as to whether you are using **vectors**, **matrices**, or **arrays**.
 
 ## Referencing elements of an array
 
