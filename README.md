@@ -5,7 +5,7 @@
 + [How to install R](#how-to-install-r)
 + [The most basic R concepts](#the-most-basic-r-concepts)
 + [Why should you use R?](#why-should-you-use-r)
-+ [R is a fancy scientific calculator](#r-is-a-fancy-scientific-calculator)
++ [R is just a fancy scientific calculator](#r-is-just-a-fancy-scientific-calculator)
 + [Using functions for basic math](#using-functions-for-basic-math)
 + [Storing data in an array](#storing-data-in-an-array)
 + [The different types of data](#the-different-types-of-data)
@@ -59,7 +59,7 @@ To do this you should always leave **thorough comments** in your code. Comments 
 
 As a beginner, you will often encounter errors. It is easy to become frustrated when the computer does not do what you want. However, remember that the computer ***"'tis naught but clockwork"*** and can only do what you tell it to do. If you are getting an error, it is almost certainly **your** fault. Don't despair and don't get mad. Take a deep breath, think about what you are trying to do, and try again.
 
-## R is a fancy scientific calculator?
+## R is just a fancy scientific calculator
 
 If you have ever used a scientific or graphing calculator, then you already intuitively know all the basics of doing arithmetic in R. Yay, you've learned about 25% of R without doing anything! But, let's just start with a quick review anyway.
 
