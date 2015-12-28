@@ -9,10 +9,11 @@
 + [Using functions for basic math](#using-functions-for-basic-math)
 + [Storing data in an array](#storing-data-in-an-array)
 + [Specialized array formats](#specialized-array-formats)
++ [Referencing elements of an array](#referencing-elements-of-an-array)
 + [The different types of data](#the-different-types-of-data)
-+ [Irregularly shaped arrays](#irregularly-shaped-arrays)
-+ [How to reference data elements in arrays](#reshaping-data)
++ [Multiple data types in an array](#multiple-data-types-in-an-array)
 + [Parting advice from the ancients](#parting-advice)
++ [Other R Tutorials and Resources](#other-r-tutorials)
 
 ## How to install R
 
@@ -189,9 +190,9 @@ An array is essentially a set of values saved to your computer memory that is re
 
 ## Differences between array (the object) and array( ) the function.
 
-Remember that everything that **exists** in R is an **object** and everything that you **do** is a **function**. In the above example, "MyArray" is an object (specifically an array) that you created with the function array( ).
+Remember that everything that **exists** in R is an **object** and everything that you **do** is a **function**. In the above example, **MyArray** is an object (specifically an array) that you created with the function array( ).
 
-Any time that you want to store the output of a function as an object, you use the "**<-**" operator. In the "MyArray" example, the "**<-**" symbol tells R to store the output of the function on the right, "array( )", under the name on the left - i.e., "MyArray". 
+Any time that you want to store the output of a function as an object, you use the **<-** operator. In the **MyArray** example, the "**<-**" symbol tells R to store the output of the function on the right, "array( )", under the name on the left - i.e., **MyArray**. 
 	
 	# Here are some other examples
 	> FirstObject <- sqrt(5)
@@ -208,14 +209,14 @@ Let's talk some more about the array( ) function, and functions in general. Asid
 	# Let's review the "MyArray" example again
 	> MyArray<-array(data=c(1,2,3,4),dim=4)
 
-The "**data=**" is your way of telling it what data you want stored in the array. In this case, the numbers one, two, three, and four, but you could substitute any list of values or even a single value. 
+The **data=** is your way of telling it what data you want stored in the array. In this case, the numbers one, two, three, and four, but you could substitute any list of values or even a single value. 
 
 	# Single value example
 	> SingleArray<-array(data=5,dim=1)
 
-In other words data is the **argument** name, and you're telling it what values you want that argument to take. Another way of thinking about this is that you're telling R to **temporarily** create an **object** named "data" that the function array( ) should use. 
+In other words data is the **argument** name, and you're telling it what values you want that argument to take. Another way of thinking about this is that you're telling R to **temporarily** create an **object** named **data** that the function array( ) should use. 
 
-Similarly, "dim=" (short for dimensions) indicates how many values you want in the array. If you indicate more values to the array then you provide, R will simply repeat the values you did give it until the array is full.
+Similarly, **dim=** (short for dimensions) indicates how many values you want in the array. If you indicate more values to the array then you provide, R will simply repeat the values you did give it until the array is full.
 
 	> MyArray<-array(data=c(1,2,3,4,5),dim=10)
 	> MyArray
@@ -223,7 +224,7 @@ Similarly, "dim=" (short for dimensions) indicates how many values you want in t
 
 Beware! This is a really bad behavior that most computer languages would not allow. The potential for introducing error into your calculation in this way isn't trivial, so be precise when defining your array size!
 
-Perhaps the most interesting aspect of "dim=" is that you can **also** give it multiple values with c().
+Perhaps the most interesting aspect of **dim=** is that you can **also** give it multiple values with c().
 
 	# Two dimensional array
 	> TwoArray<-array(data=c(0,1),dim=c(4,6))
@@ -234,7 +235,7 @@ Perhaps the most interesting aspect of "dim=" is that you can **also** give it m
 	[3,]    0    0    0    0    0    0
 	[4,]    1    1    1    1    1    1
 
-Eseentialy, you told R to make 6 arrays with 4 values and store them within a single object named "TwoArray".
+Eseentialy, you told R to make 6 arrays with 4 values and store them within a single object named **TwoArray**.
 
 	# You can do this as many times as you'd like. For example, 2 sets of 6 sets of arrays with 4 values.
 	> ThreeArray<-array(data=c(0,1),dim=c(4,6,2))
@@ -317,6 +318,8 @@ Nope, doesn't work! Vectors are somewhat more primitive than 1-dimensional array
 
 So, fair warning, be careful as to whether you are using **vectors**, **matrices**, or **arrays**.
 
+## Referencing elements of an array
+
 ## The different types of data
 
 What if we want to store something other than a number? There are a variety of data **types** in R, but there are only a few that you really need to know. Let's begin with the three most basic types.
@@ -343,7 +346,7 @@ Type **logical** is fairly straightforward. It is simply a **TRUE** or a **FALSE
 	[1] "logical"
 	
 	# Or if you have a specific guess you can use the is( ) function.
-	> is(MyLogical,"logical)
+	> is(MyLogical,"logical")
 	[1] TRUE
 	
 Type **character** is also fairly straightforward. It is basicaly a way of "de-mathing" something. You tell R that something is meant to be a character by using quotation marks **""**.
@@ -391,7 +394,7 @@ As you progress with R you will learn that keeping track of what **type** of dat
 
 This is worth doing even if you are sure that you entered the data correctly. This is because some R functions will **coerce** (convert) your array from one data type into another without your realizing it. In most cases, this is actually a very convenient feature of R, but in other cases it can be the source of much frustration.
 
-## Irregularly shaped arrays
+## Multiple data types in an array
 
 An important property of arrays is that they will ***only allow you to store one type of data within them***. For example, let's try to make a vector with both **characters**, **logicals**, and **numbers**.
 
@@ -429,7 +432,8 @@ Lists are the most versatile form of data object. You can store multiple types o
 	[[6]]
 	[1] "Bob"
 
-It worked! Unfortunately it returns a fairly complex output. There is a lot to unpack here, so let's take it slowly. First, notice that there are two sets of bracketed numbers that are returned in our MultiList object, some with double brackets **[[]]** and some with single brackets **[]**. You may have also noticed that throughout this tutorial R has, up until this most recent example, always prefaced it answers to our questions with **[1]**. What does this mean, and why does it do this? Why is it different in the case of a list?
+It worked! Unfortunately it returns a fairly complex output. There is a lot to unpack here, so let's take it slowly. 
 
+## Subscripting elements of an array
 
-
+First, notice that there are two sets of bracketed numbers that are returned in our MultiList object, some with double brackets **[[]]** and some with single brackets **[]**. You may have also noticed that throughout this tutorial R has, up until this most recent example, always prefaced it answers to our questions with **[1]**. What does this mean, and why does it do this? Why is it different in the case of a list?
