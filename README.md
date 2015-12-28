@@ -320,6 +320,26 @@ So, fair warning, be careful as to whether you are using **vectors**, **matrices
 
 ## Referencing elements of an array
 
+You may have also noticed that throughout this tutorial R always prefaces its answers to our questions with **[1]**. Furtheremore, our **two-dimensional arrays** (matrices) also give bracketed responses [,1] or [1,]. What does this mean, and why does it do this?
+
+Each array is made up of a set of values. Each value within an array is known as an **element**.
+
+	# Create a simple array with the
+	> MyArray<-array(data=c(5,6,7,8,9,10),dim=6)
+	> MyArray
+	[1] 5 6 7 8 9 10
+	
+In the above example, **MyArray** has six **elements**, the numbers 5, 6, 7, 8, 9, and 10. If you want to reference a specific element within the array, you use single brackets.
+
+	# Refernce the 6th element of MyArray
+	> MyArray[6]
+	[1] 10
+	
+	# Reference the 3rd element of MyArray
+	> MyArray[3]
+	[1] 7
+	
+
 ## The different types of data
 
 What if we want to store something other than a number? There are a variety of data **types** in R, but there are only a few that you really need to know. Let's begin with the three most basic types.
