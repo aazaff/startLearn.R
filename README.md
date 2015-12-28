@@ -44,7 +44,7 @@ Although there are literally hundreds (if not thousands) of ways to do each of t
 
 Spell things out for future readers of your programs as explicitly as possible – especially for me, because I’m grading you! You want other programmers to easily recognize what you are trying to accomplish with a particular line of code. A quote that I quite like is:
 
-"Always annotate your code, because the **sucker** trying to figure what you did six months from now is going to be **you**."
+"Always annotate your code, because the sucker trying to figure what you did six months from now is going to be ***you***."
 
 To do this you should always leave **thorough comments** in your code. Comments in R are always preceded by the # symbol. Anything that follows a # symbol will not be executed by the software.
 
@@ -57,7 +57,7 @@ To do this you should always leave **thorough comments** in your code. Comments 
 
 ***"The computer is always right."***
 
-As a beginner, you will often encounter errors. It is easy to become frustrated when the computer does not do what you want. However, remember that the computer "'tis naught but clockwork" and can only do what you tell it to do. If you are getting an error, it is almost certainly **your** fault. Don't despair and don't get mad. Take a deep breath, think about what you are trying to do, and try again.
+As a beginner, you will often encounter errors. It is easy to become frustrated when the computer does not do what you want. However, remember that the computer ***"'tis naught but clockwork"*** and can only do what you tell it to do. If you are getting an error, it is almost certainly **your** fault. Don't despair and don't get mad. Take a deep breath, think about what you are trying to do, and try again.
 
 ## R is a fancy scientific calculator?
 
