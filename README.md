@@ -109,12 +109,12 @@ Notice that we used **==**  to ask if these two quantities are equal, rather tha
 
 Operator Example | Operator Definition
 ---------------- | -------------------
-x **>**  y | Is x greater than y
-x **>=** y |	Is x greter than or equal to y
-x **<**  y |	Is x less than y
-x **<=** y |	Is x less than or equal to y
-x **==** y |	Is x equal to y
-x **!=** y |	Is x *not* equal to y
+x **>**  y | Is x **greater than** y
+x **>=** y |	Is x **greter than or equal** to y
+x **<**  y |	Is x **less than** y
+x **<=** y |	Is x **less than or equal** to y
+x **==** y |	Is x **equal** to y
+x **!=** y |	Is **x *not* equal** to y
 
 ## Using functions for basic math
 
@@ -214,14 +214,14 @@ The **data=** is your way of telling it what data you want stored in the array. 
 	# Single value example
 	> SingleArray<-array(data=5,dim=1)
 
-In other words data is the **argument** name, and you're telling it what values you want that argument to take. Another way of thinking about this is that you're telling R to **temporarily** create an **object** named **data** that the function array( ) should use. 
+In other words data is the **argument** name, and you're telling it what values you want that argument to take. Another way of thinking about this is that you're telling R to **temporarily** create an **object** named **data** that the function **array( )** should use. 
 
 Similarly, **dim=** (short for dimensions) indicates how many values you want in the array. If you indicate more values to the array then you provide, R will simply repeat the values you did give it until the array is full.
 
 	> MyArray<-array(data=c(1,2,3,4,5),dim=10)
 	> MyArray
 	[1] 1 2 3 4 5 1 2 3 4 5
-
+	
 Beware! This is a really bad behavior that most computer languages would not allow. The potential for introducing error into your calculation in this way isn't trivial, so be precise when defining your array size!
 
 Perhaps the most interesting aspect of **dim=** is that you can **also** give it multiple values with c().
@@ -258,11 +258,15 @@ Eseentialy, you told R to make 6 arrays with 4 values and store them within a si
 
 We therefore describe arrays based on the number of arrays referenced within them. A single array is a **1-dimensional array**. An array of arrays is a **2-dimensional array**. An array of arrays of arrays is a **3-dimensional array**, and so forth. 
 
+Incidentally if you ever want to check the dimensions of an array, you can use the **dim( )** function.
+
+	# Check the dim of MyArray
+	> dim(MyArray)
+	[1] 4 6 2
+
 ## Specialized array formats
 
-The majority of work done in R is either 1- or 2-dimensional. This has led to the emergence of shorthand terms. A **vector** is a **one-dimensional** array and a **matrix** is a **two-dimensional array**. The overwhelming majority of R users exclusively use vectors or matrices rather than arrays. Importantly, not only is there a difference in terminology, there are actually separate functions, for convenience, that specifically use these terms.
-
-Because the **matrix** and **vector** terminology are so ubiquitous, many R users do not even know about the array( ) function, and how it relates to vectors and matrices.
+The majority of work done in R is either 1- or 2-dimensional. This has led to the emergence of shorthand terms. A **vector** is a **one-dimensional** array and a **matrix** is a **two-dimensional array**. The overwhelming majority of R users exclusively use the **vector** and **matrix** terminology rather than **n-dimensional array** terminology. Importantly, not only is there a difference in terminology, there are actually separate functions, for convenience, that specifically use these terms.
 
 	# Compare a 2-dimensional array
 	> x<-array(data=c(0,1),dim=c(4,6))
@@ -316,32 +320,16 @@ Nope, doesn't work! Vectors are somewhat more primitive than 1-dimensional array
 	> identical(MyVector,MyArray)
 	[1] FALSE
 
-So, fair warning, be careful as to whether you are using **vectors**, **matrices**, or **arrays**.
-
-## Referencing elements of an array
-
-You may have also noticed that throughout this tutorial R always prefaces its answers to our questions with **[1]**. Furtheremore, our **two-dimensional arrays** (matrices) also give bracketed responses [,1] or [1,]. What does this mean, and why does it do this?
-
-Each array is made up of a set of values. Each value within an array is known as an **element**.
-
-	# Create a simple array with the
-	> MyArray<-array(data=c(5,6,7,8,9,10),dim=6)
-	> MyArray
-	[1] 5 6 7 8 9 10
+	# Similarly, dim( ) will not work on a vector.
+	> dim(MyVector)
+	NULL
 	
-In the above example, **MyArray** has six **elements**, the numbers 5, 6, 7, 8, 9, and 10. If you want to reference a specific element within the array, you use single brackets.
-
-	# Refernce the 6th element of MyArray
-	> MyArray[6]
-	[1] 10
+	# You have to use the special function length( )
+	>length(MyVector)
+	[1] 4
 	
-	# Reference the 3rd element of MyArray
-	> MyArray[3]
-	[1] 7
+Generally, vectors are used more often than 1-dimensional arrays, even though they are more primitive. So, fair warning, be careful as to whether you are using **vectors**, **matrices**, or **arrays**.
 
-<a href="url"><img src="https://raw.githubusercontent.com/aazaff/startLearn.R/master/Figures/Array.png" align="center" height="750" width="750" ></a>
-
-	
 ## The different types of data
 
 What if we want to store something other than a number? There are a variety of data **types** in R, but there are only a few that you really need to know. Let's begin with the three most basic types.
@@ -349,8 +337,8 @@ What if we want to store something other than a number? There are a variety of d
 Data Type | Definition
 --------- | ----------
 **logical** | **TRUE** or **FALSE**
-**character** | letters, numbers, and symbols that act like letters
-**numeric** | numbers that act like numbers
+**character** | Letters, numbers, and symbols that act like letters
+**numeric** | Numbers that act like numbers
 
 Type **logical** is fairly straightforward. It is simply a **TRUE** or a **FALSE** value. Note, however, that if you try to perform basic mathematical operations on a logical vector that R will convert **TRUE** to **1** and **FALSE** to **0**.
 
@@ -416,6 +404,52 @@ As you progress with R you will learn that keeping track of what **type** of dat
 
 This is worth doing even if you are sure that you entered the data correctly. This is because some R functions will **coerce** (convert) your array from one data type into another without your realizing it. In most cases, this is actually a very convenient feature of R, but in other cases it can be the source of much frustration.
 
+## Referencing elements of an array
+
+You may have also noticed that throughout this tutorial R always prefaces its answers to our questions with **[1]**. Furtheremore, our **two-dimensional arrays** (matrices) also give bracketed responses [,1] or [1,]. What does this mean, and why does it do this?
+
+Each array is made up of a set of values. Each value within an array is known as an **element**.
+
+	# Create a simple array with the array( ) function.
+	> MyArray<-array(data=c(5,6,7,8,9,10),dim=6)
+	> MyArray
+	[1] 5 6 7 8 9 10
+	
+In the above example, **MyArray** has six **elements**, the numbers 5, 6, 7, 8, 9, and 10. If you want to reference a specific element within the array, you use single brackets around the **index** or **position** of the element. 
+
+	# Refernce the 6th element of MyArray
+	> MyArray[6]
+	[1] 10
+	
+	# Reference the 3rd element of MyArray
+	> MyArray[3]
+	[1] 7
+
+You can also name the various **elements** within an array. You can do this (1) when the array is first created, or (2) after you've already created the array. For now, let's just add names to an existing array.
+
+	# Add names to an existing array using the names function.
+	> MyArray<-array(data=c(5,6,7,8,9,10),dim=6)
+	
+	# Let's check the names of MyArray using the names( ) function.
+	> names(MyArray)
+	NULL
+	
+	# Notice that there are no names attached to this array yet, so it returns an empty array - i.e., NULL.
+	# You can then store a set of names (as a character data type to this array).
+	> names(MyArray)<-c("First","Second","Third","Fourth","Fifth","Sixth")
+	> MyArray
+	First Second  Third Fourth  Fifth  Sixth 
+     	    5      6      7      8      9     10
+     	    
+     	# You can now access an element based on its name, rather than its **index** or **position**
+     	# Find the fifth element.
+     	> MyArray["Fifth"]
+	Fifth 
+    	    9 
+	
+	
+<a href="url"><img src="https://raw.githubusercontent.com/aazaff/startLearn.R/master/Figures/Array.png" align="center" height="450" width="500" ></a>
+
 ## Multiple data types in an array
 
 An important property of arrays is that they will ***only allow you to store one type of data within them***. For example, let's try to make a vector with both **characters**, **logicals**, and **numbers**.
@@ -458,4 +492,4 @@ It worked! Unfortunately it returns a fairly complex output. There is a lot to u
 
 ## Subscripting elements of an array
 
-First, notice that there are two sets of bracketed numbers that are returned in our MultiList object, some with double brackets **[[]]** and some with single brackets **[]**. You may have also noticed that throughout this tutorial R has, up until this most recent example, always prefaced it answers to our questions with **[1]**. What does this mean, and why does it do this? Why is it different in the case of a list?
+First, notice that there are two sets of bracketed numbers that are returned in our MultiList object, some with double brackets **[[ ]]** and some with single brackets **[ ]**. You may have also noticed that throughout this tutorial R has, up until this most recent example, always prefaced it answers to our questions with **[1]**. What does this mean, and why does it do this? Why is it different in the case of a list?
