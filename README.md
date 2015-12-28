@@ -1,22 +1,25 @@
 # An Introduction to R
 
 ## Table of Contents
-+ [Intalling R](#installing-r) # Instructions on how to install R
-+ [Basic Concepts](#basic-concepts) # A review of basic concepts
-+ [Why use R?](#why-use-r) # Why you should use R
-+ [Mathematical Operations](#mathematical-operations) # Basic arithmetic and operators
-+ [Using Functions](#using-functions-to-perform-operations) # Using functions to perform mathematical operations
-+ [Basic Data Storage](#data-storage) # How to store and use stored data
-+ [Data Storage Functions](#data-storage-functions) # Complexities of Data Storage
-+ [Data Types](#data-types) # Different types of data that can be stored
-+ [Data Storage III](#advanced-data-storage) # Creating complex arrays
-+ [Reshaping Data](#reshaping data) # How to reference elements within a data object
-+ [Parting Advice](#parting advice) # Words of wisdom from the ancients
 
-## Installing R
++ [How to install R](#how-to-install-r)
++ [The most basic R concepts](#the-most-basic-r-concepts)
++ [Why should you use R?](#why-should-you-use-r)
++ [R is a fancy scientific calculator?](#r-is-a-fancy-scientific-calculator)
++ [Using functions for basic math](#using-functions-for-basic-math)
++ [Storing data in an array](#storing-data-in-an-array)
++ [Specialized array formats](#specialized-array-formats)
++ [The different types of data](#the-different-types-of-data)
++ [Irregularly shaped arrays](#irregularly-shaped-arrays)
++ [How to reference data elements in arrays](#reshaping-data)
++ [Parting Advice](#parting-advice)
+
+## How to install R
+
 The home page for R is [http://www.r-project.org](http://www.r-project.org). You can download the installation file by clicking on the homepage and finding the “download R” link. 
 
-## Basic Concepts
+## The most basic R concepts
+
 Throughout this tutorial there will be references to **objects** and **functions**. These are the two fundamental units of the R programming language. R stores information as objects and uses functions to interact with the objects. The following quote (not mine) summarizes the relationship quite well.
 
 “Everything that **exists** in R is an object.
@@ -24,7 +27,8 @@ Everything that you **do** in R is a function.”
 
 The line between objects and functions can become somewhat blurred because all functions are stored as objects and all objects can only be interacted with via functions. Don't be discouraged by this complexity, just remember the above quote and you will be fine.
 
-## Why use R?
+## Why should you use R?
+
 If you are ever feeling overwhelmed by what you are learning or doing in R, never forget that everything you do in R is just a **function** designed for one of the following **four** purposes. Determine which step you are trying to perform, and proceed from there. 
 
 1. Mathematical Operations - Using R as a glorified calculator
@@ -49,11 +53,13 @@ To do this you should always leave **thorough comments** in your code. Comments 
 	[1] 10
 
 ## The Second Rule of R-Club
+
 "The computer is always right."
 
 As a beginner, you will often encounter errors. It is easy to become frustrated when the computer does not do what you want. However, remember that the computer "'tis naught but clockwork" and can only do what you tell it to do. If you are getting an error, it is almost certainly **your** fault. Don't despair and don't get mad. Take a deep breath, think about what you are trying to do, and try again.
 
-## Mathematical Operations
+## R is a fancy scientific calculator?
+
 If you have ever used a scientific or graphing calculator, then you already intuitively know all the basics of doing arithmetic in R. Yay, you've learned about 20% of R without doing anything! But, let's just start with a quick review anyway.
 
 	# Addition
@@ -109,7 +115,8 @@ Notice that we used **==**  to ask if these two quantities are equal, rather tha
 
 There are a few other special operators in R, but we will worry about them later.
 
-## Using functions to perform operations
+## Using functions for basic math
+
 Of course, writing out the arithmetic every time wouldn't be any better than just using a calculator. The first benefit that R has over a calculator is it has many **functions** for arithmetic expressions that you can use as shortcuts.
 
 	# For example, if I wanted to take the square root of a number. I could just write out the expression.
@@ -135,7 +142,7 @@ Now you might be thinking, that doesn't really save any time compared to writing
 
 The second most important benefit of functions is that they explicitly say what your code is doing - remember the first rule of R! Seeing factorial(10) makes it immediately obvious that you are calculating the factorial of ten.
 
-## Data Storage
+## Storing data in an array
 
 These simple functions probably still don't seem that impressive if you consider that most calculators already have buttons for square roots, factorials, and the like. However, fucntions in R don't really shine until they are paired with stored data.
 
@@ -375,12 +382,11 @@ By "de-mathing", I mean that R will reject any attempts to do math on your array
 	> typeof(MyNumeric)
 	[1] "double"
 	
-It gives "double" instead of "numeric"! There are actually several types of numeric data. For our intents and purposes, however, we can consider "double" (the default) to be synonymous with "numeric".
+It gives "double" instead of "numeric"! There are actually several types of numeric data. For our intents and purposes, however, we will just consider "double" to be synonymous with "numeric" and leave it there for now.
 	
 ## The Third Rule of R-Club
 As you progress with R you will learn that keeping track of what **type** of data you are using becomes increasingly important. Most errors that beginners and intermediate useRs encounter are, on some level, a result of using the wrong data type. Therefore, one of the first things you should do when you get an error is double check that you are using the right type of data.
 
-This is worth doing even if you are sure that you entered the data correctly. This is because some R functions, for better or worse, will sometimes **coerce** (convert) your array from one data type into another without your realizing it. In most cases, this is actually convenient, but in other cases it can be the source of much frustration.
+This is worth doing even if you are sure that you entered the data correctly. This is because some R functions will **coerce** (convert) your array from one data type into another without your realizing it. In most cases, this is actually a very convenient feature of R, but in other cases it can be the source of much frustration.
 
 ## Advanced Data Storage
-
