@@ -406,8 +406,6 @@ This is worth doing even if you are sure that you entered the data correctly. Th
 
 ## Referencing elements of an array
 
-You may have also noticed that throughout this tutorial R always prefaces its answers to our questions with **[1]**. Furtheremore, our **two-dimensional arrays** (matrices) also give bracketed responses [,1] or [1,]. What does this mean, and why does it do this?
-
 Each array is made up of a set of values. Each value within an array is known as an **element**.
 
 	# Create a simple array with the array( ) function.
@@ -425,7 +423,7 @@ In the above example, **MyArray** has six **elements**, the numbers 5, 6, 7, 8, 
 	> MyArray[3]
 	[1] 7
 
-You can also name the various **elements** within an array. You can do this (1) when the array is first created, or (2) after you've already created the array. For now, let's just add names to an existing array.
+You can also **name** the various **elements** within an array. You can do this (1) when the array is first created, or (2) after you've already created the array. For now, let's just add **names** to an existing array.
 
 	# Add names to an existing array using the names function.
 	> MyArray<-array(data=c(5,6,7,8,9,10),dim=6)
@@ -434,21 +432,67 @@ You can also name the various **elements** within an array. You can do this (1) 
 	> names(MyArray)
 	NULL
 	
-	# Notice that there are no names attached to this array yet, so it returns an empty array - i.e., NULL.
-	# You can then store a set of names (as a character data type to this array).
+Notice that there are no **names** attached to this array yet, so it returns an empty array - i.e., NULL.
+
+	# You can store an array of names (as a character data type) to this empty array.
 	> names(MyArray)<-c("First","Second","Third","Fourth","Fifth","Sixth")
 	> MyArray
 	First Second  Third Fourth  Fifth  Sixth 
      	    5      6      7      8      9     10
      	    
-     	# You can now access an element based on its name, rather than its **index** or **position**
+     	# You can now access an element based on its **name**, rather than its **index** or **position**
      	# Find the fifth element.
      	> MyArray["Fifth"]
 	Fifth 
     	    9 
 	
+What about those commas we saw before in the 2 and 3-dimensional array examples? The commas are used to separate out which dimension you are talking about. Here is an example.
 	
+	# Let's make a 3-dimensional array, with 2 arrays of 6 arrays of 4 elements.
+	# Incidentally, notice that I'm going to use the ":" operator for the first time. 
+	# The colon means to make a sequence of numbers ranging from x to y - e.g., 1:4 = 1,2,3,4.
+	> ThreeArray<-array(data=c(1:48),dim=c(4,6,2))
+	> ThreeArray
+	, , 1
+
+	     [,1] [,2] [,3] [,4] [,5] [,6]
+	[1,]    1    5    9   13   17   21
+	[2,]    2    6   10   14   18   22
+	[3,]    3    7   11   15   19   23
+	[4,]    4    8   12   16   20   24
+
+	, , 2
+
+	     [,1] [,2] [,3] [,4] [,5] [,6]
+	[1,]   25   29   33   37   41   45
+	[2,]   26   30   34   38   42   46
+	[3,]   27   31   35   39   43   47
+	[4,]   28   32   36   40   44   48
+
+	# Let's say that we want to find element 43
+	# 43 is in the 3rd row of the 5th column of matrix number two.
+	> ThreeArray[3,5,2]
+	[1] 43
+
+The figure below depicts several other ways you can reference the elements within an array using bracket notation. Bracket notation, by the way, is known in R as **subscripting**. If you get an error that mentions **subscripts** then you know that somewhere along the line you made a mistake in referencing an element somewhere. This is a very common source of error, don't be discouraged if you get a lot of them when you're first starting out.
+
 <a href="url"><img src="https://raw.githubusercontent.com/aazaff/startLearn.R/master/Figures/Array.png" align="center" height="450" width="500" ></a>
+
+### The Fourth Rule of R-Club
+***"R uses arrays too!"***
+
+You may have noticed that throughout this tutorial R generally prefaces its answers to our questions with **[1]**. That is its way of telling you that its response is the first element of an array - i.e., the invisible answer array. Because its answer is an array you can also **subscript** the answer.
+
+	> ThreeArray<-array(data=c(1:48),dim=c(4,6,2))
+	
+	# Find the dimensions of our new three dimensional array
+	> dim(ThreeArray)
+	[1] 4 6 2
+	
+	# What if we just want to know the number of columns?
+	# You can subscript the output of dim( ) since it is also an array.
+	> dim(ThreeArray)[2]
+	[1] 6
 
 ## Multiple data types in an array
 
@@ -463,9 +507,9 @@ An important property of arrays is that they will ***only allow you to store one
 	> typeof(MultiArray)
 	[1] "character"
 
-Notice that R simply **coerced** everything to type character. This is R's default behavior when you mix data types. If you want to store **multiple types** of data in a **single object** you are going to have to use a special type of array known as a **list**. Lists are created using the list( ) function.
+Notice that R simply **coerced** everything to type character. This is R's default behavior when you mix data types. If you want to store **multiple types** of data in a **single object** you are going to have to use a special type of array known as a **list**. Lists are created using the **list( )** function.
 
-Lists are the most versatile form of data object. You can store multiple types of data in a variety of formats within a single list. You can even get fancy and have lists of lists. This is both a boon and an a bane, because this versatility makes them much more complex and difficult to use. Let's try to make MultiArray again using list( ).
+Lists are the most versatile form of data object. You can store multiple types of data in a variety of formats within a single list. You can even get fancy and have lists of lists. This is both a boon and an a bane, because this versatility makes them much more complex and difficult to use. Let's try to make MultiArray again using **list( )**.
 
 	# My multi-datatype array
 	> MultiList<-list(TRUE,1,2,3,4,"Bob")
@@ -488,8 +532,4 @@ Lists are the most versatile form of data object. You can store multiple types o
 	[[6]]
 	[1] "Bob"
 
-It worked! Unfortunately it returns a fairly complex output. There is a lot to unpack here, so let's take it slowly. 
 
-## Subscripting elements of an array
-
-First, notice that there are two sets of bracketed numbers that are returned in our MultiList object, some with double brackets **[[ ]]** and some with single brackets **[ ]**. You may have also noticed that throughout this tutorial R has, up until this most recent example, always prefaced it answers to our questions with **[1]**. What does this mean, and why does it do this? Why is it different in the case of a list?
