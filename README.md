@@ -104,16 +104,16 @@ You can also perform what are called logical operations. A logical returns a val
 	> 5 == (1/2 * 10)
 	[1] TRUE
 	
-Notice that we used **==**  to ask if these two quantities are equal, rather than a single **=** sign. Most **operators** in R are quite straightforward. Here is a list of the basics.
+Notice that we used **==**  to ask if these two quantities are equal, rather than a single **=** sign. Most **operators** in R are  straightforward, but there are some - e.g., **==** - that are not intuitie.. Here is a list of the basics. There are a few other operators in R, but we will worry about them later.
 
-+ x **>**  y 	Is x greater than y
-+ x **>=** y	Is x greter than or equal to y
-+ x **<**  y 	Is x less than y
-+ x **<=** y 	Is x less than or equal to y
-+ x **==** y 	Is x equal to y
-+ x **!=** y 	Is x *not* equal to y
-
-There are a few other operators in R, but we will worry about them later.
+Operator Example | Operator Definition
+---------------- | -------------------
+x **>**  y | Is x greater than y
+x **>=** y |	Is x greter than or equal to y
+x **<**  y |	Is x less than y
+x **<=** y |	Is x less than or equal to y
+x **==** y |	Is x equal to y
+x **!=** y |	Is x *not* equal to y
 
 ## Using functions for basic math
 
@@ -295,7 +295,7 @@ Because the **matrix** and **vector** terminology are so ubiquitous, many R user
 	Error in vector(data = c(1, 2, 3, 4), dim = 4) : 
   	unused arguments (data = c(1, 2, 3, 4), dim = 4)
 
-Nope, doesn't work. Vectors are somewhat more primitive than 1-dimensional arrays, and even though they are **conceptually identical** to a **1-dimensional array**, they are not operationally identical. You can make them just by using the c( ) function we've been using all along.
+Nope, doesn't work! Vectors are somewhat more primitive than 1-dimensional arrays, and even though they are **conceptually identical** to a **1-dimensional array**, they are not operationally identical. Instead, you can make a vector by using the c( ) function we've been using all along.
 	
 	# Make a vector 
 	> MyVector<-c(1,2,3,4)
@@ -315,21 +315,26 @@ Nope, doesn't work. Vectors are somewhat more primitive than 1-dimensional array
 	> identical(MyVector,MyArray)
 	[1] FALSE
 
-So, fair warning, be careful as to whether you are using vectors, matrices, or arrays.
+So, fair warning, be careful as to whether you are using **vectors**, **matrices**, or **arrays**.
 
-## Data Types
+## The different types of data
+
 What if we want to store something other than a number? There are a variety of data **types** in R, but there are only a few that you really need to know. Let's begin with the three most basic types.
 
-+ **logical** = **TRUE** or **FALSE**
-+ **character** = letters, numbers, and symbols that act like letters
-+ **numeric** - numbers that act like numbers
+Data Type | Definition
+--------- | ----------
+**logical** | **TRUE** or **FALSE**
+**character** | letters, numbers, and symbols that act like letters
+**numeric** | numbers that act like numbers
 
-Type **logical** is fairly straightforward it is simply a **TRUE** or a **FALSE** value. Note, however, that if you try to perform basic mathematical operations on a logical vector that R will convert **TRUE** to **1** and **FALSE** to **0**.
+Type **logical** is fairly straightforward. It is simply a **TRUE** or a **FALSE** value. Note, however, that if you try to perform basic mathematical operations on a logical vector that R will convert **TRUE** to **1** and **FALSE** to **0**.
 
+	# Create a vector of logical values
 	> MyLogical<-c(TRUE,TRUE,FALSE,TRUE,FALSE,TRUE)
 	> MyLogical
 	[1]  TRUE  TRUE FALSE  TRUE FALSE  TRUE
 	
+	# Multiply your 1-dimensional array of logicals by 3
 	>MyLogical*3
 	[1] 3 3 0 3 0 3
 	
@@ -337,45 +342,94 @@ Type **logical** is fairly straightforward it is simply a **TRUE** or a **FALSE*
 	> typeof(MyLogical)
 	[1] "logical"
 	
-Type **character** is also fairly straightforward. It is basicaly a way of "de-mathing" something. You tell R that something is meant to be a character by using quotation marks "".
+	# Or if you have a specific guess you can use the is( ) function.
+	> is(MyLogical,"logical)
+	[1] TRUE
+	
+Type **character** is also fairly straightforward. It is basicaly a way of "de-mathing" something. You tell R that something is meant to be a character by using quotation marks **""**.
 
 	# Create a vector of characters made of letters
 	> MyCharacters<-c("Bob","Loves","Lucy","Almost","As","Much","As","He","Loves","R")
 	> MyCharacters
 	[1] "Bob"    "Loves"  "Lucy"   "Almost" "As"     "Much"   "As"     "He"     "Loves"  "R"
 	
-	# Create a vector of numbers as characters
-	> MyCharacters<-c("1","2","3","4")
-	[1] "1" "2" "3" "4"
-	
 	# Check the type
 	> typeof(MyCharacters)
 	[1] "character"
 
-By "de-mathing", I mean that R will reject any attempts to do math on your array of characters.
+By "de-mathing", I mean that R will reject any attempts to do math on your array of characters, ***even if those characters are numbers***.
 
+	# Create a vector of numbers as characters
+	> MyCharacters<-c("1","2","3","4")
+	[1] "1" "2" "3" "4"
+	
+	# Attempt to add these numbers together using the sum( ) function.
 	> sum(MyCharacters)
 	Error in sum(MyCharacters) : invalid 'type' (character) of argument
 	
-**Numeric** is both the simplest and most complicated data type. Basically, numeric data are, you guessed it, numbers that you want to do math on.
+Type **numeric** is both the simplest and most complicated data type. Basically, numeric data are, you guessed it, numbers that you want to do math on.
 
+	# Create a numeric vector
 	> MyNumeric<-c(1,2,3,4)
+
+	# Attempt to add all numbers in MyNumeric together
 	> sum(MyNumeric)
 	[1] 10
-	
+
 	# Check if MyNumeric is of type numeric
 	> is(MyNumeric,"numeric") # Remember the is( ) function from before?
 	[1] TRUE
-	
+
 	# Check its data type
 	> typeof(MyNumeric)
 	[1] "double"
 	
-It gives "double" instead of "numeric"! There are actually several types of numeric data. For our intents and purposes, however, we will just consider "double" to be synonymous with "numeric" and leave it there for now.
+It gives **double** instead of **numeric**! There are actually several types of numeric data. For our intents and purposes, however, we will just consider **double** to be synonymous with **numeric** and leave it there for now.
 	
-## The Third Rule of R-Club
+### The Third Rule of R-Club
 As you progress with R you will learn that keeping track of what **type** of data you are using becomes increasingly important. Most errors that beginners and intermediate useRs encounter are, on some level, a result of using the wrong data type. Therefore, one of the first things you should do when you get an error is double check that you are using the right type of data.
 
 This is worth doing even if you are sure that you entered the data correctly. This is because some R functions will **coerce** (convert) your array from one data type into another without your realizing it. In most cases, this is actually a very convenient feature of R, but in other cases it can be the source of much frustration.
 
-## Advanced Data Storage
+## Irregularly shaped arrays
+
+An important property of arrays is that they will ***only allow you to store one type of data within them***. For example, let's try to make a vector with both **characters**, **logicals**, and **numbers**.
+
+	# My multi-datatype array
+	> MultiArray<-c(TRUE,1,2,3,4,"Bob")
+	> MultiArray
+	[1] "TRUE" "1"    "2"    "3"    "4"    "Bob" 
+
+	# Check to see the data type
+	> typeof(MultiArray)
+	[1] "character"
+
+Notice that R simply **coerced** everything to type character. This is R's default behavior when you mix data types. If you want to store **multiple types** of data in a **single object** you are going to have to use a special type of array known as a **list**. Lists are created using the list( ) function.
+
+Lists are the most versatile form of data object. You can store multiple types of data in a variety of formats within a single list. You can even get fancy and have lists of lists. This is both a boon and an a bane, because this versatility makes them much more complex and difficult to use. Let's try to make MultiArray again using list( ).
+
+	# My multi-datatype array
+	> MultiList<-list(TRUE,1,2,3,4,"Bob")
+	> MultiList
+	[[1]]
+	[1] TRUE
+
+	[[2]]
+	[1] 1
+
+	[[3]]
+	[1] 2
+
+	[[4]]
+	[1] 3
+
+	[[5]]
+	[1] 4
+
+	[[6]]
+	[1] "Bob"
+
+It worked! Unfortunately it returns a fairly complex output. There is a lot to unpack here, so let's take it slowly. First, notice that there are two sets of bracketed numbers that are returned in our MultiList object, some with double brackets **[[]]** and some with single brackets **[]**. You may have also noticed that throughout this tutorial R has, up until this most recent example, always prefaced it answers to our questions with **[1]**. What does this mean, and why does it do this? Why is it different in the case of a list?
+
+
+
