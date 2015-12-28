@@ -190,9 +190,9 @@ An array is essentially a set of values saved to your computer memory that is re
 
 ## Differences between array (the object) and array( ) the function.
 
-Remember that everything that **exists** in R is an **object** and everything that you **do** is a **function**. In the above example, **MyArray** is an object (specifically an array) that you created with the function array( ).
+Remember that everything that **exists** in R is an **object** and everything that you **do** is a **function**. In the above example, **MyArray** is an object (specifically an array) that you created with the function **array( )**.
 
-Any time that you want to store the output of a function as an object, you use the **<-** operator. In the **MyArray** example, the "**<-**" symbol tells R to store the output of the function on the right, "array( )", under the name on the left - i.e., **MyArray**. 
+Any time that you want to store the output of a function as an object, you use the **<-** operator. In the **MyArray** example, the "**<-**" symbol tells R to store the output of the function on the right, **array( )**, under the name on the left - i.e., **MyArray**. 
 	
 	# Here are some other examples
 	> FirstObject <- sqrt(5)
