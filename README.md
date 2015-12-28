@@ -387,7 +387,7 @@ The majority of work done in R is either 1- or 2-dimensional. This has led to th
 	Error in vector(data = c(1, 2, 3, 4), dim = 4) : 
   	unused arguments (data = c(1, 2, 3, 4), dim = 4)
 
-Nope, doesn't work! Vectors are somewhat more primitive than 1-dimensional arrays, and even though they are **conceptually identical** to a **1-dimensional array**, they are not operationally identical. Instead, you can make a vector by using the c( ) function we've been using all along.
+Nope, doesn't work! Even though **vectors** are **conceptually identical** to a **1-dimensional array**, they are not **operationally identical**. Instead, you make a vector by using the c( ) function we've been using all along.
 	
 	# Make a vector 
 	> MyVector<-c(1,2,3,4)
