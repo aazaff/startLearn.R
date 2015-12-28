@@ -339,7 +339,8 @@ In the above example, **MyArray** has six **elements**, the numbers 5, 6, 7, 8, 
 	> MyArray[3]
 	[1] 7
 
-<img src="https://raw.githubusercontent.com/aazaff/startLearn.R/master/Figures/Array.png" alt="Drawing" style="height: 1;"/>
+<a href="url"><img src="https://raw.githubusercontent.com/aazaff/startLearn.R/master/Figures/Array.png" align="center" height="750" width="750" ></a>
+
 	
 ## The different types of data
 
