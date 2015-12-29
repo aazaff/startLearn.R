@@ -65,4 +65,4 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 
 9. Are there any trees in the **trees** dataset with more **girth** than **volume**? How did you find out?
 
-10. What is the total sum of all elements in **trees**? What is the sum of each row of **trees**?
+10. Take the sum of all elements in column **height** of the trees dataset, call this value A. Take the sum of all elements in row **Valiant** of the **mtcars** dataset, call this value B. Take the sum of the first 5 elements of the **precip** dataset, call this value C. Divide C by B and add A. What is your final answer?  
