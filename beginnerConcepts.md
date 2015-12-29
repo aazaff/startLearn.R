@@ -670,3 +670,10 @@ There are several limitations, or at least caveats, you should consider before y
 In other words, data frames will only accept a series of 1-dimensional arrays (vectors) of ***equal length***. 
 
 A second, lesser consideration, is that data frames are less computationaly efficient than matrices. Even something as simple as referencing a single element can be 10x slower on a data.frame than a matrix. However, since smaller matrices and data frames are so fast (nanoseconds) people rarely notice this difference. Nevertheless, because you never know if a **Big Data** worker might use one of your functions in the future, it is worthwhile using matrices, rather than data frames, whenever possible.
+
+The final considering with data.frames is that they will, by default, convert your data of type **character** to type **factor**. **Factors** are one of R's best features, but will be covered in the advancedConcepts tutorial. For now, if you want to preserve your **characters**, you need to change the **stringsAsFactors=** argument of the **data.frame( )** function to **FALSE**.
+
+	# Set stringsAsFactors= to FALSE in order to preserve characters as characters
+	> MyFrame<-data.frame(Weight,Treatment,Sign,row.names=Subjects,stringsAsFactors=FALSE)
+
+Be very mindful of this behavior, it is a common source of errors.
