@@ -17,7 +17,7 @@ We will be using several pre-built in datasets that come with R for this exercis
 > data(precip)
 ````
   
-Note that you would normally expect to define the name of new objects using the **<-** operator, but the **data( )** function creates a new object for you automoatically.
+Note that you would normally expect to define the name of new objects using the **<-** operator, but the **data( )** function creates a new object for you automatically.
 
 ````
 # Take a quick look at the structure of each dataset.
