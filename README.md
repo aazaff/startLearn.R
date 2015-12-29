@@ -615,6 +615,14 @@ Presumably you can deduce from the output of **MyList** what the **[[ ]]** mean.
 
 You might think that since lists are so flexible that you should just use them for everything. However, as you may have noticed in the above examples, their output can be quite complex. Remember the first rule of R, clarity is king. Complex lists should be avoided whenever a simple array will suffice. Lists are also substantially slower in terms of computation.
 
-In addition to lists and arrays, there is a special kind of hybrid between 2-dimensional arrays (matrices) and lists known as **data frames** (often written as **data.frames**). Data frames maintain the same structure as two-dimensional arrays (matrix), but they allow you to have different types of data in each column. 
+In addition to lists and arrays, there is a special kind of hybrid between 2-dimensional arrays (matrices) and lists known as **data frames** (often written as **data.frames**). Data frames maintain the same structure as two-dimensional arrays (matrix), but they allow you to have different types of data in each column.
 
-This is extremely desirable in data science where you might want one or more columns for some kind of numeric measurement (e.g., height, weight, age) and another column denoting other types of information say a logical (e.g., TRUE = given real treatment, FALSE = given placebo), or other columns denoting character data (e.g., names, place of birth).
+	# Make three different types of vector
+	> Weight<-c(85,110,75,70) # numeric
+	> Treatment<-c(TRUE,FALSE,TRUE,FALSE) # logical
+	> Sign<-c("Libra","Scorpio","Cancer","Libra") # Character
+	
+	# Combine them into a data frame
+	> MyFrame<-data.frame(Weight,Treatment,Sign)
+
+Data frames like the one above, **MyFrame**, are extremely desirable for data science. You could imagine keeping track of several types of variable for an experient - e.g., **numeric** measurements (e.g., height, weight, age), **logical** (e.g., TRUE = given real treatment, FALSE = given placebo), or **character** data (e.g., names, place of birth).
