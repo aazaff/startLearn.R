@@ -1,6 +1,6 @@
 ## Introduction
 
-The following are a set of self-test questions designed to complement the [startLearn.R](https://github.com/aazaff/startLearn.R/blob/master/README.md) tutorial. These exercises are only meant to be attempted **after** you have finished reading the startLearn.R tutorial.
+The following are a set of self-test questions designed to complement the [beginnerTutorial](https://github.com/aazaff/startLearn.R/blob/master/beginnerTutorial.md). These exercises are only meant to be attempted **after** you have finished reading the startLearn.R tutorial.
 
 ## Loading in Data
 
