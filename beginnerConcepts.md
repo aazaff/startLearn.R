@@ -32,7 +32,7 @@ If you are ever feeling overwhelmed by what you are learning or doing in R, neve
 3. Reshaping Data - Changing the format of previously stored data so you can perform a different kind of operation on it.
 4. Visualize Data - Methods to make graphs or other visual representations of stored data.
 
-Although there are literally hundreds (if not thousands) of ways to do each of these four steps in R, so long as you know a handful of basic methods for each you can accomplish anything.
+Although there are literally hundreds (if not thousands) of ways to do each of these four steps in R, so long as you know a handful of basic methods for each you can accomplish anything. This beginner's tutorial will largely focus on Mathematical Operations and Storing Data.
 
 ### The First Rule of R-Club
 ***"Always talk about R!"***
