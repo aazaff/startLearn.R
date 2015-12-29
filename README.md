@@ -613,8 +613,8 @@ Presumably you can deduce from the output of **MyList** what the **[[ ]]** mean.
 	> MyList[[3]][1,2]
 	[1] 4
 
-You might think that since lists are so flexible that you should just use them for everything. However, as you may have noticed in the above examples, their output can be quite complex. Remember the first rule of R, clarity is king. Complex lists should be avoided whenever a simple array will suffice. Lists are also substantially slower in terms of computation, so there is that consideration as well.
+You might think that since lists are so flexible that you should just use them for everything. However, as you may have noticed in the above examples, their output can be quite complex. Remember the first rule of R, clarity is king. Complex lists should be avoided whenever a simple array will suffice. Lists are also substantially slower in terms of computation.
 
-In addition to lists and arrays, there is a special kind of hybrid between 2-dimensional arrays (matrices) and lists known as **data frames** (often written as **data.frames**). Data frame maintain the same structure as two-dimensional arrays (matrix), but they allow you to have different types of data in each column. 
+In addition to lists and arrays, there is a special kind of hybrid between 2-dimensional arrays (matrices) and lists known as **data frames** (often written as **data.frames**). Data frames maintain the same structure as two-dimensional arrays (matrix), but they allow you to have different types of data in each column. 
 
-This is extraordinarily useful in data science where you might want one or more columns for some kind of numeric measurement (e.g., height, weight, age) and another column denoting other types of information say a logical (e.g., TRUE = given real treatment, FALSE = given placebo), or other columns denoting character data (e.g., names, place of birth).
+This is extremely desirable in data science where you might want one or more columns for some kind of numeric measurement (e.g., height, weight, age) and another column denoting other types of information say a logical (e.g., TRUE = given real treatment, FALSE = given placebo), or other columns denoting character data (e.g., names, place of birth).
