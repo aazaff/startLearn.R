@@ -12,7 +12,6 @@
 + [Vectors and matrices as special arrays](#Vectors-and-matrices-as-special-arrays)
 + [Referencing elements of an array](#referencing-elements-of-an-array)
 + [Multiple data types in an array](#multiple-data-types-in-an-array)
-+ [Parting advice from the ancients](#parting-advice)
 + [Other R Tutorials and Resources](#other-r-tutorials)
 
 ## How to install R
@@ -192,6 +191,15 @@ An array is essentially a set of values saved to your computer memory that is re
 
 Remember that everything that **exists** in R is an **object** and everything that you **do** is a **function**. In the above example, **MyArray** is an object (specifically an array) that you created with the function **array( )**.
 
+If you are ever interested in knowing whether an object is an **array** or a **function**, you can use the function **class( )**. All objects have a class.
+	
+	> MyArray<-array(data=c(1,2,3,4),dim=4)
+	> class(MyArray)
+	[1] "array"
+	
+	> class(array)
+	[1] "function"
+	
 Any time that you want to store the output of a function as an object, you use the **<-** operator. In the **MyArray** example, the "**<-**" symbol tells R to store the output of the function on the right, **array( )**, under the name on the left - i.e., **MyArray**. 
 	
 	# Here are some other examples
@@ -483,7 +491,7 @@ What about those commas we saw before in the 2 and 3-dimensional array examples?
 	[4,]   28   32   36   40   44   48
 
 	# Let's say that we want to find element 43
-	# 43 is in the 3rd row of the 5th column of matrix number two.
+	# 43 is in the 3rd row of the 5th column of matrix number 2.
 	> ThreeArray[3,5,2]
 	[1] 43
 
@@ -594,7 +602,7 @@ Although this output seems a bit cluttered and confusing with all of the extra b
 	[2,]    2    5    3    1
 	[3,]    3    1    4    2
 	
-Presumably you can deduce from the output of **MyList** what the **[[ ]]** mean. Just as single **[ ]** identify an element within an array, the **[[ ]]** identify an array within a list.
+Presumably you can deduce from the output of **MyList** what the **[[ ]]** mean. Just as single **[ ]** identify an **element** within an **array**, the **[[ ]]** identify an **object** within a list - usually another type of array.
 
 	# Find the first array in MyList
 	> MyList[[1]]
@@ -610,19 +618,62 @@ Presumably you can deduce from the output of **MyList** what the **[[ ]]** mean.
 	[1] TRUE
 	
 	# Access row 1, column 2 of the MyNumeric array in MyList
-	> MyList[[3]][1,2]
+	> MyList[[3]] [1,2]
 	[1] 4
 
-You might think that since lists are so flexible that you should just use them for everything. However, as you may have noticed in the above examples, their output can be quite complex. Remember the first rule of R, clarity is king. Complex lists should be avoided whenever a simple array will suffice. Lists are also substantially slower in terms of computation.
+You might think that you should use lists for everything since they are so flexible. However, as you may have noticed in the above examples, their output can be quite complex. Remember the first rule of R, clarity is king. Complex lists should be avoided whenever a simple array will suffice. Lists are also substantially slower in terms of computation.
 
-In addition to lists and arrays, there is a special kind of hybrid between 2-dimensional arrays (matrices) and lists known as **data frames** (often written as **data.frames**). Data frames maintain the same structure as two-dimensional arrays (matrix), but they allow you to have different types of data in each column.
+#### A special kind of **list( )**
+
+In addition to **lists** and **arrays**, there is a special kind of *hybrid* between 2-dimensional arrays (matrices) and lists known as a **data frame** (often written as **data.frame**). Data frames maintain the same structure as a two-dimensional arrays (matrix), but they allow you to have different types of data in each column like a list. 
+
+Data frames are extremely desirable for data science. Imagine a clinical trial where you want to know the relationship between multiple variables. Some of the variables you want to keep track of might be best represented as **numeric** measurements (e.g., height, weight, age), **logical** measurements (e.g., TRUE = given real treatment, FALSE = given placebo), or **character** data (e.g., names, astrological sign). 
+
+The versatility to keep track of all of these different data types within a single array makes data frames the most popular class of data object in R.
 
 	# Make three different types of vector
 	> Weight<-c(85,110,75,70) # numeric
 	> Treatment<-c(TRUE,FALSE,TRUE,FALSE) # logical
 	> Sign<-c("Libra","Scorpio","Cancer","Libra") # Character
 	
+	# Create a vector of subject names
+	> Subjects<-c("Bob","Lucy","Tina","Joe")
+	
 	# Combine them into a data frame
-	> MyFrame<-data.frame(Weight,Treatment,Sign)
+	# Note that we also use the "row.names=" argument so that the vector Subjects becomes
+	# you guessed it, the row names.
+	> MyFrame<-data.frame(Weight,Treatment,Sign,row.names=Subjects)
+	
+	     Weight Treatment    Sign
+	Bob      85      TRUE   Libra
+	Lucy    110     FALSE Scorpio
+	Tina     75      TRUE  Cancer
+	Joe      70     FALSE   Libra
 
-Data frames like the one above, **MyFrame**, are extremely desirable for data science. You could imagine keeping track of several types of variable for an experient - e.g., **numeric** measurements (e.g., height, weight, age), **logical** (e.g., TRUE = given real treatment, FALSE = given placebo), or **character** data (e.g., names, place of birth).
+There are several limitations, or at least caveats, you should consider before you start using data.frames for everything. First, data frames, ***like all arrays***, must be **symmetrical**.
+
+	# Make a vector of length 4
+	> Weight<-c(85,110,75,70) # numeric
+	
+	# Make a vector of length 3
+	> Age<-c(20,21,32)
+	
+	# Attempt to combine them into a data frame.
+	> MyFrame<-data.frame(Weight,Age)
+	Error in data.frame(Weight, Age) : 
+  	arguments imply differing number of rows: 4, 3
+  	
+In other words, data frames will only accept a series of 1-dimensional arrays (vectors) of ***equal length***. 
+
+A second, lesser consideration, is that data frames are less computationaly efficient than matrices. Even something as simple as referencing a single element can be 10x slower on a data.frame than a matrix. However, since smaller matrices and data frames are so fast (nanoseconds) people rarely notice this difference. Nevertheless, because you never know if a **Big Data** worker might use one of your functions in the future, it is worthwhile using matrices, rather than data frames, whenever possible.
+
+## Other R Tutorials and Resources
+
+As with most things, there are a variety of ways to teach R - particularly to beginners. If there is any section of this introduction that you found confusing or insufficienty detailed, the internet is rife with other resources for learning R. I encourage you to explore these if you need help completing the exercises in this repository.
+
+Resource | Description
+--------- | ----------
+[Kelly Black](http://www.cyclismo.org/tutorial/R/) | A good R tutorial, but be warned that it splits its attention between R programming principles and statistics.
+[Steve Holland](http://strata.uga.edu/software/pdf/Rtutorial.pdf) | Another good R tutorial that covers basic plotting principles, which are not covered here.
+[Hadley Wickham](http://adv-r.had.co.nz/) | This is an excellent resource that largely focuses on the programming side of R. As its name, **advanced R**, implies, the tutorial is meant for more advanced users.
+[Stack Overflow](http://stackoverflow.com/) | Stack Overflow is the de facto forum for R (and other language) questions. The community is easily irritated by questions from beginners, so it behooves you to search through the forums first to see if your question has already been answered.
