@@ -1,5 +1,7 @@
 # An Introduction to R
 
+This section covers the most fundamental concepts of using R. Intermediate concepts are covered in [intermediateConcepts]() and advanced concepts are covered in [advancedConcepts](). Use the [beginnerTest]() exercises to test your mastery of the concepts introduced in this tutorial.
+
 ## Table of Contents
 
 + [The most basic R concepts](#the-most-basic-r-concepts)
