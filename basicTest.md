@@ -59,7 +59,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 
 6. Does **precip** consist of numeric data? What are two different ways you could find out?
 
-7. Code **four** different ways to **subscript** the 2nd row and 7th column of **mtcars** using bracket notation - i.e., 17.02.
+7. Code **four** different ways to **subscript** the **2nd row** and **7th column** of **mtcars** using bracket notation - i.e., 17.02.
 
 8. How would you change the names of the **first five elements** of **precip** to "Alabama", "Alaska", "Arizona", "Arkansas", and "California". (Hint: You will need to use **subscripts**).
 
