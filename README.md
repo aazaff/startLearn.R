@@ -1,9 +1,12 @@
 # An Introduction to R
 
+These tutorials are designed to prepare students for the R-intensive lab assignments used in [**GEOSCIENCE 541: Paleobiology**]() at the University of Wisconsin.
+
+Importantly, these tutorials focus on the core programming and computer science principles underlying the R language, and do **not** cover methods of data analysis (i.e., statistics). Satistical testing and other aspects of data analysis (i.e., data visualization) are instead presented throughout the course in the actual lab assignments.  
+
 ## Table of Contents
 
 + [How to install R](#how-to-install-r)
-+ [Pedagogical Philosophy](#pedagogical-philosophy)
 + [Beginner Concepts](https://github.com/aazaff/startLearn.R/blob/master/beginnerConcepts.md)
 + [Beginner Test](https://github.com/aazaff/startLearn.R/blob/master/beginnerTest.md)
 + [Intermediate Concepts](https://github.com/aazaff/startLearn.R/blob/master/intermediateConcepts.md)
@@ -16,12 +19,9 @@
 
 The home page for R is [http://www.r-project.org](http://www.r-project.org). You can download the installation file by clicking on the homepage and finding the **download R** link. 
 
-## Pedagogical Philosophy
-
-
 ## Other R Tutorials and Resources
 
-As with most things, there are a variety of ways to teach R - particularly to beginners. If there is any section of this introduction that you found confusing or insufficienty detailed, the internet is rife with other resources for learning R. I encourage you to explore these if you need help completing the exercises in this repository.
+As with most things, there are a variety of ways to teach R - particularly to beginners. If there is any section of these tutorials  that you find confusing or insufficienty detailed, the internet is rife with other resources for learning R. I encourage you to explore these if you need help completing the exercises in this repository.
 
 Resource | Description
 --------- | ----------
