@@ -676,4 +676,4 @@ Resource | Description
 [Kelly Black](http://www.cyclismo.org/tutorial/R/) | A good R tutorial, but be warned that it splits its attention between R programming principles and statistics.
 [Steve Holland](http://strata.uga.edu/software/pdf/Rtutorial.pdf) | Another good R tutorial that covers basic plotting principles, which are not covered here.
 [Hadley Wickham](http://adv-r.had.co.nz/) | This is an excellent resource that largely focuses on the programming side of R. As its name, **advanced R**, implies, the tutorial is meant for more advanced users.
-[Stack Overflow](http://stackoverflow.com/) | Stack Overflow is the de facto forum for R (and other language) questions. The community is easily irritated by questions from beginners, so it behooves you to search through the forums first to see if your question has already been answered.
+[Stack Overflow](http://stackoverflow.com/) | Stack Overflow is the de facto forum for R (and other language) questions. The community is easily irritated by questions from beginners, so it behooves you to search through the forums to see if your question has already been answered.
