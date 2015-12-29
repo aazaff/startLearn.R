@@ -47,7 +47,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 ````
 
 #### Problem Set 1
-1. What **class** of objects is **mtcars**? What function did you use to find out?
+1. What **class** of object is **mtcars**? What function did you use to find out?
 
 2. Is **precip** defined as a **1-dimensional array** or a **vector**? How did you find out?
 
@@ -57,7 +57,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 
 5. What function would you use if you wanted to combine all three objects into a single object?
 
-6. Does **precip** consist of numeric data? What are two different ways you could find out?
+6. Does **precip** consist of numeric data? What are **two** different ways you could find out?
 
 7. Code **four** different ways to **subscript** the **2nd row** and **7th column** of **mtcars** using bracket notation - i.e., 17.02.
 
