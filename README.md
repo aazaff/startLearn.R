@@ -301,6 +301,14 @@ Type **logical** is fairly straightforward. It is simply a **TRUE** or a **FALSE
 	> is(MyLogical,"logical")
 	[1] TRUE
 	
+	# If you want to see if ANY elements of your logical array are TRUE, use the any( ) function.
+	> any(MyLogical)
+	[1] TRUE
+	
+	# IF you want to see if ALL elements of your logical array are TRUE, use the all( ) function.
+	> all(MyLogical)
+	[1] FALSE
+	
 Type **character** is also fairly straightforward. It is basicaly a way of "de-mathing" something. You tell R that something is meant to be a character by using quotation marks **""**.
 
 	# Create an array of characters made of letters
