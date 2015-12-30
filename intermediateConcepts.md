@@ -70,23 +70,74 @@ Monday    1     3   5
 Tuesday   2     4   6
 
 # Name each object in the list by example
-> names(MyList)<-c("Vector Example","1D Array Example","2D Array Example")
+> names(MyList)<-c("VectorExample","1D ArrayExample","2D ArrayExample")
 > MyList
-$`Vector Example`
+$`VectorExample`
   Joe Frank   Bob 
     1     2     3 
 
-$`1D Array Example`
+$`1D ArrayExample`
   Joe Frank   Bob 
     1     2     3 
 
-$`2D Array Example`
+$`2D ArrayExample`
         Joe Frank Bob
 Monday    1     3   5
 Tuesday   2     4   6
 ````
 
+You may have noticed that in the MyList example, the name for each **element** of the list was prefaced with a **$**. The dollar sign is a special operator that works with lists and is equivalent to the **[[ ]]** notation we've been using thus far.
+
+````
+# Calling by element index using double brackets
+> MyList[[1]]
+  Joe Frank   Bob 
+    1     2     3
+
+# Calling by element name using double brackets
+> MyList[["Vector Example"]]
+  Joe Frank   Bob 
+    1     2     3
+    
+# Call by element name using double brackets. Note that there are no "" used when using the $ sign.
+> MyList$VectorExample
+  Joe Frank   Bob 
+    1     2     3
+````
+
+Since **$** does the same thing as **[[ ]]**, there is really no good reason to use it. 
+
+However, many people are taught to use **$** and it is extremely common, so you should be aware of it. Nevertheless, it is an inflexible way of doing this and you should use **[ ]** or **[[ ]]** over **$**.
+
+````
+# $ won't work if the element name has spaces
+> MyList$1D ArrayExample
+Error: unexpected numeric constant in "MyList$1"
+
+# $ won't work for anything other than lists and data frames.
+> MyVector$Joe
+Error in MyVector$Joe : $ operator is invalid for atomic vectors
+
+# $ will only work for columns of data frames, not rows.
+> MyFrame<-data.frame(TwoArray)
+> MyFrame
+        Joe Frank Bob
+Monday    1     3   5
+Tuesday   2     4   6
+
+# It works for columns
+> MyFrame$Joe
+[1] 1 2
+
+# But not for rows
+> DataFrame$Tuesday
+NULL
+````
+
 ## Subscripting and subsetting with logicals
+
+Perhaps the biggest benefit of **[ ]** notation is that we can use perform complex subscripting operations within them.
+
 
 ## Iterating over an array
 
