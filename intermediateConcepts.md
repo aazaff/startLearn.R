@@ -4,7 +4,7 @@ This section covers intermediate R concepts, and is meant to be read through aft
 
 + [How to name elements in different data objects](#how-to-name-elements-in-different-data-objects)
 + [Subscripting and subsetting with logicals](#subscripting-and-subsetting-with-logicals)
-+ [Automation and overwriting elements of arrays](#automation-and-overwriting-elements-of-arrays)
++ [Automation and overwriting elements](#automation-and-overwriting-elements)
 + [Writing your own functions in R](#writing-your-own-functions-in-r)
 + [Subsetting and iterating in a single step](#subsetting-and-iterating-in-a-single-step)
 
@@ -191,7 +191,7 @@ You can write out very complex logical statements using the **&** (and) and **|*
 [1] 6 6 3 7 9 3
 ````
 
-## Automation and overwriting elements of arrays
+## Automation and overwriting elements
 
 The true power of **which( )** doesn't become apparent until you want to start **overwriting** elements of a data object. 
 
