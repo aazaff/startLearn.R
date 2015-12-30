@@ -354,10 +354,10 @@ Second, notice that we are generous about starting a new line for each expressio
     }
 ````
 
-You may have noticed that your **while( )** function has not stopped running yet. If you look closely at the math we are asking it to perform, you'll see that it is mathematically impossible for Start to ever become higher than 20! This means that while( ) will ***never stop***. This was one way for malicious hackers to destroy computers in the old days by making a computer infinitely repeat 
-computationally intensive tasks. Nowadays its more an annoyance than a danger, but be careful that your while condition will actualy become **FALSE** at some point, otherwise it will go on infinitely.
+You may have noticed that your **while( )** function has not stopped running yet. If you look closely , you'll see that it is mathematically impossible for Start to ever become higher than 20! This means that while( ) will ***never stop***. You can hit the **ESC** button on your keyboard to stop the expression from executing.
 
-You can hit the **ESC** button on your keyboard to stop the expression from executing.
+This was one way for malicious hackers to destroy computers in the old days by making a computer infinitely repeat 
+computationally intensive tasks. It is more of an annoyance nowadays than a danger, but make sure that your **while( )** condition will actually stop at some point.
 
 The **for( )** function, also called **for( ) loops**, are a safer alternative to **while( )**.
 
