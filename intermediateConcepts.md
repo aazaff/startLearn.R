@@ -17,7 +17,7 @@ Naming Function | When to use it
 **names( )** | Will work with any object, but only allows you to name the **first dimension** of the object.
 **rownames( )** |	Names the second dimension (rows) of an **array**. It requires an array with 2 or more dimensions.
 **colnames( )** |	Names the first dimesion (columns) of an **array**. It requires an array with 2 or more dimensions.
-**dimnames( )** |	Renames the **nth** dimension of an **array**, **dimnames(Array)[[n]]**. Can also name all dimensions of an array at once using a list. Will not work for dimensionless data objects - i.e., vectors and lists.
+**dimnames( )** |	**dimnames(Array)[[n]]** renames the **nth** dimension of an **array**. Will not work for dimensionless data objects - i.e., vectors and lists.
 
 This may seem a bit overwhelming at first, but ***it's not as bad as it first seems***. As a general rule, use **names( )** if you are naming a **vector** or a **list**. Use **dimnames( )** if you are naming an **array** or *data.frame**.
 
