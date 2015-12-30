@@ -19,7 +19,7 @@ Naming Function | When to use it
 **colnames( )** |	Names the first dimesion (columns) of an **array**. It requires an array with 2 or more dimensions.
 **dimnames( )** |	**dimnames(Array)[[n]]** renames the **nth** dimension of an **array**. Will not work for dimensionless data objects - i.e., vectors and lists.
 
-This may seem a bit overwhelming at first, but ***it's not as bad as it first seems***. As a general rule, use **names( )** if you are naming a **vector** or a **list**. Use **dimnames( )** if you are naming an **array** or *data.frame**.
+This may seem a bit overwhelming at first, but ***it's not as bad as it first seems***. As a general rule, use **names( )** if you are naming a **vector** or a **list**. Use **dimnames( )** if you are naming an **array** or **data.frame**.
 
 ````
 # Create a vector and name it using names( )
@@ -193,7 +193,44 @@ You can write out very complex logical statements using the **&** (and) and **|*
 
 ## Automation and overwriting elements of arrays
 
-The true power of **which( )** doesn't become apparent until you want to start overwriting data. 
+The true power of **which( )** doesn't become apparent until you want to start **overwriting** elements of a data object. 
+
+Consider when we used the **dimnames( )** function. You'll remember that you had to specify the dimension you wanted to give names each time by using the format **dimnames(object)[[n]]**. Although we pretended that **n** in this case stood for the dimension you are referencing that is exactly true. 
+
+In literal terms, **dimnames( )** is creating a blank list of objects - hence why you need to use the **[[ ]]** notation - where each element of the list is meant to be a vector of names. When you write **dimnames(object)[[n]]<-c("name1","name2",...)** you are telling it to **overwrite** the blank element of the dimnames list with the vector **c("name1","name2",...)**. It's just for convenience that these element positions correspond to the dimensions of the array.
+
+Let's try an example
+
+````
+# Let's make a practice data frame
+> MyArray<-array(data=c(5,6,4,5,5,6),dim=6)
+> MyArray
+[1] 5 6 4 5 5 6
+
+# Let's imagine that we know the third element of the array, the number 4, should actually be a 7.
+> MyArray[3]<-7
+> MyArray
+[1] 5 6 7 5 5 6
+
+# Remember that you cannot mix types!
+> MyArray[3]<-"seven"
+> MyArray
+[1] "5"     "6"     "seven" "5"     "5"     "6"  # R automatically coerces the numbers to characters.
+````
+
+That's fairly straightforward, but what if we want to overwrite multiple elements?
+
+````
+# Create an array
+> MyArray<-array(data=c(5,6,4,5,5,6),dim=6)
+> MyArray
+[1] 5 6 4 5 5 6
+
+# Change all values of 5 to 9
+> MyArray[which(MyArray==5)]<-9
+> MyArray
+[1] 9 6 4 9 9 6
+````
 
 ## Writing your own functions
 
