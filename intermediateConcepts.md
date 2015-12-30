@@ -1,14 +1,14 @@
 # Intermediate Concepts
 
-This section covers intermediate R concepts, and is meant to be read through after completeing the [beginnerConcepts]() tutorial and exercises.
+This section covers intermediate R concepts, and is meant to be read through after completeing the [beginnerConcepts](https://github.com/aazaff/startLearn.R/blob/master/beginnerConcepts.md) tutorial and the [beginnerTest](https://github.com/aazaff/startLearn.R/blob/master/beginnerTest.md) exercise.
 
-+ [Using lists and subscripts to name arrays](#using-lists-and-subscripts-to-name-arrays)
++ [How to name elements in different data objects](#how-to-name-elements-in-different-data-objects)
 + [Subscripting and subsetting with logicals](#subscripting-and-subsetting-with-logicals)
 + [Automatically repeating a function multiple times](#automatically-repeating-a-function-multiple-times)
 + [Writing your own functions in R](#writing-your-own-functions-in-r)
 + [Subsetting and iterating in a single step](#subsetting-and-iterating-in-a-single-step)
 
-## Using lists and subscripting to name arrays
+## How to name elements in different data objects
 
 In the Beginner Concepts tutorial, we used the **names( )** function to add names to a one-dimensional array (vector). Unfortunately, **names( )** is not a flexible function because it does not work with all data objects. In fact, there is ***no single function*** for naming that works in all cases. This means that you are going to have to remember a few different commands, and ***know when to use each***.
 
@@ -19,7 +19,7 @@ Naming Function | When to use it
 **colnames( )** |	Names the first dimesion (columns) of an **array**. It requires an array with 2 or more dimensions.
 **dimnames( )** |	Renames the **nth** dimension of an **array**, **dimnames(Array)[[n]]**. Can also name all dimensions of an array at once using a list. Will not work for dimensionless data objects - i.e., vectors and lists.
 
-This may seem a bit overwhelming at first, but it's not as bad as it first seems. As a general rule, use **names( )** if you are naming a **vector** or a **list**. Use **dimnames( )** if you are naming an **array** or *data.frame**.
+This may seem a bit overwhelming at first, but ***it's not as bad as it first seems***. As a general rule, use **names( )** if you are naming a **vector** or a **list**. Use **dimnames( )** if you are naming an **array** or *data.frame**.
 
 ````
 # Create a vector and name it using names( )
@@ -28,7 +28,6 @@ This may seem a bit overwhelming at first, but it's not as bad as it first seems
 > MyVector
 Joe Frank   Bob 
   1     2     3 
-
 
 # Create a 1 dimensional array and name it using dimnames( )
 > MyArray<-array(data=c(1,2,3),dim=3)
@@ -40,10 +39,51 @@ Joe Frank   Bob
 # Create a 2-dimensional array and name each dimension using dimnames( )
 > TwoArray<-array(data=c(1,2,3,4,5,6),dim=c(2,3))
 
-# Name the columns of TwoArray (i.e., the first dimension)
-> dimnames(TwoArray)[[1]]<-c("Joe","Frank","Bob")
+# Name the rows of TwoArray (i.e., the first dimension)
+> dimnames(TwoArray)[[1]]<-c("Monday","Tuesday")
 > TwoArray
+        [,1] [,2] [,3]
+Monday     1    3    5
+Tuesday    2    4    6
 
+# Name the columns of TwoArray (i.e., the second dimension)
+> dimnames(TwoArray)[[2]]<-c("Joe","Frank","Bob")
+> TwoArray
+        Joe Frank Bob
+Monday    1     3   5
+Tuesday   2     4   6
+
+
+# Create a list of all the previous examples and name each object in the list.
+> MyList<-list(MyVector,MyArray,TwoArray)
+[[1]]
+  Joe Frank   Bob 
+    1     2     3 
+
+[[2]]
+  Joe Frank   Bob 
+    1     2     3 
+
+[[3]]
+        Joe Frank Bob
+Monday    1     3   5
+Tuesday   2     4   6
+
+# Name each object in the list by example
+> names(MyList)<-c("Vector Example","1D Array Example","2D Array Example")
+> MyList
+$`Vector Example`
+  Joe Frank   Bob 
+    1     2     3 
+
+$`1D Array Example`
+  Joe Frank   Bob 
+    1     2     3 
+
+$`2D Array Example`
+        Joe Frank Bob
+Monday    1     3   5
+Tuesday   2     4   6
 ````
 
 ## Subscripting and subsetting with logicals
