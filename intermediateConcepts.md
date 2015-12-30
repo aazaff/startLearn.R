@@ -14,10 +14,13 @@ In the Beginner Concepts tutorial, we used the **names( )** function to add name
 
 Naming Function | When to use it
 --------------- | -------------------
-names( ) | Will work with any object, but only allows you to name the **first dimension** of the object. For example, you can name matrix columns, but not rows.
-rownames( ) |	Automatically names the second dimension (rows) of an **array**. It requires an array with 2+ dimensions.
-colnames( ) |	Automatically names the first dimesion (columns) of an **array**. It requires an array with 2+ dimensions.
-dimnames( ) |	Renames the **nth** dimension of an **array**. Can also name all dimensions of an array at once using a list. Will not work for dimensionless data objects - i.e., vectors and lists.
+**names( )** | Will work with any object, but only allows you to name the **first dimension** of the object. For example, you can name matrix columns, but not rows.
+**rownames( )** |	Names the second dimension (rows) of an **array**. It requires an array with 2 or more dimensions.
+**colnames( )** |	Names the first dimesion (columns) of an **array**. It requires an array with 2 or more dimensions.
+**dimnames( )** |	Renames the **nth** dimension of an **array**. Can also name all dimensions of an array at once using a list. Will not work for dimensionless data objects - i.e., vectors and lists.
+**setNames( )** | A convenience **wrapper** for **names( )**
+
+
 
 ## Subscripting and subsetting with logicals
 
