@@ -105,9 +105,7 @@ You may have noticed that in the MyList example, the name for each **element** o
     1     2     3
 ````
 
-Since **$** does the same thing as **[[ ]]**, there is really no good reason to use it. 
-
-However, many people are taught to use **$** and it is extremely common, so you should be aware of it. Nevertheless, it is an inflexible way of doing this and you should use **[ ]** or **[[ ]]** over **$**.
+**$** is very commonly used by the R community, so you should be aware of it. However, it is fairly inflexible and will not work in many situations where **[ ]** or **[[ ]]** works.
 
 ````
 # $ won't work if the element name has spaces
@@ -133,6 +131,8 @@ Tuesday   2     4   6
 > DataFrame$Tuesday
 NULL
 ````
+
+Since **$** does the same thing as **[[ ]]**, there is really no good reason to use it. 
 
 ## Subscripting and subsetting with logicals
 
