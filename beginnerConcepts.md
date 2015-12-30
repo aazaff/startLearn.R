@@ -196,7 +196,7 @@ If you are ever interested in knowing whether an object is an **array** or a **f
 	> class(array)
 	[1] "function"
 	
-Any time that you want to store the output of a function as an object, you use the **<-** operator. In the **MyArray** example, the "**<-**" symbol tells R to store the output of the function on the right, **array( )**, under the name on the left - i.e., **MyArray**. 
+Any time that you want to store the output of a function as an object, you use the **<-** operator. In the **MyArray** example, the **<-** symbol tells R to store the output of the function on the right, **array( )**, under the name on the left - i.e., **MyArray**. 
 	
 	# Here are some other examples
 	> FirstObject <- sqrt(5)
@@ -218,7 +218,7 @@ The **data=** is your way of telling it what data you want stored in the array. 
 	# Single value example
 	> SingleArray<-array(data=5,dim=1)
 
-In other words data is the **argument** name, and you're telling it what values you want that argument to take. Another way of thinking about this is that you're telling R to **temporarily** create an **object** named **data** that the function **array( )** should use. 
+In other words data is the **argument** name, and you're telling it what values you want that argument to take. Another way of thinking about this is that you're telling R to **temporarily** create an **object** named **data** that the function **array( )** should use and get rid of that object once the function completes. 
 
 Similarly, **dim=** (short for dimensions) indicates how many values you want in the array. If you indicate more values to the array then you provide, R will simply repeat the values you did give it until the array is full.
 
@@ -353,7 +353,7 @@ Type **numeric** is both a simple and complicated data type. Basically, numeric 
 	> typeof(MyNumeric)
 	[1] "double"
 	
-It gives **double** instead of **numeric**! There are actually several types of numeric data. For our intents and purposes, however, we will just consider **double** to be synonymous with **numeric** and leave it there for now.
+It gives **double** instead of **numeric**! There are actually a couple of types of numeric data. For our intents and purposes, however, we will just consider **double** to be synonymous with **numeric** and leave it there for now.
 	
 ### The Third Rule of R-Club
 
@@ -399,7 +399,7 @@ The majority of work done in R is either 1- or 2-dimensional. This has led to th
 	Error in vector(data = c(1, 2, 3, 4), dim = 4) : 
   	unused arguments (data = c(1, 2, 3, 4), dim = 4)
 
-Nope, doesn't work! Even though **vectors** are **conceptually identical** to a **1-dimensional array**, they are not **operationally identical**. Instead, you make a vector by using the c( ) function we've been using all along.
+Nope, doesn't work! Even though **vectors** are **conceptually identical** to a **1-dimensional array**, they are not **operationally identical**. Instead, you make a vector by using the **c( )** function we've been using all along.
 	
 	# Make a vector 
 	> MyVector<-c(1,2,3,4)
@@ -427,7 +427,7 @@ Nope, doesn't work! Even though **vectors** are **conceptually identical** to a 
 	>length(MyVector)
 	[1] 4
 	
-Although it might seem like vectors are inferior to one-dimensional arrays, because they are more primitive, this is actually their strength. If you look at carefully at how we define arrays, you will notice that we need to first create a vector using the function **c( )** - MyArray<-array(**c(1,2,3,4)**,4).  Generally, vectors are used more often than 1-dimensional arrays because vectors . This is because vectorsSo, fair warning, be careful as to whether you are using **vectors**, **matrices**, or **arrays**.
+Although it might seem like vectors are inferior to one-dimensional arrays, because they are more primitive, this is actually their strength. If you look  carefully at how we define arrays, you will notice that we need to first create a vector using the function **c( )** - e.g., MyArray<-array(**c(1,2,3,4)**,4).  Generally, vectors are used more often than 1-dimensional arrays because vectors are more fundamental. So, fair warning, be careful as to whether you are using **vectors**, **matrices**, or **arrays**.
 
 ## Referencing elements of an array
 
@@ -629,7 +629,7 @@ You might think that you should use lists for everything since they are so flexi
 
 #### A special kind of **list( )**
 
-In addition to **lists** and **arrays**, there is a special kind of *hybrid* between 2-dimensional arrays (matrices) and lists known as a **data frame** (often written as **data.frame**). Data frames maintain the same structure as a two-dimensional arrays (matrix), but they allow you to have different types of data in each column like a list. 
+In addition to **lists** and **arrays**, there is a special kind of *hybrid* between 2-dimensional arrays (matrices) and lists known as a **data frame** (often written as **data.frame**). Data frames maintain the same structure as a two-dimensional array (matrix), but they allow you to have different types of data in each column like a list. 
 
 Data frames are extremely desirable for data science. Imagine a clinical trial where you want to know the relationship between multiple variables. Some of the variables you want to keep track of might be best represented as **numeric** measurements (e.g., height, weight, age), **logical** measurements (e.g., TRUE = given real treatment, FALSE = given placebo), or **character** data (e.g., names, astrological sign). 
 
@@ -667,7 +667,7 @@ There are several limitations, or at least caveats, you should consider before y
 	Error in data.frame(Weight, Age) : 
   	arguments imply differing number of rows: 4, 3
   	
-In other words, data frames will only accept a series of 1-dimensional arrays (vectors) of ***equal length***. 
+In other words, data frames will only accept a series of 1-dimensional arrays (vectors) of ***equal length***. Only **lists** can be **asymmetrical**.
 
 A second, lesser consideration, is that data frames are less computationaly efficient than matrices. Even something as simple as referencing a single element can be 10x slower on a data.frame than a matrix. However, since smaller matrices and data frames are so fast (nanoseconds) people rarely notice this difference. Nevertheless, because you never know if a **Big Data** worker might use one of your functions in the future, it is worthwhile using matrices, rather than data frames, whenever possible.
 
@@ -676,4 +676,4 @@ The final considering with data.frames is that they will, by default, convert yo
 	# Set stringsAsFactors= to FALSE in order to preserve characters as characters
 	> MyFrame<-data.frame(Weight,Treatment,Sign,row.names=Subjects,stringsAsFactors=FALSE)
 
-Be very mindful of this behavior, it is a common source of errors.
+Be very mindful of this behavior, it is a common source of frustration.
