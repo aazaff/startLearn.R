@@ -136,8 +136,26 @@ NULL
 
 ## Subscripting and subsetting with logicals
 
-Perhaps the biggest benefit of **[ ]** notation is that we can use perform complex subscripting operations within them.
+Perhaps the biggest benefit of **[ ]** notation is that we can perform complex subscripting operations within them. The most powerful of these is the **which( )** function, which finds the **index** (a.k.a., the position) of TRUE values in a logical array.
 
+````
+# Create a vector of logical values, where the first element and fifth element are TRUE
+> MyLogical<-c(TRUE,FALSE,FALSE,FALSE,TRUE)
+> MyLogical
+[1]  TRUE FALSE FALSE FALSE  TRUE
+
+# Use which to find which elements of MyLogical are TRUE
+> which(MyLogical)
+[1] 1 5
+````
+
+Now, you might ask, how does this help? Well now that you you have the index positions, you can reference those elements of the array directly.
+
+````
+# Display the elements of MyLogical that are TRUE
+> MyLogical[which(MyLogical)]
+[1] TRUE TRUE
+````
 
 ## Iterating over an array
 
