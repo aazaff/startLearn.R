@@ -17,7 +17,7 @@ Naming Function | When to use it
 names( ) | Will work with any object, but only allows you to name the **first dimension** of the object. For example, you can name matrix columns, but not rows.
 rownames( ) |	Automatically names the second dimension (rows) of an **array**. It requires an array with 2+ dimensions.
 colnames( ) |	Automatically names the first dimesion (columns) of an **array**. It requires an array with 2+ dimensions.
-dimnames( ) |	dimnames( ) can be used to rename the **nth** dimension of any **array** if you specify the desired dimension with a doublesubscript **dimnames[[n]]**. You can also name all dimensions at once using a list.  Dimnames will not work for dimensionless data objects - i.e., vectors and lists.
+dimnames( ) |	Renames the **nth** dimension of an **array**. Can also name all dimensions of an array at once using a list. Will not work for dimensionless data objects - i.e., vectors and lists.
 
 ## Subscripting and subsetting with logicals
 
