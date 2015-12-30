@@ -25,4 +25,35 @@ dimnames( ) |	dimnames( ) can be used to rename the **nth** dimension of any **a
 
 ## Writing your own functions
 
-## Subsetting and iterating simultaneously
+#### A mystical rite of passage
+***"The only way to learn a new programming language is by writing programs in it. The first program to write is the same for all languages: print the words 'hello, world.'"*** - Kernighan and Ritchie
+
+Using what we learned about writing functions in R, let's make one that that prints hello world.
+
+````
+  # First, we create a function object named HelloWorld using function( ).
+  # Then we define what the function does using { }.
+  # In this case we tell it to return the character data, "hello, world."
+  > HelloWorld <- function( ) { return("hello, world.") }
+  > HelloWorld()
+  [1] "hello, world."
+````
+
+Congratulations, you've written your first working function! You are now a true initiate into the wonderful world of computer science and R. Of course, there are a few improvements that we can make to this function.
+
+First, lets consider making the function more versatile, so that it can return phrases other than "hello, world.". We'll do this by adding an **argument** to the function. We'll call this argument **Phrase**. Furthermore, we should also give the function a more versatile name, like **Print**, to reflect the more generic nature of the function.
+
+As a general rule all **objects** that you create in R, whether **functions**, **arguments**, or **data arrays**, should always have a name that is descriptive of what it does. Vague names like x or y should never be used (except in cases of famous math equations, like the slope of a line or a quadratic formula).
+
+````
+  # Write our function as outlined
+  > Print<-function(Phrase) {
+      return(Phrase)
+      }
+  > Print("hello, world.")
+  [1] "hello, world."
+````
+  
+Also notice that the function began with a single line that (1) created a function object named print and (2) defined the functon arguments. We then ***created a new line*** for the body of the function, i.e., the command to **return( )** the argument **Phrase**. It is always good practice to put each individual command of a function on a new line. This makes it easier to read.
+
+## Subsetting and iterating in a single step
