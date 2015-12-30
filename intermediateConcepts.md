@@ -4,7 +4,8 @@ This section covers intermediate R concepts, and is meant to be read through aft
 
 + [How to name elements in different data objects](#how-to-name-elements-in-different-data-objects)
 + [Subscripting and subsetting with logicals](#subscripting-and-subsetting-with-logicals)
-+ [Overwriting elements of using logical subscripts](#automation-and-overwriting-elements)
++ [Overwriting elements using logical subscripts](#overwriting-elements-using-logical-subscripts)
++ [Automating repetitive tasks with loops](#automating-repetitive-tasks-with-loops)
 + [Writing your own functions in R](#writing-your-own-functions-in-r)
 + [Subsetting and iterating in a single step](#subsetting-and-iterating-in-a-single-step)
 
