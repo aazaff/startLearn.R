@@ -26,7 +26,7 @@ dimnames( ) |	dimnames( ) can be used to rename the **nth** dimension of any **a
 ## Writing your own functions
 
 #### A mystical rite of passage
-***"The only way to learn a new programming language is by writing programs in it. The first program to write is the same for all languages: print the words 'hello, world.'"*** - Kernighan and Ritchie
+"The only way to learn a new programming language is by writing programs in it. The first program to write is the same for all languages: print the words ***hello, world.***" - Kernighan and Ritchie
 
 Using what we learned about writing functions in R, let's make one that that prints hello world.
 
