@@ -11,16 +11,7 @@ This section covers intermediate R concepts, and is meant to be read through aft
 
 ## How to name elements in different data objects
 
-In the Beginner Concepts tutorial, we used the **names( )** function to add names to a one-dimensional array (vector). Unfortunately, **names( )** is not a flexible function because it does not work with all data objects. In fact, there is ***no single function*** for naming that works in all cases. This means that you are going to have to remember a few different commands, and ***know when to use each***.
-
-Naming Function | When to use it
---------------- | -------------------
-**names( )** | Will work with any object, but only allows you to name the **first dimension** of the object.
-**rownames( )** |	Names the second dimension (rows) of an **array**. It requires an array with 2 or more dimensions.
-**colnames( )** |	Names the first dimesion (columns) of an **array**. It requires an array with 2 or more dimensions.
-**dimnames( )** |	**dimnames(Array)[[n]]** renames the **nth** dimension of an **array**. Will not work for dimensionless data objects - i.e., vectors and lists.
-
-This may seem a bit overwhelming at first, but ***it's not as bad as it first seems***. As a general rule, use **names( )** if you are naming a **vector** or a **list**. Use **dimnames( )** if you are naming an **array** or **data.frame**.
+In the Beginner Concepts tutorial, we used the **names( )** function to add names to a one-dimensional array (vector). Unfortunately, **names( )** is not a flexible function because it does not work with all data objects. As a general rule, use **names( )** if you are naming a **vector** or a **list**. Use **dimnames( )** if you are naming an **array** or **data.frame**.
 
 ````
 # Create a vector and name it using names( )
@@ -192,11 +183,11 @@ You can write out very complex logical statements using the **&** (and) and **|*
 [1] 6 6 3 7 9 3
 ````
 
-## Overwriting elements of using logical subscripts
+## Overwriting elements using logical subscripts
 
 The true power of **which( )** doesn't become apparent until you want to start **overwriting** elements of a data object. 
 
-Consider when we used the **dimnames( )** function. You'll remember that you had to specify the dimension you wanted to give names each time by using the format **dimnames(object)[[n]]**. Although we pretended that **n** in this case stood for the dimension you are referencing that is not exactly true. 
+Consider when we used the **dimnames( )** function, wre you must specify the dimension you want to name using the format **dimnames(object)[[n]]**. Although we pretended that **n** in this case stood for the dimension you are referencing, that is not exactly true.
 
 In literal terms, **dimnames( )** is creating a blank list of objects - hence why you need to use the **[[ ]]** notation - where each element of the list is meant to be a vector of names. When you write **dimnames(object)[[n]]<-c("name1","name2",...)** you are telling it to **overwrite** the blank element of the dimnames list with the vector **c("name1","name2",...)**. It's just for convenience that these element positions correspond to the dimensions of the array.
 
@@ -308,9 +299,9 @@ which(MyMatrix["row5",]==2)
    5
 ````
 
-Now we will know the appropriate **[row,column]** coordinates of all 2's in the matrix if we pair the input and the output of each **which( )** statement. 
+Now we know the appropriate **[row,column]** coordinates of all 2's in the matrix if we pair the input and the output of each **which( )** statement. 
 
-However, this approach is unsatisfactory for two reasons. First, what if we had a large number of rows (hundreds or thousands?) that we wanted to analyze? Typing out a **which( )** statement for each row would be exhausting and a waste of our time. Second, the way this output is organized isn't very clear, which is a violation of the first rule of R! Not to mention the fact that it also requires us to manually pair the rows with the columns, rather than giving us a single array of coordinates.
+However, this approach is still unsatisfactory for two reasons. First, what if we had a large number of rows (hundreds or thousands) that we wanted to analyze? Typing out a **which( )** statement for each row would be exhausting and a waste of our time. Second, the way this output is organized isn't very clear, which is a violation of the first rule of R! Not to mention the fact that it also requires us to manually pair the rows with the columns, rather than giving us a single array of coordinates.
 
 ## Automating repetitive tasks
 
@@ -334,7 +325,7 @@ The **while( )** function tells R to repeat an expression (or multiple expressio
 [1] 20
 ````
 
-There are a few things you should notice about the above example. First, notice that we used curly brackets **{ }** to tell R what expressions it should peform - i.e., Start + 1 - while the condition - i.e., Start != 20 - was **FALSE**. These curly brackets are very important and if you are writing a long function with many steps, you might forget to put the brackets in at the right places. 
+There are a few things you should notice about the above example. First, notice that we used curly brackets **{ }** to tell R what expressions it should peform - i.e., Start + 1 - while the condition - i.e., Start != 20 - is **FALSE**. These curly brackets are very important and if you are writing a long function with many steps, you might forget to put the brackets in at the right places. 
 
 For this reason, whenever we use an opening curly bracket **{** we tab the start of each successive line until we reach the final closing **}** bracket. This makes it easier to remember and check if we put the curly bracket in the correct place.
 
@@ -354,7 +345,7 @@ Second, notice that we are generous about starting a new line for each expressio
     }
 ````
 
-You may have noticed that your **while( )** function has not stopped running yet. If you look closely , you'll see that it is mathematically impossible for Start to ever become higher than 20! This means that while( ) will ***never stop***. You can hit the **ESC** button on your keyboard to stop the expression from executing.
+You may have noticed that the above example of a **while( )** function never stops running. If you look closely, you'll see that it is mathematically impossible for Start to ever become higher than 20! This means that while( ) will ***never stop***. You can hit the **ESC** button on your keyboard to stop the expression from executing.
 
 This was one way for malicious hackers to destroy computers in the old days by making a computer infinitely repeat 
 computationally intensive tasks. It is more of an annoyance nowadays than a danger, but make sure that your **while( )** condition will actually stop at some point.
