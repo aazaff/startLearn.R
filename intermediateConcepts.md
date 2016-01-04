@@ -9,126 +9,9 @@ This section covers intermediate R concepts, and is meant to be read through aft
 + [Writing your own functions in R](#writing-your-own-functions-in-r)
 + [Subsetting and iterating in a single step](#subsetting-and-iterating-in-a-single-step)
 
-## How to name elements in different data objects
-
-In the Beginner Concepts tutorial, we used the **names( )** function to add names to a one-dimensional array (vector). Unfortunately, **names( )** is not a flexible function because it does not work with all data objects. As a general rule, use **names( )** if you are naming a **vector** or a **list**. Use **dimnames( )** if you are naming an **array** or **data.frame**.
-
-````
-# Create a vector and name it using names( )
-> MyVector<-c(1:3)
-> names(MyVector)<-c("Joe","Frank","Bob")
-> MyVector
-Joe Frank   Bob 
-  1     2     3 
-
-# Create a 1 dimensional array and name it using dimnames( )
-> MyArray<-array(data=c(1,2,3),dim=3)
-> dimnames(MyArray)[[1]]<-c("Joe","Frank","Bob")
-> MyArray
-Joe Frank   Bob 
-  1     2     3 
-
-# Create a 2-dimensional array and name each dimension using dimnames( )
-> TwoArray<-array(data=c(1,2,3,4,5,6),dim=c(2,3))
-
-# Name the rows of TwoArray (i.e., the first dimension)
-> dimnames(TwoArray)[[1]]<-c("Monday","Tuesday")
-> TwoArray
-        [,1] [,2] [,3]
-Monday     1    3    5
-Tuesday    2    4    6
-
-# Name the columns of TwoArray (i.e., the second dimension)
-> dimnames(TwoArray)[[2]]<-c("Joe","Frank","Bob")
-> TwoArray
-        Joe Frank Bob
-Monday    1     3   5
-Tuesday   2     4   6
-
-
-# Create a list of all the previous examples and name each object in the list.
-> MyList<-list(MyVector,MyArray,TwoArray)
-[[1]]
-  Joe Frank   Bob 
-    1     2     3 
-
-[[2]]
-  Joe Frank   Bob 
-    1     2     3 
-
-[[3]]
-        Joe Frank Bob
-Monday    1     3   5
-Tuesday   2     4   6
-
-# Name each object in the list by example
-> names(MyList)<-c("VectorExample","1D ArrayExample","2D ArrayExample")
-> MyList
-$`VectorExample`
-  Joe Frank   Bob 
-    1     2     3 
-
-$`1D ArrayExample`
-  Joe Frank   Bob 
-    1     2     3 
-
-$`2D ArrayExample`
-        Joe Frank Bob
-Monday    1     3   5
-Tuesday   2     4   6
-````
-
-You may have noticed that in the MyList example, the name for each **element** of the list was prefaced with a **$**. The dollar sign is a special operator that works with lists and is equivalent to the **[[ ]]** notation we've been using thus far.
-
-````
-# Calling by element index using double brackets
-> MyList[[1]]
-  Joe Frank   Bob 
-    1     2     3
-
-# Calling by element name using double brackets
-> MyList[["Vector Example"]]
-  Joe Frank   Bob 
-    1     2     3
-    
-# Call by element name using double brackets. Note that there are no "" used when using the $ sign.
-> MyList$VectorExample
-  Joe Frank   Bob 
-    1     2     3
-````
-
-**$** is widely used in the R community, so you should be aware of it. However, it is fairly inflexible and will not work in many situations where **[ ]** or **[[ ]]** works.
-
-````
-# $ won't work if the element name has spaces
-> MyList$1D ArrayExample
-Error: unexpected numeric constant in "MyList$1"
-
-# $ won't work for anything other than lists and data frames.
-> MyVector$Joe
-Error in MyVector$Joe : $ operator is invalid for atomic vectors
-
-# $ will only work for columns of data frames, not rows.
-> MyFrame<-data.frame(TwoArray)
-> MyFrame
-        Joe Frank Bob
-Monday    1     3   5
-Tuesday   2     4   6
-
-# It works for columns
-> MyFrame$Joe
-[1] 1 2
-
-# But not for rows
-> DataFrame$Tuesday
-NULL
-````
-
-Since **[[ ]]** and **[ ]** do the same things, but better... there is really no good reason to use **$**. 
-
 ## Subscripting and subsetting with logicals
 
-Perhaps the biggest benefit of **[ ]** notation is that we can perform complex subscripting operations within them. The most powerful of these is the **which( )** function, which finds the **index** (a.k.a., the position) of **TRUE** values in a logical array.
+Perhaps the biggest benefit of **[ ]** notation is that we can perform complex subscripting operations within them. The most powerful of these is the **which( )** function, which finds the **index** (a.k.a., the position) of **TRUE** values in a logical array. In other words **which( )** is short for the phrase: *which of these elements is a TRUE value*.
 
 ````
 # Create a vector of logical values, where the first element and fifth element are TRUE
@@ -185,13 +68,7 @@ You can write out very complex logical statements using the **&** (and) and **|*
 
 ## Overwriting elements using logical subscripts
 
-The true power of **which( )** doesn't become apparent until you want to start **overwriting** elements of a data object. 
-
-Consider when we used the **dimnames( )** function, wre you must specify the dimension you want to name using the format **dimnames(object)[[n]]**. Although we pretended that **n** in this case stood for the dimension you are referencing, that is not exactly true.
-
-In literal terms, **dimnames( )** is creating a blank list of objects - hence why you need to use the **[[ ]]** notation - where each element of the list is meant to be a vector of names. When you write **dimnames(object)[[n]]<-c("name1","name2",...)** you are telling it to **overwrite** the blank element of the dimnames list with the vector **c("name1","name2",...)**. It's just for convenience that these element positions correspond to the dimensions of the array.
-
-Let's try an example
+The true power of **which( )** doesn't become apparent until you want to start **rewriting** elements of a data object. 
 
 ````
 # Let's make a practice data frame
@@ -257,7 +134,7 @@ Rather than give you an error, however, R performs a bit of a hack on your behal
 [1]  2  7 12 17 22
 ````
 
-This is a nice convenience, but what if we really want to know the two-dimensional, rather than one-dimensional, coordinates? One thing we might attempt is to is to look at *each individual row* of the array, and find which columns *in that row* have the value we are looking for.
+This is a nice convenience, but what if we really want to know the two-dimensional (row and column coordinates), rather than the one-dimensional coordinates? One thing we might attempt is to is to look at *each individual row* of the array, and find which columns *in that row* have the value we are looking for.
 
 ````
 # Create a 2-dimensional matrix
@@ -299,15 +176,13 @@ which(MyMatrix["row5",]==2)
    5
 ````
 
-Now we know the appropriate **[row,column]** coordinates of all 2's in the matrix if we pair the input and the output of each **which( )** statement. 
-
-However, this approach is still unsatisfactory for two reasons. First, what if we had a large number of rows (hundreds or thousands) that we wanted to analyze? Typing out a **which( )** statement for each row would be exhausting and a waste of our time. Second, the way this output is organized isn't very clear, which is a violation of the first rule of R! Not to mention the fact that it also requires us to manually pair the rows with the columns, rather than giving us a single array of coordinates.
+Although this approach works it is somewhat silly. It would be ridiculous to type out a command for each row if we had a large number of rows (hundreds or thousands). The ability to automate repetitive tasks is the whole reason we use computers in the first place!
 
 ## Automating repetitive tasks
 
-Resolving the first of these problems is fairly easy as there are a number of functions built into R that will allow us to repeat an operation over and over again. The ability to automate repetitive tasks is the whole reason we use computers in the first place!
+There are a number of functions built into R that will allow us to repeat an operation over and over again. 
 
-In all of computer science, there are three fundamental units of repetition: **repeat( )**, **while( )**, and **for( )**. Luckily, anything that can be achieved with **repeat( )** can also be achieved with **while( )** and **for( )**, so you only need to learn two of three. Congrats!
+There are three fundamental types of repetition that can be found in most computer science lanugages: **repeat( )**, **while( )**, and **for( )**. Luckily, anything that can be achieved with **repeat( )** can also be achieved with **while( )** and **for( )**, so you only need to learn two of three. Congrats!
 
 The **while( )** function tells R to repeat an expression (or multiple expressions) while a certain **logical** expression evaluates to **TRUE** and stop when that condition becomes **FALSE**.
 
