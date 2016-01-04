@@ -2,12 +2,11 @@
 
 This section covers intermediate R concepts, and is meant to be read through after completeing the [beginnerConcepts](https://github.com/aazaff/startLearn.R/blob/master/beginnerConcepts.md) tutorial and the [beginnerTest](https://github.com/aazaff/startLearn.R/blob/master/beginnerTest.md) exercise.
 
-+ [How to name elements in different data objects](#how-to-name-elements-in-different-data-objects)
 + [Subscripting and subsetting with logicals](#subscripting-and-subsetting-with-logicals)
 + [Overwriting elements using logical subscripts](#overwriting-elements-using-logical-subscripts)
 + [Automating repetitive tasks with loops](#automating-repetitive-tasks-with-loops)
 + [Writing your own functions in R](#writing-your-own-functions-in-r)
-+ [Subsetting and iterating in a single step](#subsetting-and-iterating-in-a-single-step)
++ [Subsetting and iterating with functionals](#subsetting-and-iterating-in-a-single-step)
 
 ## Subscripting and subsetting with logicals
 
@@ -54,7 +53,7 @@ This isn't very impressive since it is circular. We asked which elements had a v
 [1] 6 6 7 9
 ````
 
-You can write out very complex logical statements using the **&** (and) and **|** (or) operators. So long as your expression resolves to a vector of logical values.
+You can combine logical statements using the **&** (and) and **|** (or) operators.
 
 ````
 # Find numbers that are greater than 5 AND less than 9
@@ -121,7 +120,7 @@ We can also perform logicals on two and three-dimensional arrays, but it can be 
 
 It worked in the sense that we didn't get an error, but you might think that the output is a little strange. 
 
-Even though the matrix is two-dimensional we are getting a one-dimensional response. The output of **which( )** is set to be one-dimensional, so it cannot give us a two-dimensional response of both row and column indexes. 
+We getting a one-dimensional response even though the matrix is two-dimensional . The output of **which( )** is set to be one-dimensional, so it cannot give us a two-dimensional response of both row and column indexes. 
 
 Rather than give you an error, however, R performs a bit of a hack on your behalf. R converts your matrix from **two-dimensional** data into **one-dimensional** data and then performs its logical subscripting on the new **vector**.
 
