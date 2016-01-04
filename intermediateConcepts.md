@@ -226,8 +226,17 @@ In the old days, hackers would attack computer by making them run infinite while
 The **for( )** function, also called **for( ) loops**, are a safer alternative to **while( )**.
 
 ````
-
+> Start<-0
+> for (i in 1:20) {
+     Start<-Start+1
+     }
+> Start
+[1] 20
 ````
+
+There are a few things worth noticing about the for loop. First, the for( ) loop 
+
+
 
 ## Writing your own functions
 
