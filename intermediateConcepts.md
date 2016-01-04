@@ -347,10 +347,13 @@ Second, notice that we are generous about starting a new line for each expressio
 
 You may have noticed that the above example of a **while( )** function never stops running. If you look closely, you'll see that it is mathematically impossible for Start to ever become higher than 20! This means that while( ) will ***never stop***. You can hit the **ESC** button on your keyboard to stop the expression from executing.
 
-This was one way for malicious hackers to destroy computers in the old days by making a computer infinitely repeat 
-computationally intensive tasks. It is more of an annoyance nowadays than a danger, but make sure that your **while( )** condition will actually stop at some point.
+In the old days, hackers would attack computer by making them run infinite while( ) loops until they crashed from the strain. It is more of an annoyance nowadays than a danger, but always make sure that your **while( )** condition will actually stop at some point.
 
 The **for( )** function, also called **for( ) loops**, are a safer alternative to **while( )**.
+
+````
+
+````
 
 ## Writing your own functions
 
@@ -370,12 +373,12 @@ Using what we learned about writing functions in R, let's make one that that pri
 
 Congratulations, you've written your first working function! You are now a true initiate into the wonderful world of computer science and R. Of course, there are a few improvements that we can make to this function.
 
-First, lets consider making the function more versatile, so that it can return phrases other than "hello, world.". We'll do this by adding an **argument** to the function. We'll call this argument **Phrase**. Furthermore, we should also give the function a more versatile name, like **Print**, to reflect the more generic nature of the function.
+First, let's consider making the function more versatile, so that it can return phrases other than "hello, world.". We'll do this by adding an **argument** to the function. We'll call this argument **Phrase**. Furthermore, we should also give the function a more versatile name, like **Print**, to reflect the more generic nature of the function.
 
 As a general rule all **objects** that you create in R, whether **functions**, **arguments**, or **data arrays**, should always have a name that is descriptive of what it does. Vague names like x or y should never be used (except in cases of famous math equations, like the slope of a line or a quadratic formula).
 
 ````
-# Write our function as outlined
+# Write a more general function function as outlined
 > Print<-function(Phrase) {
     return(Phrase)
     }
