@@ -2,9 +2,11 @@
 
 This section covers intermediate R concepts, and is meant to be read through after completeing the [beginnerConcepts](https://github.com/aazaff/startLearn.R/blob/master/beginnerConcepts.md) tutorial and the [beginnerTest](https://github.com/aazaff/startLearn.R/blob/master/beginnerTest.md) exercise.
 
+## Table of Contents
+
 + [Subscripting and subsetting with logicals](#subscripting-and-subsetting-with-logicals)
-+ [Overwriting elements using logical subscripts](#overwriting-elements-using-logical-subscripts)
-+ [Automating repetitive tasks with loops](#automating-repetitive-tasks-with-loops)
++ [Rewriting elements using logical subscripts](#rewriting-elements-using-logical-subscripts)
++ [Automating repetitive tasks](#automating-repetitive-tasks)
 + [Writing your own functions in R](#writing-your-own-functions-in-r)
 + [Subsetting and iterating with functionals](#subsetting-and-iterating-in-a-single-step)
 
@@ -65,7 +67,7 @@ You can combine logical statements using the **&** (and) and **|** (or) operator
 [1] 6 6 3 7 9 3
 ````
 
-## Overwriting elements using logical subscripts
+## Rewriting elements using logical subscripts
 
 The true power of **which( )** doesn't become apparent until you want to start **rewriting** elements of a data object. 
 
@@ -83,7 +85,9 @@ The true power of **which( )** doesn't become apparent until you want to start *
 # Remember that you cannot mix types!
 > MyArray[3]<-"seven"
 > MyArray
-[1] "5"     "6"     "seven" "5"     "5"     "6"  # R automatically coerces the numbers to characters.
+[1] "5"     "6"     "seven" "5"     "5"     "6"  
+
+# R automatically coerced the numbers to characters.
 ````
 
 That's fairly straightforward, but what if we want to overwrite multiple elements in an array?
@@ -120,7 +124,7 @@ We can also perform logicals on two and three-dimensional arrays, but it can be 
 
 It worked in the sense that we didn't get an error, but you might think that the output is a little strange. 
 
-We getting a one-dimensional response even though the matrix is two-dimensional . The output of **which( )** is set to be one-dimensional, so it cannot give us a two-dimensional response of both row and column indexes. 
+We got a one-dimensional response even though the matrix is two-dimensional. The output of **which( )** is set to be one-dimensional (i.e, a vector), so it cannot give us a two-dimensional response of both row and column indexes. 
 
 Rather than give you an error, however, R performs a bit of a hack on your behalf. R converts your matrix from **two-dimensional** data into **one-dimensional** data and then performs its logical subscripting on the new **vector**.
 
@@ -181,7 +185,7 @@ Although this approach works it is somewhat silly. It would be ridiculous to typ
 
 There are a number of functions built into R that will allow us to repeat an operation over and over again. 
 
-There are three fundamental types of repetition that can be found in most computer science lanugages: **repeat( )**, **while( )**, and **for( )**. Luckily, anything that can be achieved with **repeat( )** can also be achieved with **while( )** and **for( )**, so you only need to learn two of three. Congrats!
+There are three fundamental types of repetition that can be found in most computer science lanugages: **repeat( )**, **while( )**, and **for( )**. Luckily, anything that can be achieved with **repeat( )** can also be achieved with **while( )** or **for( )**, so you only need to learn two of three. Congrats!
 
 The **while( )** function tells R to repeat an expression (or multiple expressions) while a certain **logical** expression evaluates to **TRUE** and stop when that condition becomes **FALSE**.
 
@@ -203,40 +207,38 @@ There are a few things you should notice about the above example. First, notice 
 
 For this reason, whenever we use an opening curly bracket **{** we tab the start of each successive line until we reach the final closing **}** bracket. This makes it easier to remember and check if we put the curly bracket in the correct place.
 
-Second, notice that we are generous about starting a new line for each expression - the final curly bracket got a whole line to itself! Remember that R does not evaluate white space (spaces, tabs, and returns), so use these freely to structure your data in a way that is easy to visualize (for your benefit and mine!).
+Second, notice that we are generous about starting a new line for each expression. The final curly bracket got a whole line to itself! Remember that R (usually) does not evaluate white space (spaces, tabs, and returns), so use these freely to structure your data in a way that is easy to visualize (for your benefit and mine!).
 
 ````
-# For example, a more complicated use of while( ) with multiple statements
+# For example, a more complicated use of while( ) with multiple statements.
 
 > Start<-1
+
 # We set the expression to repeat while Start is less than or equal to 20
 # Note that we put each expression on a different line. This is good coding practice.
 > while(Start <= 20) {
     Start<-Start+1
-    Start<-Start-2
-    Start<-Start*2
-    Start<-Start/3
+    Start<-Start-3
+    Start<-Start+2
     }
 ````
 
-You may have noticed that the above example of a **while( )** function never stops running. If you look closely, you'll see that it is mathematically impossible for Start to ever become higher than 20! This means that while( ) will ***never stop***. You can hit the **ESC** button on your keyboard to stop the expression from executing.
+You may have noticed that the above example never stops running! If you look closely, you'll see that it is mathematically impossible for Start to ever become higher than 20! This means that while( ) will ***never stop***. You can hit the **ESC** button on your keyboard to stop the expression from executing.
 
-In the old days, hackers would attack computer by making them run infinite while( ) loops until they crashed from the strain. It is more of an annoyance nowadays than a danger, but always make sure that your **while( )** condition will actually stop at some point.
+Always make sure that your **while( )** condition will actually stop at some point.
 
-The **for( )** function, also called **for( ) loops**, are a safer alternative to **while( )**.
+The **for( )** function, also called **for( ) loops**, are a safer alternative to **while( )**. For loops follow a special format that is very similar to a **while( )** loop.
 
-````
-> Start<-0
-> for (i in 1:20) {
-     Start<-Start+1
-     }
-> Start
-[1] 20
-````
+     while (Condition) {Commands}
+     for (Counter in Vector) {Commands}
 
-There are a few things worth noticing about the for loop. First, the for( ) loop 
+Let's try a simple example.
 
-
+     > for (Counter in 1:20) {
+          Answer<-Counter+1
+          }
+     > Answer
+     [1] 21
 
 ## Writing your own functions
 
