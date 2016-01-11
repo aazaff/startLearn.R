@@ -234,31 +234,29 @@ The **for( )** function, also called **for( ) loops**, are a safer alternative t
      while (Condition) {Expressions}
      for (Counter in Vector) {Expressions}
 
-Let's try a simple example.
+The **for( ) loop** creates a temporary object known as the **counter**. It will then evaluate the given **expressions** enclosed in the **{ }** where the counter is set to equal each element of the given vector.
 
-     > for (Counter in 1:20) {
-          Answer<-Counter+1
-          }
-     > Answer
-     [1] 21
+     # For example
+     > MyVector<-1:15
+     > MyVector
+     [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
      
-     > MyVector<-c("a","b","c","d","e","f","g","h","i","j","k")
-     > for (Index in 3:6) {
-          Answer<-MyVector[Index]
+     > for (Counter in MyVector) {
+          MyVector[Counter]<-Counter+1
           }
-     > Answer
-     [1] "f"
-
-How does it work? For( ) creates a temporary object - i.e., the **counter**. You can name this counter anything, such as Counter or Index. In many programming languages it is customary to name the counter using a single lower spaced letter, such as "i", "q", "j", or "t" - e.g., for (i in 1:10).
-
-The **counter** will take on the value of each element in the given vector. The vector does not have to be a sequence of numbers. You could provide a vector of out of order numbers as well. You could even provide a vector of non-numerid data, such as **logicals** or **characters**.
-
-     # An example with out of order numbers
-     > for (i in c(1,6,27,3,-4,-9,145)) {}
+     > MyVector
+     [1]  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16
      
-     # An example with character data
-     > MyNames<-c("Bob","Jim","Frank")
-     > for (i in MyNames) {}
+You do not need to use the name **counter** for the **counter**. It is customary in most programming languages to name your counter using a singe lower case letter, usually "i", "j", "q", or "t". 
+
+     # A counter named i
+     for (i in c("a","b","c","d") {
+          i
+          }
+     [1] "a"
+     [1] "b"
+     [1] "c"
+     [1] "d"
 
 ## Writing your own functions
 
