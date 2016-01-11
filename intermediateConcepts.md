@@ -190,6 +190,8 @@ There are three fundamental types of repetition that can be found in most comput
 The **while( )** function tells R to repeat an expression (or multiple expressions) while a certain **logical** expression evaluates to **TRUE** and stop when that condition becomes **FALSE**.
 
 ````
+# while (Condition) {Expressions}, is the basic format of while( )
+
 # Let's create an object named start with a numeric value of 1
 > Start<-1
 
@@ -229,8 +231,8 @@ Always make sure that your **while( )** condition will actually stop at some poi
 
 The **for( )** function, also called **for( ) loops**, are a safer alternative to **while( )**. For loops follow a special format that is very similar to a **while( )** loop.
 
-     while (Condition) {Commands}
-     for (Counter in Vector) {Commands}
+     while (Condition) {Expressions}
+     for (Counter in Vector) {Expressions}
 
 Let's try a simple example.
 
@@ -239,6 +241,24 @@ Let's try a simple example.
           }
      > Answer
      [1] 21
+     
+     > MyVector<-c("a","b","c","d","e","f","g","h","i","j","k")
+     > for (Index in 3:6) {
+          Answer<-MyVector[Index]
+          }
+     > Answer
+     [1] "f"
+
+How does it work? For( ) creates a temporary object - i.e., the **counter**. You can name this counter anything, such as Counter or Index. In many programming languages it is customary to name the counter using a single lower spaced letter, such as "i", "q", "j", or "t" - e.g., for (i in 1:10).
+
+The **counter** will take on the value of each element in the given vector. The vector does not have to be a sequence of numbers. You could provide a vector of out of order numbers as well. You could even provide a vector of non-numerid data, such as **logicals** or **characters**.
+
+     # An example with out of order numbers
+     > for (i in c(1,6,27,3,-4,-9,145)) {}
+     
+     # An example with character data
+     > MyNames<-c("Bob","Jim","Frank")
+     > for (i in MyNames) {}
 
 ## Writing your own functions
 
