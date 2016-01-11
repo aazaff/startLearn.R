@@ -1,6 +1,8 @@
 # Beginner Concepts
 
-This section covers the most fundamental concepts of using R. Intermediate concepts are covered in [intermediateConcepts]() and advanced concepts are covered in [advancedConcepts](). Use the [beginnerTest]() exercises to test your mastery of the concepts introduced in this tutorial.
+This section covers the most fundamental concepts of using R. Intermediate concepts are covered in [intermediateConcepts](https://github.com/aazaff/startLearn.R/blob/master/intermediateConcepts.md) and advanced concepts are covered in [advancedConcepts](). Use the [beginnerTest](https://github.com/aazaff/startLearn.R/blob/master/beginnerTest.md) exercises to test your mastery of the concepts introduced in this tutorial.
+
+If you are working through this tutorial as part of the Geoscience 541: Paleobiology course, you *must* do the [beginnerTest](https://github.com/aazaff/startLearn.R/blob/master/beginnerTest.md) exercise and hand in your answers at the start of the next lab period.
 
 ## Table of Contents
 
@@ -32,7 +34,7 @@ If you are ever feeling overwhelmed by what you are learning or doing in R, neve
 3. Reshaping Data - Changing the format of previously stored data so you can perform a different kind of operation on it.
 4. Visualize Data - Methods to make graphs or other visual representations of stored data.
 
-Although there are literally hundreds (if not thousands) of ways to do each of these four steps in R, so long as you know a handful of basic methods for each you can accomplish anything. This beginner's tutorial will largely focus on Mathematical Operations and Storing Data.
+Although there are literally thousands of R functions, so long as you know a handful of basic methods for each of these four steps you can accomplish anything. This beginner's tutorial will largely focus on Mathematical Operations and Storing Data.
 
 ### The First Rule of R-Club
 ***"Always talk about R!"***
@@ -73,6 +75,10 @@ If you have ever used a scientific or graphing calculator, then you already intu
 	# Division
 	> 1/5
 	[1] 0.2
+
+	# Exponents
+	> 10^2
+	[1] 100
 
 	# Make sure you always pay attention to the order of operations (i.e., PEMDAS). Compare the following two 
 	# expressions.
@@ -120,8 +126,8 @@ Of course, writing out the arithmetic every time wouldn't be any better than jus
 	[1] 2
 
 	# But, I can use the sqrt() function to do this as well. Note that all functions have two parts. 
-	# The function name - i.e., sqrt - and a set of function arguments – i.e., the object that you want 
-	# the function to evaluate, in this case, the number 4. Function arguments are always placed in
+	# The function name - e.g., sqrt - and a set of function arguments. Arguments are objects that you want 
+	# the function to evaluate - e.g., the number 4. Function arguments are always placed in
 	# parentheses.
 	> sqrt(4)
 	[1] 2
@@ -150,7 +156,7 @@ Let's consider a quadratic equation, 5x^2+3x+7. Let's say we want to solve this 
 
 	# But what if we want to solve this equation for multiple values of x? Let's try solving for x = 1,2,3, and 4.
 	# We can do this by telling R to perform the function on all four numbers at once using the c() command. 
-	# The c() function tells R to treat the values inside the parentheses, separated by commas, as a single unit.
+	# The c() function tells R to treat the values inside the parentheses, separated by commas, as a single object.
 
 	> 5*c(1,2,3,4)^2+3*c(1,2,3,4)+7
 	[1] 15 33 61 99
@@ -161,7 +167,7 @@ Let's consider a quadratic equation, 5x^2+3x+7. Let's say we want to solve this 
 	> 9*c(1,2,3,4,5,6,7,8,9,10)^3+6*c(1,2,3,4,5,6,7,8,9,10)^2+8*c(1,2,3,4,5,6,7,8,9,10)+2
 	[1]   25  114  323  706 1317 2210 3439 5058 7121 9682
 
-A better alternative involves learning how to store data as an **object**, and then plug the object into equations. The most fundamental type of data object computer science is an **array**. 
+A better alternative involves learning how to store data as an **object**, and then plug the object into equations. The most fundamental type of data object in computer science is generally called an **array**. In R, there is an even more fundamental type of data object known as a **vector**. For now, let's talk about arrays.
 
 An array is essentially a set of values saved to your computer memory that is referenced by a name.
 
@@ -196,7 +202,7 @@ If you are ever interested in knowing whether an object is an **array** or a **f
 	> class(array)
 	[1] "function"
 	
-Any time that you want to store the output of a function as an object, you use the **<-** operator. In the **MyArray** example, the **<-** symbol tells R to store the output of the function on the right, **array( )**, under the name on the left - i.e., **MyArray**. 
+Any time that you want to store the output of a function as an object, you use the **<-** operator, also known as the **assign** operator. In the **MyArray** example, **<-** tells R to store the output of the function on the right, **array( )**, under the name on the left - i.e., **MyArray**. 
 	
 	# Here are some other examples
 	> FirstObject <- sqrt(5)
@@ -218,7 +224,7 @@ The **data=** is your way of telling it what data you want stored in the array. 
 	# Single value example
 	> SingleArray<-array(data=5,dim=1)
 
-In other words data is the **argument** name, and you're telling it what values you want that argument to take. Another way of thinking about this is that you're telling R to **temporarily** create an **object** named **data** that the function **array( )** should use and get rid of that object once the function completes. 
+In other words data is the **argument** name, and you're telling it what values you want that argument to take. Another way of thinking about this is that you're telling R to *temporarily* create an **object** named **data** that the function **array( )** should use and then delete once the function completes. 
 
 Similarly, **dim=** (short for dimensions) indicates how many values you want in the array. If you indicate more values to the array then you provide, R will simply repeat the values you did give it until the array is full.
 
@@ -228,7 +234,7 @@ Similarly, **dim=** (short for dimensions) indicates how many values you want in
 	
 Beware! This is a really bad behavior that most computer languages would not allow. The potential for introducing error into your calculation in this way isn't trivial, so be precise when defining your array size!
 
-Perhaps the most interesting aspect of **dim=** is that you can **also** give it multiple values with c().
+Perhaps the most interesting aspect of **dim=** is that you can also give it multiple values. Remember that when we want to treat multiple values as a single object we use the **c( )** function.
 
 	# Two dimensional array
 	> TwoArray<-array(data=c(0,1),dim=c(4,6))
@@ -328,11 +334,11 @@ By "de-mathing", I mean that R will reject any attempts to do math on your array
 	
 We need to use **""** marks so that R know you are not referencing an object.
 
-	# Without " " marks.
+	# Without " " marks returns an error because it thinks you are referncing an object.
 	> WithoutQuotes
 	Error: object 'WithoutQuotes' not found
 	
-	# With " " marks.
+	# With " " marks returns a character string.
 	> "WithQuotes"
 	[1] "WithQuotes"
 
@@ -376,7 +382,8 @@ The majority of work done in R is either 1- or 2-dimensional. This has led to th
 	[3,]    0    0    0    0    0    0
 	[4,]    1    1    1    1    1    1
 
-	# With a Matrix
+	# With a Matrix. Notice that matrix( ) doesn't take a single dim= argument, 
+	# but rather has separate arguments for the number of rows (nrow) and columns (ncol)
 	> y<-matrix(data=c(0,1),nrow=4,ncol=6)
 	> y
 		[,1] [,2] [,3] [,4] [,5] [,6]
@@ -399,7 +406,7 @@ The majority of work done in R is either 1- or 2-dimensional. This has led to th
 	Error in vector(data = c(1, 2, 3, 4), dim = 4) : 
   	unused arguments (data = c(1, 2, 3, 4), dim = 4)
 
-Nope, doesn't work! Even though **vectors** are **conceptually identical** to a **1-dimensional array**, they are not **operationally identical**. Instead, you make a vector by using the **c( )** function we've been using all along.
+Nope, doesn't work! Even though **vectors** are **conceptually identical** to a **1-dimensional array**, they are not **operationally identical**. Instead, you make a vector by using the **c( )** function we've been using all along. 
 	
 	# Make a vector 
 	> MyVector<-c(1,2,3,4)
@@ -427,7 +434,7 @@ Nope, doesn't work! Even though **vectors** are **conceptually identical** to a 
 	>length(MyVector)
 	[1] 4
 	
-Although it might seem like vectors are inferior to one-dimensional arrays, because they are more primitive, this is actually their strength. If you look  carefully at how we define arrays, you will notice that we need to first create a vector using the function **c( )** - e.g., MyArray<-array(**c(1,2,3,4)**,4).  Generally, vectors are used more often than 1-dimensional arrays because vectors are more fundamental. So, fair warning, be careful as to whether you are using **vectors**, **matrices**, or **arrays**.
+If you look carefully at how we define arrays, you will notice that we need to first create a vector using the function **c( )** - e.g., MyArray<-array(**c(1,2,3,4)**,4).  Generally, vectors are used more often than 1-dimensional arrays because vectors are more fundamental. So, fair warning, be careful as to whether you are using **vectors**, **matrices**, or **arrays**.
 
 ## Referencing elements of an array
 
@@ -574,9 +581,9 @@ Although this output seems a bit cluttered and confusing with all of the extra b
 	[5,] "e"  "e"  "e"  "e"  "e" 
 	
 	# Create a 1-dimensional array of logicals
-	> MyLogicals<-array(c(TRUE,FALSE),dim=20)
+	> MyLogicals<-array(c(TRUE,FALSE),dim=10)
 	> MyLogicals
-	[1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE
+	[1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE
 	
 	# Create a 2-dimensional array of numerics
 	> MyNumerics<-array(c(1,2,3,4,5),dim=c(3,4))
@@ -598,7 +605,7 @@ Although this output seems a bit cluttered and confusing with all of the extra b
 	[5,] "e"  "e"  "e"  "e"  "e" 
 
 	[[2]]
- 	[1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  		TRUE FALSE  TRUE FALSE  TRUE
+ 	[1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE
 
 	[[3]]
 	    [,1] [,2] [,3] [,4]
@@ -629,7 +636,7 @@ You might think that you should use lists for everything since they are so flexi
 
 #### A special kind of **list( )**
 
-In addition to **lists** and **arrays**, there is a special kind of *hybrid* between 2-dimensional arrays (matrices) and lists known as a **data frame** (often written as **data.frame**). Data frames maintain the same structure as a two-dimensional array (matrix), but they allow you to have different types of data in each column like a list. 
+In addition to **lists** and **arrays**, there is a special kind of *hybrid* between 2-dimensional arrays (matrices) and lists known as a **data frame** (often written as **data.frame**). Data frames maintain the same structure as a two-dimensional array (matrix), but they allow you to have different types of data in **each column** like a list. 
 
 Data frames are extremely desirable for data science. Imagine a clinical trial where you want to know the relationship between multiple variables. Some of the variables you want to keep track of might be best represented as **numeric** measurements (e.g., height, weight, age), **logical** measurements (e.g., TRUE = given real treatment, FALSE = given placebo), or **character** data (e.g., names, astrological sign). 
 
@@ -669,9 +676,9 @@ There are several limitations, or at least caveats, you should consider before y
   	
 In other words, data frames will only accept a series of 1-dimensional arrays (vectors) of ***equal length***. Only **lists** can be **asymmetrical**.
 
-A second, lesser consideration, is that data frames are less computationaly efficient than matrices. Even something as simple as referencing a single element can be 10x slower on a data.frame than a matrix. However, since smaller matrices and data frames are so fast (nanoseconds) people rarely notice this difference. Nevertheless, because you never know if a **Big Data** worker might use one of your functions in the future, it is worthwhile using matrices, rather than data frames, whenever possible.
+A second, lesser consideration, is that data frames are less computationaly efficient than matrices. Even something as simple as referencing a single element can be 10x slower on a data.frame than a matrix. However, since smaller matrices and data frames are so fast (nanoseconds) people rarely notice this difference. Nevertheless, because you never know if a **Big Data** worker might use one of your functions in the future, it is worth using matrices whenever possible.
 
-The final considering with data.frames is that they will, by default, convert your data of type **character** to type **factor**. **Factors** are one of R's best features, but will be covered in the advancedConcepts tutorial. For now, if you want to preserve your **characters**, you need to change the **stringsAsFactors=** argument of the **data.frame( )** function to **FALSE**.
+The final consideration with data.frames is that they will, by default, convert your data of type **character** to type **factor**. **Factors** are one of R's best features, but will be covered in the advancedConcepts tutorial. For now, if you want to preserve your **characters**, you need to change the **stringsAsFactors=** argument of the **data.frame( )** function to **FALSE**.
 
 	# Set stringsAsFactors= to FALSE in order to preserve characters as characters
 	> MyFrame<-data.frame(Weight,Treatment,Sign,row.names=Subjects,stringsAsFactors=FALSE)
