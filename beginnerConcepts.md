@@ -634,7 +634,7 @@ Presumably you can deduce from the output of **MyList** what the **[[ ]]** mean.
 
 You might think that you should use lists for everything since they are so flexible. However, as you may have noticed in the above examples, their output can be quite complex. Remember the first rule of R, clarity is king. Complex lists should be avoided whenever a simple array will suffice. Lists are also substantially slower in terms of computation.
 
-#### A special kind of **list( )**
+#### A hybrid between lists and arrays
 
 In addition to **lists** and **arrays**, there is a special kind of *hybrid* between 2-dimensional arrays (matrices) and lists known as a **data frame** (often written as **data.frame**). Data frames maintain the same structure as a two-dimensional array (matrix), but they allow you to have different types of data in **each column** like a list. 
 
