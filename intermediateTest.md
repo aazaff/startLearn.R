@@ -1,4 +1,4 @@
-## Introduction
+# Introduction
 
 The following are a set of self-test questions designed to complement the [Intermediate Concepts](https://github.com/aazaff/startLearn.R/blob/master/intermediateConcepts.md) tutorial. These exercises are only meant to be attempted **after** you have finished reading the startLearn.R tutorial.
 
