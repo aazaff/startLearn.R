@@ -130,57 +130,44 @@ We got a one-dimensional response even though the matrix is two-dimensional. The
 Rather than give you an error, however, R performs a bit of a hack on your behalf. R converts your matrix from **two-dimensional** data into **one-dimensional** data and then performs its logical subscripting on the new **vector**.
 
 ````
-# In other words, it does something like this.
+# In other words, it does something analagous to this.
+
+# Convert your matrix to a vector
 > NewVector<-as(MyMatrix,"vector")
 > NewVector
 [1] 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5
+
+# Find the positions of the new vector equal to two.
 > which(NewVector==2)
 [1]  2  7 12 17 22
 ````
 
-This is a nice convenience, but what if we really want to know the two-dimensional (row and column coordinates), rather than the one-dimensional coordinates? One thing we might attempt is to is to look at *each individual row* of the array, and find which columns *in that row* have the value we are looking for.
+This is a nice convenience, but what if we really wanted to know the two-dimensional (row *and* column coordinates), rather than the one-dimensional vector coordinates?
 
-````
-# Create a 2-dimensional matrix
-> MyMatrix<-matrix(data=c(2,7,5,9,6,8,2,8,1,10,8,10,3,2,5,2,8,2,8,3,9,2,7,2,2),nrow=5,ncol=5)
-> MyMatrix
-     [,1] [,2] [,3] [,4] [,5]
-[1,]    2    8    8    2    9
-[2,]    7    2   10    8    2
-[3,]    5    8    3    2    7
-[4,]    9    1    2    8    2
-[5,]    6   10    5    3    2
+There are a variety of ways to handle this problem, but let's consider writing a custom function.
 
-# Let's also name the rows and columsn for clarity
-> dimnames(MyMatrix)[[1]]<-c("row1","row2","row3","row4","row5")
-> dimnames(MyMatrix)[[2]]<-c("col1","col2","col3","col4","col5")
-> MyMatrix
-     col1 col2 col3 col4 col5
-row1    2    8    8    2    9
-row2    7    2   10    8    2
-row3    5    8    3    2    7
-row4    9    1    2    8    2
-row5    6   10    5    3    2
+## Writing your own functions in R
 
-# Now, let's ask for each row, which columns have the number two
-> which(MyMatrix["row1",]==2)
-col1 col4 
-   1    4 
-> which(MyMatrix["row2",]==2)
-col2 col5 
-   2    5 
-> which(MyMatrix["row3",]==2)
-col4 
-   4 
-> which(MyMatrix["row4",]==2)
-col3 col5 
-   3    5 
-which(MyMatrix["row5",]==2)
-> col5 
-   5
-````
+Hands down, the best part of R is that you can write your own functions. Let's review the basic components of a function.
 
-Although this approach works it is somewhat silly. It would be ridiculous to type out a command for each row if we had a large number of rows (hundreds or thousands). The ability to automate repetitive tasks is the whole reason we use computers in the first place!
+Function Component | Description
+-------- | --------
+Name | All functions must have a name (except in the unique case of functionals, which we will discuss later).
+Argument(s) | The objects that you want the function to affect. If there are mutliple arguments, use commas to separate them.
+Body | The body of the function is what you want the function to *do* to the argument(s) you gave it. Each individual expression should be written on its own unique line.
+
+You create a new function using the **function( )** function. Say that five times fast. The basic 
+
+     Name <- function ( Arguments ) { Body }
+
+For example, let's write a function that multiplies its **argument** by the number three.
+
+     NewFunction <- function ( Argument ) { Argument * 3 }
+     
+
+The ability to automate repetitive tasks is the whole reason we use computers in the first place!
+
+
 
 ## Automating repetitive tasks
 
@@ -259,9 +246,7 @@ You do not need to use the name **counter** for the **counter**. It is customary
      [1] "c"
      [1] "d"
 
-## Writing your own functions
 
-The best way to approach more complex problems, like 
 
 ## A mystical rite of passage
 "The only way to learn a new programming language is by writing programs in it. The first program to write is the same for all languages: print the words ***hello, world.***" - Kernighan and Ritchie
