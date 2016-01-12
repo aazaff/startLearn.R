@@ -6,8 +6,8 @@ This section covers intermediate R concepts, and is meant to be read through aft
 
 + [Subscripting and subsetting with logicals](#subscripting-and-subsetting-with-logicals)
 + [Rewriting elements using logical subscripts](#rewriting-elements-using-logical-subscripts)
-+ [Subsetting data with functionals](#subsetting-data-with-functionals)
-+ [Functions for summarizing data](#functions-for-summarizing-data)
++ [Logical subsetting with functionals](#logical=subsetting-data-with-functionals)
++ [Direct subsetting with functionals](#direct-subsetting-with-functionals)
 
 ## Subscripting and subsetting with logicals
 
@@ -199,6 +199,79 @@ Functionals | Accepted Object | Returned Object | Example Formula
 **sapply( )** | Vector or List | Vector | sapply(object, function)
 **lapply( )** | Vector or List | List | lapply(object, function)
 
+You will learn more about using **functionals** in concert with more complex functions in the [advancedConcepts.R]() tutorial. In the mean time, here are some useful summary statistic functions that go well with these three basic functionals.
 
+Functions | Description
+-------- | --------
+**length( )** | Finds the number of elements in a vector or list.
+**dim( )** | Finds the number of elements *per dimension* in an array, matrix, or data.frame.
+**max( )** | Finds the largest number in any non-list object.
+**min( )** | Finds the smallest number in any non-list object.
+**which.max( )** | Finds which element is the largest number in any non-list object.
+**which.min( )** | Finds which element is the smallest number in any non-list object.
+**sum( )** | Finds the sum of all elements in a vector or array.
+**prod( )** | Finds the product of all elements in a vector or array.
+**mean( )** | Finds the average of all elements in a vector or array.
+**median( )** | Finds the median of all elements in a vector or array
+**sd( )** | Finds the standard deviation of all elements in a vector or array.
+**var( )** | Finds the variance of all elements in a vector or array.
+**names( )** | Finds the names of elements in a vector or list.
+**dimnames( )** | Find the names of elements *per dimension* in an array.
 
-## 
+## Direct subsetting with functionals
+
+Sometimes you can avoid logical subscripting all together by subsetting your data directly with a functional. Let's load in the **iris** dataset, another (quite famous) example dataset that comes with all versions of R.
+
+Iris is a **data.frame** consisting of different sepal and petal measurements of different iris flowers. It is a data.frame because, in addition to the numeric measurements, there is a column of non-numeric data that denotes which of three different species the specimen belonged to: *Iris setosa*, *Iris virginica*, and *Iris versicolor*.   
+
+````
+# Let's load in and take a look at the data
+> data(iris)
+
+# Take a look at the first five rows.
+> iris[1:5,]
+  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+````
+
+What if we wanted to find which **species** has the largest **sepal length**? Using what we've already learned, we could use **which( )** to subset the dataset by species. We could then find the **max( )** sepal length of each species. Let's try it.
+
+````
+# Subset the iris data.frame into three separate data frames by species using which( ). 
+# Beware of upper and lower case!
+> Setosa<-iris[which(iris[,"Species"]=="setosa"),]
+> Virginica<-iris[which(iris[,"Species"]=="virginica"),]
+> Versicolor<-iris[which(iris[,"Species"]=="versicolor"),]
+
+# Find the maximum of sepal length of each new data frame.
+> max(Setosa[,"Sepal.Length"])
+[1] 5.8
+> max(Virginica[,"Sepal.Length"])
+[1] 7.9 
+> max(Versicolor[,"Sepal.Length"])
+[1] 7
+````
+
+Nice! We were able to figure out that a specimen of *Iris virginica* had the longest sepal length! But, we can actually do this even faster us another functional called **tapply( )**.
+
+The **tapply( )** function takes a **data.frame**, splits into subsets, and then applies a function to a **column** in the subset.
+
+````
+# Find the maximum sepal length of each species
+> tapply(iris[,"Sepal.Length"],iris[,"Species"],max)
+    setosa versicolor  virginica 
+       5.8        7.0        7.9
+````
+
+Although this might seem like a trivial improvement at the moment, don't forget that you might be working on a data set with hundreds, thousands, or hundreds of thousands of species. Consider, that the first way we calculated this would take two-hundred thousand lines of code for a data frame with 100,000 species. It only takes one line with **tapply( )**.
+
+#### The fifth rule of R-Club
+***"The computer is the robot, you are the useR."***
+
+Automating boring and repetitive tasks is the whole reason that we invented computers in the first place! If it seems like an operation will take an inordinate amount of code, consider taking a break and formulating a more elegant solution. I assure you, one exists.
+
+Don't worry, we will cover automatic repetition (iterating) in the [advancedConcepts]() tutorial.
