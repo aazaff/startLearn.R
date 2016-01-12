@@ -146,7 +146,7 @@ The second most important benefit of functions is that they explicitly say what 
 
 ## Storing data in an array
 
-These simple functions probably still don't seem that impressive if you consider that most calculators already have buttons for square roots, factorials, and the like. However, fucntions in R don't really shine until they are paired with stored data.
+These simple functions probably still don't seem that impressive if you consider that most calculators already have buttons for square roots, factorials, and the like. However, functions in R don't really shine until they are paired with stored data.
 
 Let's consider a quadratic equation, 5x^2+3x+7. Let's say we want to solve this equation for x=4 that's easy to do in the way we've already learned.
 
