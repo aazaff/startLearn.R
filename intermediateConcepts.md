@@ -6,13 +6,14 @@ This section covers intermediate R concepts, and is meant to be read through aft
 
 + [Subscripting and subsetting with logicals](#subscripting-and-subsetting-with-logicals)
 + [Rewriting elements using logical subscripts](#rewriting-elements-using-logical-subscripts)
-+ [Automating repetitive tasks](#automating-repetitive-tasks)
 + [Writing your own functions in R](#writing-your-own-functions-in-r)
++ [A mystical Right of Passage](#a-mystical-rite-of-passage)
 + [Subsetting and iterating with functionals](#subsetting-and-iterating-in-a-single-step)
++ [Functions for summarizing data](#functions-for-summarizing-data)
 
 ## Subscripting and subsetting with logicals
 
-Perhaps the biggest benefit of **[ ]** notation is that we can perform complex subscripting operations within them. The most powerful of these is the **which( )** function, which finds the **index** (a.k.a., the position) of **TRUE** values in a logical array. In other words **which( )** is short for the phrase: *which of these elements is a TRUE value*.
+Perhaps the biggest benefit of **[ ]** notation is that we can perform complex subscripting operations within them. The most powerful of these is the **which( )** function, which finds the **index** (a.k.a., the position) of **TRUE** values in a logical array. In other words **which( )** is short for the phrase: *which of the elements in this array are TRUE values*.
 
 ````
 # Create a vector of logical values, where the first element and fifth element are TRUE
@@ -260,7 +261,9 @@ You do not need to use the name **counter** for the **counter**. It is customary
 
 ## Writing your own functions
 
-#### A mystical rite of passage
+The best way to approach more complex problems, like 
+
+## A mystical rite of passage
 "The only way to learn a new programming language is by writing programs in it. The first program to write is the same for all languages: print the words ***hello, world.***" - Kernighan and Ritchie
 
 Using what we learned about writing functions in R, let's make one that that prints hello world.
