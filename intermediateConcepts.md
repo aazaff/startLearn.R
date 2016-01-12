@@ -6,9 +6,7 @@ This section covers intermediate R concepts, and is meant to be read through aft
 
 + [Subscripting and subsetting with logicals](#subscripting-and-subsetting-with-logicals)
 + [Rewriting elements using logical subscripts](#rewriting-elements-using-logical-subscripts)
-+ [Writing your own functions in R](#writing-your-own-functions-in-r)
-+ [A mystical Right of Passage](#a-mystical-rite-of-passage)
-+ [Subsetting and iterating with functionals](#subsetting-and-iterating-in-a-single-step)
++ [Subsetting data with functionals](#subsetting-data-with-functionals)
 + [Functions for summarizing data](#functions-for-summarizing-data)
 
 ## Subscripting and subsetting with logicals
@@ -105,208 +103,143 @@ That's fairly straightforward, but what if we want to overwrite multiple element
 [1] 9 6 4 9 9 6
 ````
 
-We can also perform logicals on two and three-dimensional arrays, but it can be somewhat more complicated.
+We can also perform logicals on two and three-dimensional arrays, but it can be somewhat more complicated. Let's take a look at the **WorldPhones** matrix. [WorldPhones](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/WorldPhones.html) is an example dataset that comes preloaded with all versions of R.
+
+Each row represents a different year. Each column represents a different country. The value of each cell represents how many phones were present in that country that year.
 
 ````
-# Let's attempt to do some logicals on a matrix of numerical data
-> MyMatrix<-matrix(data=c(1,2,3,4,5),nrow=5,ncol=5)
-> MyMatrix
-     [,1] [,2] [,3] [,4] [,5]
-[1,]    1    1    1    1    1
-[2,]    2    2    2    2    2
-[3,]    3    3    3    3    3
-[4,]    4    4    4    4    4
-[5,]    5    5    5    5    5
+# We can load any of R's example datasets using the data( ) function.
+> data(WorldPhones)
 
-# Let's try and find which elements of the matrix are equal to 2
-> which(MyMatrix==2)
-[1]  2  7 12 17 22
+# Check if WorldPhones is a matrix
+> is(WorldPhones,"matrix")
+[1] TRUE
+
+# Take a gander at WorldPhones
+> WorldPhones
+     N.Amer Europe Asia S.Amer Oceania Africa Mid.Amer
+1951  45939  21574 2876   1815    1646     89      555
+1956  60423  29990 4708   2568    2366   1411      733
+1957  64721  32510 5230   2695    2526   1546      773
+1958  68484  35218 6662   2845    2691   1663      836
+1959  71799  37598 6856   3000    2868   1769      911
+1960  76036  40341 8220   3145    3054   1905     1008
+1961  79831  43173 9053   3338    3224   2005     1076
 ````
 
-It worked in the sense that we didn't get an error, but you might think that the output is a little strange. 
-
-We got a one-dimensional response even though the matrix is two-dimensional. The output of **which( )** is set to be one-dimensional (i.e, a vector), so it cannot give us a two-dimensional response of both row and column indexes. 
-
-Rather than give you an error, however, R performs a bit of a hack on your behalf. R converts your matrix from **two-dimensional** data into **one-dimensional** data and then performs its logical subscripting on the new **vector**.
+Let's say that we recently learned that because of an error in the original study, any value indicating less than 2,000 or greater than 77,000 phones is unreliable. To reflect our uncertainty, we want to change all instances <2,000 or >77000 to **NA**. **NA** is R's way of saying that there is no data.
 
 ````
-# In other words, it does something analagous to this.
+# Let's attempt to do some logical subsetting with which() on the WorldPhones matrix.
+> which(WorldPhones < 2000 | WorldPhones > 77000)
+[1]  7 22 29 36 37 38 39 40 41 43 44 45 46 47 48 49
 
-# Convert your matrix to a vector
-> NewVector<-as(MyMatrix,"vector")
-> NewVector
-[1] 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5
-
-# Find the positions of the new vector equal to two.
-> which(NewVector==2)
-[1]  2  7 12 17 22
+# Convert those values to NA
+> WorldPhones[which(WorldPhones < 2000 | WorldPhones > 77000)]<-NA
+> WorldPhones
+     N.Amer Europe Asia S.Amer Oceania Africa Mid.Amer
+1951  45939  21574 2876     NA      NA     NA       NA
+1956  60423  29990 4708   2568    2366     NA       NA
+1957  64721  32510 5230   2695    2526     NA       NA
+1958  68484  35218 6662   2845    2691     NA       NA
+1959  71799  37598 6856   3000    2868     NA       NA
+1960  76036  40341 8220   3145    3054     NA       NA
+1961     NA  43173 9053   3338    3224   2005       NA
 ````
 
-This is a nice convenience, but what if we really wanted to know the two-dimensional (row *and* column coordinates), rather than the one-dimensional vector coordinates?
-
-## Writing your own functions in R
-
-There are a variety of ways to handle this problem, but let's consider writing a custom function instead. Before we begin writing new functions, let's review the basic components of a function that we covered in the basicConcepts(https://github.com/aazaff/startLearn.R/blob/master/beginnerConcepts.md#differences-between-array-the-object-and-array--the-function) tutorial.
-
-Function Component | Description
--------- | --------
-Name | All functions must have a name (except in the unique case of **functionals**, which we will discuss later).
-Argument(s) | The objects that you want the function to affect. Use commas to separate multiple arguments if necessary.
-Body | The body of the function is what you want the function to *do* to the argument(s) you gave it. Each individual expression should be written on its own unique line. The body is always contained in squiggly brackets **{ }**.
-
-You create a new function using the **function( )** function. Say that five times fast! The basic outline of a **function** is as follows.
-
-     Name <- function (Arguments) {Body}
-
-I think that the name and arguments part is relatively straightforward. It is the body part that is new. Let's consider a simple example function that multiplies its **argument** by the number three.
-
-     > MultiplyThree <- function ( Argument ) { Argument * 3 }
-     > MultiplyThree(4)
-     [1] 12
-     
-Such a simple function probably doesn't seem that impressive considering that we could already multiply numbers without writing a new function. However, custom functions are much more impressive when you realize that you can evaluate many expressions at once within them.
-
-Let's look at an example of a more complex function I wrote called **calcHaversine( )**. The Haversine function calculates the shortest arc distance between two points on the Earth. Imagine if I wanted to calculate the distances between hundreds, thousands, or hundreds of thouands of points! It is certainly much easier to have a function than it is to write out the calculation every single time.
-
-````     
-# Calculates the geodesic distance between two points on the Earth specified by 
-# Latitude and Longitude (in radians) using the Haversine formula. 
-# The Haversine formula is a special case of the spherical law
-# of cosines, which is a special case of the law of cosines.
-calcHaversine<-function(Long1,Lat1,Long2,Lat2) {
-     Radius<-6371 # radius of the Earth (km)
-     DeltaLong<-(Long2-Long1) # Difference between longitudes
-     DeltaLat<-(Lat2-Lat1) # Difference between latitudes
-     A<-sin(DeltaLat/2)^2+cos(Lat1)*cos(Lat2)*sin(DeltaLong/2)^2
-     C<-2*asin(min(1,sqrt(A)))
-     Distance<-Radius*C
-     return(Distance) # The distance in km
-     }
-````
-
-Even this example isn't quit impressive enough - it's still just basic arithmetic - because it doesn't utilize the two most powerful features in computer science: **conditionals** and **loops**. Custom functions, and computer programming in general, doesn't really start to shine until you understand how to use **conditionals** and **loops**.
-
-The **if( )** function asks if a logical expression evaluates to TRUE or FALSE. If it does evaluate to TRUE then it performs an action. If it evaluates to FALSE, then nothing happens. 
+What if we are only concerned with years where there were more than 118,000 phones worldwide? Logically, the first step would be to find the total number (sum) of phones for each year (row). 
 
 ````
-# The basic form of an if statement
-if (condition) {do this}
+# Reload the data
+> data(WorldPhones)
 
-# A simple example
-> x <- 4
-> if (x < 5) {
-     x<-5
-     }
+# Find the sum of the WorldPhones matrix.
+> sum(WorldPhones)
+[1] 805303
 ````
 
-## Automating repetitive tasks
-
-There are a number of functions built into R that will allow us to repeat an operation over and over again. 
-
-There are three fundamental types of repetition that can be found in most computer science lanugages: **repeat( )**, **while( )**, and **for( )**. Luckily, anything that can be achieved with **repeat( )** can also be achieved with **while( )** or **for( )**, so you only need to learn two of three. Congrats!
-
-The **while( )** function tells R to repeat an expression (or multiple expressions) while a certain **logical** expression evaluates to **TRUE** and stop when that condition becomes **FALSE**.
+The **sum( )** function doesn't give us what we want. It sums each element in an object, not each row. What we need is a way to *apply* the **sum( )** function to each individual row of the matrix. Luckily, there is an aptly named function, **apply( )**, that we can use. 
 
 ````
-# while (Condition) {Expressions}, is the basic format of while( )
+# Find the sum of each row in WorldPhones with apply( )
+> apply(WorldPhones,1,sum)
+ 1951   1956   1957   1958   1959   1960   1961 
+74494 102199 110001 118399 124801 133709 141700 
 
-# Let's create an object named start with a numeric value of 1
-> Start<-1
-
-# Let's ask R to keep adding 1 to the value of Start until start equals 20
-> while(Start != 20) {
-    Start<-Start+1
-    }
-
-# Check if R did what we asked
-> Start
-[1] 20
+# The 1 indicates the dimension of the matrix you want summed. We could also do the second dimension (columns).
+> apply(WorldPhones,2,sum)
+N.Amer   Europe     Asia   S.Amer  Oceania   Africa Mid.Amer 
+467233   240404    43605    19406    18375    10388     5892 
 ````
 
-There are a few things you should notice about the above example. First, notice that we used curly brackets **{ }** to tell R what expressions it should peform - i.e., Start + 1 - while the condition - i.e., Start != 20 - is **FALSE**. These curly brackets are very important and if you are writing a long function with many steps, you might forget to put the brackets in at the right places. 
-
-For this reason, whenever we use an opening curly bracket **{** we tab the start of each successive line until we reach the final closing **}** bracket. This makes it easier to remember and check if we put the curly bracket in the correct place.
-
-Second, notice that we are generous about starting a new line for each expression. The final curly bracket got a whole line to itself! Remember that R (usually) does not evaluate white space (spaces, tabs, and returns), so use these freely to structure your data in a way that is easy to visualize (for your benefit and mine!).
+Notice that apply returned a vector of sums for each row or column. We can then perform our logical operation on that vector. We can then use that vector to define the rows we want from the matrix.
 
 ````
-# For example, a more complicated use of while( ) with multiple statements.
-
-> Start<-1
-
-# We set the expression to repeat while Start is less than or equal to 20
-# Note that we put each expression on a different line. This is good coding practice.
-> while(Start <= 20) {
-    Start<-Start+1
-    Start<-Start-3
-    Start<-Start+2
-    }
+# Isolate which rows have more than 118,000 phones
+> which(apply(WorldPhones,1,sum) > 118000)
+1958 1959 1960 1961 
+   4    5    6    7
+   
+# Reference only those rows, 
+> WorldPhones[which(apply(WorldPhones,1,sum) > 118000), ]
+     N.Amer Europe Asia S.Amer Oceania Africa Mid.Amer
+1958  68484  35218 6662   2845    2691   1663      836
+1959  71799  37598 6856   3000    2868   1769      911
+1960  76036  40341 8220   3145    3054   1905     1008
+1961  79831  43173 9053   3338    3224   2005     1076
 ````
 
-You may have noticed that the above example never stops running! If you look closely, you'll see that it is mathematically impossible for Start to ever become higher than 20! This means that while( ) will ***never stop***. You can hit the **ESC** button on your keyboard to stop the expression from executing.
+The **apply( )** function is a special type of function called a **functional**. Functionals are an extremely versatile and important tool in your aRsenal. 
 
-Always make sure that your **while( )** condition will actually stop at some point.
+Each functional is characterized by two features. First, the kinds of objects that it will accept. Second, the kind of object it returns. This second requirement implicitly restricts the kinds of functions that the **functional** will accept. For example, **apply( )** only returns a vector. If you use a function that returns values incompatible with a vector, then apply cannot work.
 
-The **for( )** function, also called **for( ) loops**, are a safer alternative to **while( )**. For loops follow a special format that is very similar to a **while( )** loop.
+Functionals | Accepted Object | Returned Object | Example Formula | Special Notes
+-------- | -------- | -------- | -------- | --------
+**apply( )** | Array | Vector | apply(object, dimension, function) | There is a special notation required for more than 2-dimensions.
+**sapply( )** | Any | Vector | sapply(object, function) | Will accept any object, but will coerce arrays with more than one dimension to a vector. Use apply( ) for n-dimensional arrays instead of sapply.
+**lapply( )** | Any | List | lapply(object, function) | Will accept any object, but will coerce arrays with more than one dimension to a vector. Use apply( ) for n-dimensional arrays instead of lapply.
 
-     while (Condition) {Expressions}
-     for (Counter in Vector) {Expressions}
-
-The **for( ) loop** creates a temporary object known as the **counter**. It will then evaluate the given **expressions** enclosed in the **{ }** where the counter is set to equal each element of the given vector.
-
-     # For example
-     > MyVector<-1:15
-     > MyVector
-     [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
-     
-     > for (Counter in MyVector) {
-          MyVector[Counter]<-Counter+1
-          }
-     > MyVector
-     [1]  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16
-     
-You do not need to use the name **counter** for the **counter**. It is customary in most programming languages to name your counter using a singe lower case letter, usually "i", "j", "q", or "t". 
-
-     # A counter named i
-     for (i in c("a","b","c","d") {
-          i
-          }
-     [1] "a"
-     [1] "b"
-     [1] "c"
-     [1] "d"
-
-
-
-## A mystical rite of passage
-"The only way to learn a new programming language is by writing programs in it. The first program to write is the same for all languages: print the words ***hello, world.***" - Kernighan and Ritchie
-
-Using what we learned about writing functions in R, let's make one that that prints hello world.
+Here are some examples of how you can use these functionals.
 
 ````
-# First, we create a function object named HelloWorld using function( ).
-# Then we define what the function does using { }.
-# In this case we tell it to return the character data, "hello, world."
-> HelloWorld <- function( ) { return("hello, world.") }
-> HelloWorld()
-[1] "hello, world."
+# Find which arrays in a list are two-dimensional arrays
+> FirstArray<-array(data=c(1,2,3,4),dim=4)
+> SecondArray<-array(data=c(4,5,6,7),dim=4)
+> ThirdArray<-array(data=c(8,9,10,10),dim=c(2,2))
+> FourthArray<-array(data=c(11,12,13,14),dim=c(2,2))
+
+# Combine these arrays into a list
+> MyList<-list(FirstArray,SecondArray,ThirdArray,FourthArray)
+> MyList
+[[1]]
+[1] 1 2 3 4
+
+[[2]]
+[1] 4 5 6 7
+
+[[3]]
+     [,1] [,2]
+[1,]    8   10
+[2,]    9   10
+
+[[4]]
+     [,1] [,2]
+[1,]   11   13
+[2,]   12   14
+
+# Find the dimensions of each object in MyList
+> lapply(MyList,dim)
+[[1]]
+[1] 4
+
+[[2]]
+[1] 4
+
+[[3]]
+[1] 2 2
+
+[[4]]
+[1] 2 2
 ````
 
-Congratulations, you've written your first working function! You are now a true initiate into the wonderful world of computer science and R. Of course, there are a few improvements that we can make to this function.
-
-First, let's consider making the function more versatile, so that it can return phrases other than "hello, world.". We'll do this by adding an **argument** to the function. We'll call this argument **Phrase**. Furthermore, we should also give the function a more versatile name, like **Print**, to reflect the more generic nature of the function.
-
-As a general rule all **objects** that you create in R, whether **functions**, **arguments**, or **data arrays**, should always have a name that is descriptive of what it does. Vague names like x or y should never be used (except in cases of famous math equations, like the slope of a line or a quadratic formula).
-
-````
-# Write a more general function function as outlined
-> Print<-function(Phrase) {
-    return(Phrase)
-    }
-> Print("hello, world.")
-[1] "hello, world."
-````
-  
-Also notice that the function began with a single line that (1) created a function object named print and (2) defined the functon arguments. We then ***created a new line*** for the body of the function, i.e., the command to **return( )** the argument **Phrase**. It is always good practice to put each individual command of a function on a new line. This makes it easier to read.
-
-## Subsetting and iterating in a single step
+## 
