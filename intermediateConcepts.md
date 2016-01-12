@@ -193,53 +193,12 @@ The **apply( )** function is a special type of function called a **functional**.
 
 Each functional is characterized by two features. First, the kinds of objects that it will accept. Second, the kind of object it returns. This second requirement implicitly restricts the kinds of functions that the **functional** will accept. For example, **apply( )** only returns a vector. If you use a function that returns values incompatible with a vector, then apply cannot work.
 
-Functionals | Accepted Object | Returned Object | Example Formula | Special Notes
--------- | -------- | -------- | -------- | --------
-**apply( )** | Array | Vector | apply(object, dimension, function) | There is a special notation required for more than 2-dimensions.
-**sapply( )** | Any | Vector | sapply(object, function) | Will accept any object, but will coerce arrays with more than one dimension to a vector. Use apply( ) for n-dimensional arrays instead of sapply.
-**lapply( )** | Any | List | lapply(object, function) | Will accept any object, but will coerce arrays with more than one dimension to a vector. Use apply( ) for n-dimensional arrays instead of lapply.
+Functionals | Accepted Object | Returned Object | Example Formula
+-------- | -------- | -------- | --------
+**apply( )** | Array | Vector | apply(object, dimension, function)
+**sapply( )** | Vector or List | Vector | sapply(object, function)
+**lapply( )** | Vector or List | List | lapply(object, function)
 
-Here are some examples of how you can use these functionals.
 
-````
-# Find which arrays in a list are two-dimensional arrays
-> FirstArray<-array(data=c(1,2,3,4),dim=4)
-> SecondArray<-array(data=c(4,5,6,7),dim=4)
-> ThirdArray<-array(data=c(8,9,10,10),dim=c(2,2))
-> FourthArray<-array(data=c(11,12,13,14),dim=c(2,2))
-
-# Combine these arrays into a list
-> MyList<-list(FirstArray,SecondArray,ThirdArray,FourthArray)
-> MyList
-[[1]]
-[1] 1 2 3 4
-
-[[2]]
-[1] 4 5 6 7
-
-[[3]]
-     [,1] [,2]
-[1,]    8   10
-[2,]    9   10
-
-[[4]]
-     [,1] [,2]
-[1,]   11   13
-[2,]   12   14
-
-# Find the dimensions of each object in MyList
-> lapply(MyList,dim)
-[[1]]
-[1] 4
-
-[[2]]
-[1] 4
-
-[[3]]
-[1] 2 2
-
-[[4]]
-[1] 2 2
-````
 
 ## 
