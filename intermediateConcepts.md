@@ -144,30 +144,60 @@ Rather than give you an error, however, R performs a bit of a hack on your behal
 
 This is a nice convenience, but what if we really wanted to know the two-dimensional (row *and* column coordinates), rather than the one-dimensional vector coordinates?
 
-There are a variety of ways to handle this problem, but let's consider writing a custom function.
-
 ## Writing your own functions in R
 
-Hands down, the best part of R is that you can write your own functions. Let's review the basic components of a function.
+There are a variety of ways to handle this problem, but let's consider writing a custom function instead. Before we begin writing new functions, let's review the basic components of a function that we covered in the basicConcepts(https://github.com/aazaff/startLearn.R/blob/master/beginnerConcepts.md#differences-between-array-the-object-and-array--the-function) tutorial.
 
 Function Component | Description
 -------- | --------
-Name | All functions must have a name (except in the unique case of functionals, which we will discuss later).
-Argument(s) | The objects that you want the function to affect. If there are mutliple arguments, use commas to separate them.
-Body | The body of the function is what you want the function to *do* to the argument(s) you gave it. Each individual expression should be written on its own unique line.
+Name | All functions must have a name (except in the unique case of **functionals**, which we will discuss later).
+Argument(s) | The objects that you want the function to affect. Use commas to separate multiple arguments if necessary.
+Body | The body of the function is what you want the function to *do* to the argument(s) you gave it. Each individual expression should be written on its own unique line. The body is always contained in squiggly brackets **{ }**.
 
-You create a new function using the **function( )** function. Say that five times fast. The basic 
+You create a new function using the **function( )** function. Say that five times fast! The basic outline of a **function** is as follows.
 
-     Name <- function ( Arguments ) { Body }
+     Name <- function (Arguments) {Body}
 
-For example, let's write a function that multiplies its **argument** by the number three.
+I think that the name and arguments part is relatively straightforward. It is the body part that is new. Let's consider a simple example function that multiplies its **argument** by the number three.
 
-     NewFunction <- function ( Argument ) { Argument * 3 }
+     > MultiplyThree <- function ( Argument ) { Argument * 3 }
+     > MultiplyThree(4)
+     [1] 12
      
+Such a simple function probably doesn't seem that impressive considering that we could already multiply numbers without writing a new function. However, custom functions are much more impressive when you realize that you can evaluate many expressions at once within them.
 
-The ability to automate repetitive tasks is the whole reason we use computers in the first place!
+Let's look at an example of a more complex function I wrote called **calcHaversine( )**. The Haversine function calculates the shortest arc distance between two points on the Earth. Imagine if I wanted to calculate the distances between hundreds, thousands, or hundreds of thouands of points! It is certainly much easier to have a function than it is to write out the calculation every single time.
 
+````     
+# Calculates the geodesic distance between two points on the Earth specified by 
+# Latitude and Longitude (in radians) using the Haversine formula. 
+# The Haversine formula is a special case of the spherical law
+# of cosines, which is a special case of the law of cosines.
+calcHaversine<-function(Long1,Lat1,Long2,Lat2) {
+     Radius<-6371 # radius of the Earth (km)
+     DeltaLong<-(Long2-Long1) # Difference between longitudes
+     DeltaLat<-(Lat2-Lat1) # Difference between latitudes
+     A<-sin(DeltaLat/2)^2+cos(Lat1)*cos(Lat2)*sin(DeltaLong/2)^2
+     C<-2*asin(min(1,sqrt(A)))
+     Distance<-Radius*C
+     return(Distance) # The distance in km
+     }
+````
 
+Even this example isn't quit impressive enough - it's still just basic arithmetic - because it doesn't utilize the two most powerful features in computer science: **conditionals** and **loops**. Custom functions, and computer programming in general, doesn't really start to shine until you understand how to use **conditionals** and **loops**.
+
+The **if( )** function asks if a logical expression evaluates to TRUE or FALSE. If it does evaluate to TRUE then it performs an action. If it evaluates to FALSE, then nothing happens. 
+
+````
+# The basic form of an if statement
+if (condition) {do this}
+
+# A simple example
+> x <- 4
+> if (x < 5) {
+     x<-5
+     }
+````
 
 ## Automating repetitive tasks
 
