@@ -258,7 +258,7 @@ What if we wanted to find which **species** has the largest **sepal length**? Us
 
 Nice! We were able to figure out that a specimen of *Iris virginica* had the longest sepal length! But, we can actually do this even faster us another functional called **tapply( )**.
 
-The **tapply( )** function takes a **data.frame**, splits into subsets, and then applies a function to a **column** in the subset.
+The **tapply( )** function takes a two-dimensional array, splits it into subsets, and then applies a function to a **column** in the subset.
 
 ````
 # Find the maximum sepal length of each species
