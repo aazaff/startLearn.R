@@ -53,16 +53,16 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 
 3. Assuming you wanted to convert **precip** from a **vector** into an **array**, or from an **array** into a **vector** - what function would you use?
 
-4. What are the dimensions of **mtcars**, **trees**, and **precip**? What function(s) did you use to find out?
+4. What is the name of the 14th city in the **precip** dataset?
 
-5. What function would you use if you wanted to combine all three objects into a single object?
+5. What function would you use if you wanted to combine all three data sets into a single object?
 
-6. Does **precip** consist of numeric data? What are **two** different ways you could find out?
+6. Does **precip** consist of numeric data? How did you find out?
 
 7. Code **four** different ways to **subscript** the **2nd row** and **7th column** of **mtcars** using bracket notation - i.e., 17.02.
 
-8. How would you change the names of the **first five elements** of **precip** to "Alabama", "Alaska", "Arizona", "Arkansas", and "California". (Hint: You will need to use **subscripts** and the **<-** operator).
+8. How would you change the precipitation values of "Alabama", "Alaska", "Arizona", "Arkansas", and "California" to 23, 46, 12, 5, and 9. (Hint: You will need to use **subscripts** and the **<-** operator).
 
-9. Are there any trees in the **trees** dataset with more **girth** than **volume**? How did you find out?
+9. Are there **any** trees in the **trees** dataset with more **girth** than **volume**? How did you find out?
 
 10. Take the sum of all elements in column **height** of the trees dataset, call this value **A**. Take the sum of all elements in row **Valiant** of the **mtcars** dataset, call this value **B**. Take the sum of the first **8 elements** of the **precip** dataset, call this value **C**. Divide **C** by **B** and add **A**. What is your final answer?  
