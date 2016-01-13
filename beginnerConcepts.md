@@ -142,7 +142,7 @@ Now you might be thinking, that doesn't really save any time compared to writing
 	> factorial(10) # much clearer!
 	[1] 3628800
 
-The second most important benefit of functions is that they explicitly say what your code is doing - remember the first rule of R! Seeing factorial(10) makes it immediately obvious that you are calculating the factorial of ten.
+The second most important benefit of functions is that they explicitly say what your code is doing - remember the first rule of R! Seeing ````factorial(10)```` makes it immediately obvious that you are calculating the factorial of ten.
 
 ## Storing data in an array
 
