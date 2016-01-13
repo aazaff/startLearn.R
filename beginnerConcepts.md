@@ -96,7 +96,7 @@ If you have ever used a scientific or graphing calculator, then you already intu
 	> (-5)^2
 	[1] 25
 
-You can also perform what are called logical operations. A logical returns a value of either **TRUE** or **FALSE**. Logicals are extraordinarily important in R.
+You can also perform what are called logical operations. A logical returns a value of either ````TRUE```` or ````FALSE````. Logicals are extraordinarily important in R.
 
 	# Let's ask R if 1 is greater than 0
 	> 0 > 1
@@ -106,7 +106,7 @@ You can also perform what are called logical operations. A logical returns a val
 	> 5 == (1/2 * 10)
 	[1] TRUE
 	
-Notice that we used **==**  to ask if these two quantities are equal, rather than a single **=** sign. Most **operators** in R are  straightforward, but there are some - e.g., **==** - that are not intuitive.. Here is a list of the basics. There are a few other operators in R, but we will worry about them later.
+Notice that we used ````==````  to ask if these two quantities are equal, rather than a single ````=```` sign. Most **operators** in R are  straightforward, but there are some - e.g., ````==```` - that are not intuitive.. Here is a list of the basics. There are a few other operators in R, but we will worry about them later.
 
 Operator Example | Operator Definition
 ---------------- | -------------------
@@ -191,7 +191,7 @@ An array is essentially a set of values saved to your computer memory that is re
 
 ## Differences between array (the object) and array( ) the function.
 
-Remember that everything that **exists** in R is an **object** and everything that you **do** is a **function**. In the above example, **MyArray** is an object (specifically an array) that you created with the function **array( )**.
+Remember that everything that **exists** in R is an **object** and everything that you **do** is a **function**. In the above example, ````MyArray```` is an object (specifically an array) that you created with the function ````array( )````.
 
 If you are ever interested in knowing whether an object is an **array** or a **function**, you can use the function **class( )**. All objects have a class.
 	
@@ -202,7 +202,7 @@ If you are ever interested in knowing whether an object is an **array** or a **f
 	> class(array)
 	[1] "function"
 	
-Any time that you want to store the output of a function as an object, you use the **<-** operator, also known as the **assign** operator. In the **MyArray** example, **<-** tells R to store the output of the function on the right, **array( )**, under the name on the left - i.e., **MyArray**. 
+Any time that you want to store the output of a function as an object, you use the ````<-```` operator, also known as the **assign** operator. In the ````MyArray```` example, ````<-```` tells R to store the output of the function on the right, **array( )**, under the name on the left - i.e., ````MyArray````. 
 	
 	# Here are some other examples
 	> FirstObject <- sqrt(5)
@@ -214,19 +214,19 @@ Any time that you want to store the output of a function as an object, you use t
 	> SecondObject
 	[1] 120
 
-Let's talk some more about the array( ) function, and functions in general. Aside from the **primitive** operations described above (e.g., **+**, **-**, **/**, **>**, **!=**, etc.), functions follow a simple format. They have a name (e.g., sqrt, factorial, array) that is followed by parentheses. Within these parentheses you place one or more **arguments** that tell the function what to do. 
+Let's talk some more about the ````array( )```` function, and functions in general. Aside from the **symbolic** operations described above (e.g., ````+````, ````-````, ````/````, ````>````, ````!=````, etc.), functions follow a simple format. They have a name (e.g., sqrt, factorial, array) that is followed by parentheses. Within these parentheses you place one or more **arguments** that tell the function what to do. 
 
 	# Let's review the "MyArray" example again
 	> MyArray<-array(data=c(1,2,3,4),dim=4)
 
-The **data=** is your way of telling it what data you want stored in the array. In this case, the numbers one, two, three, and four, but you could substitute any list of values or even a single value. 
+The ````data=```` is your way of telling it what data you want stored in the array. In this case, the numbers one, two, three, and four, but you could substitute any list of values or even a single value. 
 
 	# Single value example
 	> SingleArray<-array(data=5,dim=1)
 
-In other words data is the **argument** name, and you're telling it what values you want that argument to take. Another way of thinking about this is that you're telling R to *temporarily* create an **object** named **data** that the function **array( )** should use and then delete once the function completes. 
+In other words data is the **argument** name, and you're telling it what values you want that argument to take. Another way of thinking about this is that you're telling R to *temporarily* create an **object** named **data** that the function ````array( )```` should use and then delete once the function completes. 
 
-Similarly, **dim=** (short for dimensions) indicates how many values you want in the array. If you indicate more values to the array then you provide, R will simply repeat the values you did give it until the array is full.
+Similarly, ````dim=```` (short for dimensions) indicates how many values you want in the array. If you indicate more values to the array then you provide, R will simply repeat the values you did give it until the array is full.
 
 	> MyArray<-array(data=c(1,2,3,4,5),dim=10)
 	> MyArray
@@ -234,7 +234,7 @@ Similarly, **dim=** (short for dimensions) indicates how many values you want in
 	
 Beware! This is a really bad behavior that most computer languages would not allow. The potential for introducing error into your calculation in this way isn't trivial, so be precise when defining your array size!
 
-Perhaps the most interesting aspect of **dim=** is that you can also give it multiple values. Remember that when we want to treat multiple values as a single object we use the **c( )** function.
+Perhaps the most interesting aspect of ````dim=```` is that you can also give it multiple values. Remember that when we want to treat multiple values as a single object we use the ````c( )```` function.
 
 	# Two dimensional array
 	> TwoArray<-array(data=c(0,1),dim=c(4,6))
@@ -268,7 +268,7 @@ Eseentialy, you told R to make 6 arrays with 4 values and store them within a si
 
 We therefore describe arrays based on the number of arrays referenced within them. A single array is a **1-dimensional array**. An array of arrays is a **2-dimensional array**. An array of arrays of arrays is a **3-dimensional array**, and so forth. 
 
-Incidentally if you ever want to check the dimensions of an array, you can use the **dim( )** function.
+Incidentally if you ever want to check the dimensions of an array, you can use the ````dim( )```` function.
 
 	# Check the dim of MyArray
 	> dim(MyArray)
@@ -284,7 +284,7 @@ Data Type | Definition
 **character** | Letters, numbers, and symbols that act like letters
 **numeric** | Numbers that act like numbers
 
-Type **logical** is fairly straightforward. It is simply a **TRUE** or a **FALSE** value. Note, however, that R will convert **TRUE** to **1** and **FALSE** to **0** if you try to perform basic mathematical operations on an array of logical data.
+Type **logical** is fairly straightforward. It is simply a ````TRUE```` or a ````FALSE```` value. Note, however, that R will convert ````TRUE```` to ````1```` and ````FALSE```` to ````0```` if you try to perform basic mathematical operations on an array of logical data.
 
 	# Create an array of logical values
 	> MyLogical<-array(data=c(TRUE,TRUE,FALSE,TRUE,FALSE,TRUE),dim=6)
@@ -311,7 +311,7 @@ Type **logical** is fairly straightforward. It is simply a **TRUE** or a **FALSE
 	> all(MyLogical)
 	[1] FALSE
 	
-Type **character** is also fairly straightforward. It is basicaly a way of "de-mathing" something. You tell R that something is meant to be a character by using quotation marks **""**.
+Type **character** is also fairly straightforward. It is basicaly a way of "de-mathing" something. You tell R that something is meant to be a character by using quotation marks ````" "````.
 
 	# Create an array of characters made of letters
 	> MyCharacters<-array(data=c("Bob","Loves","Lucy","Almost","As","Much","As","He","Loves","R"),dim=10)
@@ -332,7 +332,7 @@ By "de-mathing", I mean that R will reject any attempts to do math on your array
 	> sum(MyCharacters)
 	Error in sum(MyCharacters) : invalid 'type' (character) of argument
 	
-We need to use **""** marks so that R know you are not referencing an object.
+We need to use ````" "```` marks so that R know you are not referencing an object.
 
 	# Without " " marks returns an error because it thinks you are referncing an object.
 	> WithoutQuotes
@@ -406,7 +406,7 @@ The majority of work done in R is either 1- or 2-dimensional. This has led to th
 	Error in vector(data = c(1, 2, 3, 4), dim = 4) : 
   	unused arguments (data = c(1, 2, 3, 4), dim = 4)
 
-Nope, doesn't work! Even though **vectors** are **conceptually identical** to a **1-dimensional array**, they are not **operationally identical**. Instead, you make a vector by using the **c( )** function we've been using all along. 
+Nope, doesn't work! Even though **vectors** are **conceptually identical** to a **1-dimensional array**, they are not **operationally identical**. Instead, you make a vector by using the ````c( )```` function we've been using all along. 
 	
 	# Make a vector 
 	> MyVector<-c(1,2,3,4)
@@ -434,7 +434,7 @@ Nope, doesn't work! Even though **vectors** are **conceptually identical** to a 
 	>length(MyVector)
 	[1] 4
 	
-If you look carefully at how we define arrays, you will notice that we need to first create a vector using the function **c( )** - e.g., MyArray<-array(**c(1,2,3,4)**,4).  Generally, vectors are used more often than 1-dimensional arrays because vectors are more fundamental. So, fair warning, be careful as to whether you are using **vectors**, **matrices**, or **arrays**.
+If you look carefully at how we define arrays, you will notice that we need to first create a vector using the function ````c( )```` - e.g., ````MyArray<-array(**c(1,2,3,4)**,4)````.  Generally, vectors are used more often than 1-dimensional arrays because vectors are more fundamental. So, fair warning, be careful as to whether you are using **vectors**, **matrices**, or **arrays**.
 
 ## Referencing elements of an array
 
@@ -445,7 +445,7 @@ Each array is made up of a set of values. Each value within an array is known as
 	> MyArray
 	[1] 5 6 7 8 9 10
 	
-In the above example, **MyArray** has six **elements**, the numbers 5, 6, 7, 8, 9, and 10. If you want to reference a specific element within the array, you use single brackets around the **index** or **position** of the element. 
+In the above example, ````MyArray```` has six **elements**, the numbers 5, 6, 7, 8, 9, and 10. If you want to reference a specific element within the array, you use single brackets around the **index** or **position** of the element. 
 
 	# Refernce the 6th element of MyArray
 	> MyArray[6]
@@ -513,7 +513,7 @@ The figure below depicts several other ways you can reference the elements withi
 ### The Fourth Rule of R-Club
 ***"R uses arrays too. Take advantage!"***
 
-You may have noticed that throughout this tutorial R generally prefaces its answers to our questions with **[1]**. That is its way of telling you that its response is the first element of an array - i.e., the invisible answer array. Because its answer is an array you can also **subscript** the answer.
+You may have noticed that throughout this tutorial R generally prefaces its answers to our questions with ````[1]````. That is its way of telling you that its response is the first element of an array - i.e., the invisible answer array. Because its answer is an array you can also **subscript** the answer.
 
 	> ThreeArray<-array(data=c(1:48),dim=c(4,6,2))
 	
@@ -539,9 +539,9 @@ An important property of arrays is that they will ***only allow you to store one
 	> typeof(MultiArray)
 	[1] "character"
 
-Notice that R simply **coerced** everything to type **character**. This is R's default behavior when you mix data types. If you want to store **multiple types** of data in a **single object** you are going to have to use a special type of array known as a **list**. Lists are created using the **list( )** function.
+Notice that R simply **coerced** everything to type **character**. This is R's default behavior when you mix data types. If you want to store **multiple types** of data in a **single object** you are going to have to use a special type of array known as a **list**. Lists are created using the ````list( )```` function.
 
-Lists are the most versatile form of data object. You can store multiple types of data in a variety of formats within a single list. You can even get fancy and have lists of lists. This is both a boon and an a bane, because this versatility makes them much more complex and difficult to use. Let's try to make MultiArray again using **list( )**.
+Lists are the most versatile form of data object. You can store multiple types of data in a variety of formats within a single list. You can even get fancy and have lists of lists. This is both a boon and an a bane, because this versatility makes them much more complex and difficult to use. Let's try to make MultiArray again using ````list( )````.
 
 	# My multi-datatype array
 	> MultiList<-list(TRUE,1,2,3,4,"Bob")
@@ -613,7 +613,7 @@ Although this output seems a bit cluttered and confusing with all of the extra b
 	[2,]    2    5    3    1
 	[3,]    3    1    4    2
 	
-Presumably you can deduce from the output of **MyList** what the **[[ ]]** mean. Just as single **[ ]** identify an **element** within an **array**, the **[[ ]]** identify an **object** within a list - usually another type of array.
+Presumably you can deduce from the output of ````MyList```` what the ````[[ ]]```` mean. Just as single ````[ ]```` identify an **element** within an **array**, the ````[[ ]]```` identify an **object** within a list - usually another type of array.
 
 	# Find the first array in MyList
 	> MyList[[1]]
@@ -678,7 +678,7 @@ In other words, data frames will only accept a series of 1-dimensional arrays (v
 
 A second, lesser consideration, is that data frames are less computationaly efficient than matrices. Even something as simple as referencing a single element can be 10x slower on a data.frame than a matrix. However, since smaller matrices and data frames are so fast (nanoseconds) people rarely notice this difference. Nevertheless, because you never know if a **Big Data** worker might use one of your functions in the future, it is worth using matrices whenever possible.
 
-The final consideration with data.frames is that they will, by default, convert your data of type **character** to type **factor**. **Factors** are one of R's best features, but will be covered in the advancedConcepts tutorial. For now, if you want to preserve your **characters**, you need to change the **stringsAsFactors=** argument of the **data.frame( )** function to **FALSE**.
+The final consideration with data.frames is that they will, by default, convert your data of type **character** to type **factor**. **Factors** are one of R's best features, but will be covered in the advancedConcepts tutorial. For now, if you want to preserve your **characters**, you need to change the ````stringsAsFactors=```` argument of the ````data.frame( )```` function to ````FALSE````.
 
 	# Set stringsAsFactors= to FALSE in order to preserve characters as characters
 	> MyFrame<-data.frame(Weight,Treatment,Sign,row.names=Subjects,stringsAsFactors=FALSE)
