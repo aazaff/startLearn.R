@@ -11,7 +11,7 @@ This section covers intermediate R concepts, and is meant to be read through aft
 
 ## Subscripting and subsetting with logicals
 
-Perhaps the biggest benefit of **[ ]** notation is that we can perform complex subscripting operations within them. The most powerful of these is the **which( )** function, which finds the **index** (a.k.a., the position) of **TRUE** values in a logical array. In other words **which( )** is short for the phrase: *which of the elements in this array are TRUE values*.
+Perhaps the biggest benefit of ````[ ]```` notation is that we can perform complex subscripting operations within them. The most powerful of these is the ````which( )```` function, which finds the **index** (a.k.a., the position) of ````TRUE```` values in a logical array. In other words ````which( )```` is short for the phrase: *which of the elements in this array are TRUE values*.
 
 ````
 # Create a vector of logical values, where the first element and fifth element are TRUE
@@ -32,7 +32,7 @@ Now, you might ask, how does this help? Well now that you you have the index pos
 [1] TRUE TRUE
 ````
 
-This isn't very impressive since it is circular. We asked which elements had a value of **TRUE**, so of course the values of those elements is **TRUE**. But, what if we don't start out with logical data?
+This isn't very impressive since it is circular. We asked which elements had a value of ````TRUE````, so of course the values of those elements is ````TRUE````. But, what if we don't start out with logical data?
 
 ````
 # What if we want to see all the elements in array that are greater than 5 and what those elements are?
@@ -54,7 +54,7 @@ This isn't very impressive since it is circular. We asked which elements had a v
 [1] 6 6 7 9
 ````
 
-You can combine logical statements using the **&** (and) and **|** (or) operators.
+You can combine logical statements using the ````&```` (and) and ````|```` (or) operators.
 
 ````
 # Find numbers that are greater than 5 AND less than 9
@@ -68,7 +68,7 @@ You can combine logical statements using the **&** (and) and **|** (or) operator
 
 ## Rewriting elements using logical subscripts
 
-The true power of **which( )** doesn't become apparent until you want to start **rewriting** elements of a data object. 
+The true power of ````which( )```` doesn't become apparent until you want to start **rewriting** elements of a data object. 
 
 ````
 # Let's make a practice data frame
@@ -103,7 +103,7 @@ That's fairly straightforward, but what if we want to overwrite multiple element
 [1] 9 6 4 9 9 6
 ````
 
-We can also perform logicals on two and three-dimensional arrays, but it can be somewhat more complicated. Let's take a look at the **WorldPhones** matrix. [WorldPhones](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/WorldPhones.html) is an example dataset that comes preloaded with all versions of R.
+We can also perform logicals on two and three-dimensional arrays, but it can be somewhat more complicated. Let's take a look at the ````WorldPhones```` matrix. [WorldPhones](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/WorldPhones.html) is an example dataset that comes preloaded with all versions of R.
 
 Each row represents a different year. Each column represents a different country. The value of each cell represents how many phones were present in that country that year.
 
@@ -158,7 +158,7 @@ What if we are only concerned with years where there were more than 118,000 phon
 [1] 805303
 ````
 
-The **sum( )** function doesn't give us what we want. It sums each element in an object, not each row. What we need is a way to *apply* the **sum( )** function to each individual row of the matrix. Luckily, there is an aptly named function, **apply( )**, that we can use. 
+The ````sum( )```` function doesn't give us what we want! It sums all elements in an object, not each row. What we need is a way to *apply* the ````sum( )```` function to each individual row of the matrix. Luckily, there is an aptly named function, ````apply( )````, that we can use. 
 
 ````
 # Find the sum of each row in WorldPhones with apply( )
@@ -189,21 +189,21 @@ Notice that apply returned a vector of sums for each row or column. We can perfo
 1961  79831  43173 9053   3338    3224   2005     1076
 ````
 
-The **apply( )** function is a special type of function called a **functional**. Functionals are an extremely versatile and important tool in your aRsenal. 
+The ````apply( )```` function is a special type of function called a **functional**. Functionals are an extremely versatile and important tool in your aRsenal. 
 
-Each functional is characterized by two features. First, the kinds of objects that it will accept. Second, the kind of object it returns. This second requirement implicitly restricts the kinds of functions that the **functional** will accept. For example, **apply( )** only returns a vector. If you use a function that returns values incompatible with a vector, then apply cannot work.
+Each functional is characterized by two features. First, the kinds of objects that it will accept. Second, the kind of object it returns. This second requirement implicitly restricts the kinds of functions that the **functional** will accept. For example, ````apply( )```` only returns a vector. If you use a function that returns values incompatible with a vector, then apply cannot work.
 
 Functionals | Accepted Object | Returned Object | Example Formula
 -------- | -------- | -------- | --------
-**apply( )** | Array | Vector | apply(object, dimension, function)
-**sapply( )** | Vector or List | Vector | sapply(object, function)
-**lapply( )** | Vector or List | List | lapply(object, function)
+````apply( )```` | Array | Vector | apply(object, dimension, function)
+````sapply( )```` | Vector or List | Vector | sapply(object, function)
+````lapply( )```` | Vector or List | List | lapply(object, function)
 
 You will learn more about using **functionals** in concert with more complex functions in the [advancedConcepts.R]() tutorial. In the mean time, here are some useful [functions](https://github.com/aazaff/startLearn.R/blob/master/summaryFunctions.md) that go well with these three basic functionals.
 
 ## Direct subsetting with functionals
 
-Sometimes you can avoid logical subscripting all together by subsetting your data directly with a functional. Let's load in the **iris** dataset, another (quite famous) example dataset that comes with all versions of R.
+Sometimes you can avoid logical subscripting all together by subsetting your data directly with a functional. Let's load in the ````iris```` dataset, another (quite famous) example dataset that comes with all versions of R.
 
 Iris is a **data.frame** consisting of different sepal and petal measurements of different iris flowers. It is a data.frame because, in addition to the numeric measurements, there is a column of non-numeric data that denotes which of three different species the specimen belonged to: *Iris setosa*, *Iris virginica*, and *Iris versicolor*.   
 
@@ -221,7 +221,7 @@ Iris is a **data.frame** consisting of different sepal and petal measurements of
 5          5.0         3.6          1.4         0.2  setosa
 ````
 
-What if we wanted to find which **species** has the largest **sepal length**? Using what we've already learned, we could use **which( )** to subset the dataset by species. We could then find the **max( )** sepal length of each species. Let's try it.
+What if we wanted to find which **species** has the largest **sepal length**? Using what we've already learned, we could use ````which( )```` to subset the dataset by species. We could then find the ````max( )```` sepal length of each species. Let's try it.
 
 ````
 # Subset the iris data.frame into three separate data frames by species using which( ). 
@@ -239,9 +239,9 @@ What if we wanted to find which **species** has the largest **sepal length**? Us
 [1] 7
 ````
 
-Nice! We were able to figure out that a specimen of *Iris virginica* had the longest sepal length! But, we can actually do this even faster us another functional called **tapply( )**.
+Nice! We were able to figure out that a specimen of *Iris virginica* had the longest sepal length! But, we can actually do this even faster us another functional called ````tapply( )````.
 
-The **tapply( )** function takes a two-dimensional array, splits it into subsets, and then applies a function to a specific **column** in the subset.
+The ````tapply( )```` function takes a two-dimensional array, splits it into subsets, and then applies a function to a specific **column** in the subset.
 
 ````
 # Find the maximum sepal length of each species
@@ -250,7 +250,7 @@ The **tapply( )** function takes a two-dimensional array, splits it into subsets
        5.8        7.0        7.9
 ````
 
-Although this might seem like a trivial improvement at the moment, don't forget that you might be working on a data set with hundreds, thousands, or hundreds of thousands of species. Consider, that the first way we calculated this would take two-hundred thousand lines of code for a data frame with 100,000 species. It only takes *one* line with **tapply( )**!
+Although this might seem like a trivial improvement at the moment, don't forget that you might be working on a data set with hundreds, thousands, or hundreds of thousands of species. Consider, that the first way we calculated this would take two-hundred thousand lines of code for a data frame with 100,000 species. It only takes *one* line with ````tapply( )````!
 
 #### The fifth rule of R-Club
 ***"The computer is the robot, you are the useR."***
