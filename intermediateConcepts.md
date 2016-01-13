@@ -172,7 +172,7 @@ N.Amer   Europe     Asia   S.Amer  Oceania   Africa Mid.Amer
 467233   240404    43605    19406    18375    10388     5892 
 ````
 
-Notice that apply returned a vector of sums for each row or column. We can then perform our logical operation on that vector. We can then use that vector to define the rows we want from the matrix.
+Notice that apply returned a vector of sums for each row or column. We can perform a logical operation on that vector, and use the logical vector to define the rows we want from the matrix.
 
 ````
 # Isolate which rows have more than 118,000 phones
@@ -199,24 +199,7 @@ Functionals | Accepted Object | Returned Object | Example Formula
 **sapply( )** | Vector or List | Vector | sapply(object, function)
 **lapply( )** | Vector or List | List | lapply(object, function)
 
-You will learn more about using **functionals** in concert with more complex functions in the [advancedConcepts.R]() tutorial. In the mean time, here are some useful summary statistic functions that go well with these three basic functionals.
-
-Functions | Description
--------- | --------
-**length( )** | Finds the number of elements in a vector or list.
-**dim( )** | Finds the number of elements *per dimension* in an array, matrix, or data.frame.
-**max( )** | Finds the largest number in any non-list object.
-**min( )** | Finds the smallest number in any non-list object.
-**which.max( )** | Finds which element is the largest number in any non-list object.
-**which.min( )** | Finds which element is the smallest number in any non-list object.
-**sum( )** | Finds the sum of all elements in a vector or array.
-**prod( )** | Finds the product of all elements in a vector or array.
-**mean( )** | Finds the average of all elements in a vector or array.
-**median( )** | Finds the median of all elements in a vector or array
-**sd( )** | Finds the standard deviation of all elements in a vector or array.
-**var( )** | Finds the variance of all elements in a vector or array.
-**names( )** | Finds the names of elements in a vector or list.
-**dimnames( )** | Find the names of elements *per dimension* in an array.
+You will learn more about using **functionals** in concert with more complex functions in the [advancedConcepts.R]() tutorial. In the mean time, here are some useful [functions](https://github.com/aazaff/startLearn.R/blob/master/summaryFunctions.md) that go well with these three basic functionals.
 
 ## Direct subsetting with functionals
 
@@ -258,7 +241,7 @@ What if we wanted to find which **species** has the largest **sepal length**? Us
 
 Nice! We were able to figure out that a specimen of *Iris virginica* had the longest sepal length! But, we can actually do this even faster us another functional called **tapply( )**.
 
-The **tapply( )** function takes a two-dimensional array, splits it into subsets, and then applies a function to a **column** in the subset.
+The **tapply( )** function takes a two-dimensional array, splits it into subsets, and then applies a function to a specific **column** in the subset.
 
 ````
 # Find the maximum sepal length of each species
@@ -267,7 +250,7 @@ The **tapply( )** function takes a two-dimensional array, splits it into subsets
        5.8        7.0        7.9
 ````
 
-Although this might seem like a trivial improvement at the moment, don't forget that you might be working on a data set with hundreds, thousands, or hundreds of thousands of species. Consider, that the first way we calculated this would take two-hundred thousand lines of code for a data frame with 100,000 species. It only takes one line with **tapply( )**.
+Although this might seem like a trivial improvement at the moment, don't forget that you might be working on a data set with hundreds, thousands, or hundreds of thousands of species. Consider, that the first way we calculated this would take two-hundred thousand lines of code for a data frame with 100,000 species. It only takes *one* line with **tapply( )**!
 
 #### The fifth rule of R-Club
 ***"The computer is the robot, you are the useR."***
