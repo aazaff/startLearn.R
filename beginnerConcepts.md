@@ -684,3 +684,81 @@ The final consideration with data.frames is that they will, by default, convert 
 	> MyFrame<-data.frame(Weight,Treatment,Sign,row.names=Subjects,stringsAsFactors=FALSE)
 
 Be very mindful of this behavior, it is a common source of frustration.
+
+## On the proper names of things.
+
+A few parting notes on the different types of data object. First, **vectors**, **matrices**, **arrays**, **data.frames**, and **lists** are the most common classes of data object, but there are a variety of other - more specialized - data objects out there. Some programmers will create custom data object classes that only work with their own functions. So don't panick if you run across some class that you've never heard of before.
+
+Also, be warned that there are two different funtions for naming elements in a data object, depending on the **class** of the object. If you are naming elements in a **vector** or **list** you should use the ````names( )```` function that we've already illustrated. If you are naming the elements in an **array** (including **data.frames** and **matrices**, of course), you will need to use the ````dimnames( )```` function.
+
+````
+# Create a three dimensional array
+> Delivered<-array(data=c(1,2,3,4),dim=c(3,3,2))
+> Delivered
+, , 1
+
+     [,1] [,2] [,3]
+[1,]    1    4    3
+[2,]    2    1    4
+[3,]    3    2    1
+
+, , 2
+
+     [,1] [,2] [,3]
+[1,]    2    1    4
+[2,]    3    2    1
+[3,]    4    3    2
+
+# If you want to rename the first dimension of the object.
+> dimnames(Delivered)[[1]]<-c("Frank","Joe","Bob")
+> Delivered
+, , 1
+
+      [,1] [,2] [,3]
+Frank    1    4    3
+Joe      2    1    4
+Bob      3    2    1
+
+, , 2
+
+      [,1] [,2] [,3]
+Frank    2    1    4
+Joe      3    2    1
+Bob      4    3    2
+
+# If you want to rename second dimension of the object.
+> dimnames(Delivered)[[2]]<-c("Pizzas","Burgers","Salads")
+> Delivered
+, , 1
+
+      Pizzas Burgers Salads
+Frank      1       4      3
+Joe        2       1      4
+Bob        3       2      1
+
+, , 2
+
+      Pizzas Burgers Salads
+Frank      2       1      4
+Joe        3       2      1
+Bob        4       3      2
+
+# If you want to rename the third dimension of the object
+> dimnames(Delivered)[[3]]<-c("Monday","Tuesday")
+> Delivered
+, , Monday
+
+      Pizzas Burgers Salads
+Frank      1       4      3
+Joe        2       1      4
+Bob        3       2      1
+
+, , Tuesday
+
+      Pizzas Burgers Salads
+Frank      2       1      4
+Joe        3       2      1
+Bob        4       3      2
+````
+
+Names are very powerful in R. Just by looking at the name of the array and its elements, you could make a reasonable guess that the array ````Delivered```` is a set of tables for how many Pizzas, Burgers, and Salads that Frank, Joe, and Bob delivered on Monday and Tuesday. Remember, conveying constant information to whoever is reading your code is the first and most important rule of R!
