@@ -1,0 +1,1 @@
+The only way to learn a new programming language is by writing programs in it. The first program (function) to write is the same for all languages. You must print the words, "Hello, world." *This is a sacred rite of passage, cherish it!*
