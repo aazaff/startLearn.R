@@ -33,9 +33,9 @@ We are going to make our own dataset for this exercise using random data. Normal
 #### Section 1 Questions
 1. What does the ````REPLACE=```` argument of the ````sample( )```` function do?
 
-2. If you wanted to convert the **matrix** of **logicals** to **numerics** (i.e., 0 and 1) using the **as( )** function, how would you do this?
+2. If you wanted to convert the **matrix** of **logicals** to **numerics** (i.e., 0 and 1) using the ````as( )```` function, how would you do this?
 
-3. The **as( )** function does not convert **MyMatrix** to numeric data! Can you think of a property of logicals that you can use to convert the logicals to 0's and 1's other than the **as( )** function?
+3. The **as( )** function does not convert ````MyMatrix```` to numeric data! Can you think of a property of logicals that you can use to convert the logicals to 0's and 1's other than the ````as( )```` function?
 
 4. If you wanted to check if **all** of the elements in each row are true, how would you do this?
 
@@ -71,6 +71,6 @@ Let's create a numeric matrix next.
 
 4. How would you change every instance of the number 10 to 12?
 
-5. How many values in MyMatrix are greater than 3 and less than 8?
+5. How many values in ````MyMatrix```` are greater than 3 and less than 8?
 
 6. How do you change the elements of column 12 into **character data**, while keeping columns 1- 11 as numeric data??
