@@ -11,7 +11,50 @@ This section covers advanced R concepts, and is meant to be read through after c
 
 ## Writing your own functions
 
-There are lots of great and user-friendly statistics programs out there. The reason why R is superior to all others is that you aren't limited to the functions that come installed in the program. You can write your own, or import functions written by other people.
+There are lots of great and user-friendly statistics programs out there. The reason why **R** is superior to all others is that you aren't limited to the functions that come installed with the program. You can write your own, or import functions written by other people.
+
+Writing a new function requires the ````function( )```` function. Say that five times fast! 
+
+Functions have a **name**, an **argument**, and one or more **actions** that it performs. All of a functions **actions** are known as the **body**. In order to create a function, you need to define these three things.
+
+````
+FunctionName <- function ( FunctionArguments ) { Body }
+````
+
+Let's say that we wanted to make a function that adds **s** to whatever word we give it.
+
+````
+# Write out a function that takes a "SingularWord" as an argument and adds s
+> Pluralise<-function(SingularWord) {
+    PluralWord<-c(SingularWord,"s")
+    }
+
+# Let's test it out!
+> Pluralise("Donut")
+````
+
+Wait a minute nothing happened!? 
+
+#### The sixth rule of R-club.
+***"What happens in the body stays in the body."***
+
+Our ````Pluralise```` function didn't work because objects created inside of the function body are not accesible outside of the function. You need to explicitly tell R that you want to see what is inside of the function. There are several ways to do this, but there are only two that are important for you know right now.
+
+The first of these is the ````print( )```` function. This function will *print* whatever object you put insdie of the argument to your R terminal. You can use this inside or outside of function bodies.
+
+````
+> print("It works, I swear.")
+[1] "It works, I swear."
+
+> MyFunction<-function(Argument) {
+    print(Argument)
+    }
+    
+> MyFunction("Totally Works")
+[1] "Totally Works" 
+````
+
+It worked! Okay well, 
 
 The only way to learn a new programming language is by writing programs in it. The first program (function) to write is the same for all languages. You must print the words, "Hello, world." *This is a sacred rite of passage, cherish it!*
 
