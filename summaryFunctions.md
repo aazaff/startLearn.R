@@ -1,6 +1,6 @@
 # Summary Functions
 
-The following table lists several basic functions in R.
+The following table lists several basic functions in R that go well with functionals.
 
 Functions | Description
 -------- | --------
