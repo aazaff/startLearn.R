@@ -43,7 +43,7 @@ Spell things out for future readers of your programs as explicitly as possible â
 
 "Always annotate your code, because the sucker trying to figure what you did six months from now is going to be ***you***."
 
-To do this you should always leave **thorough comments** in your code. Comments in R are always preceded by the # symbol. Anything that follows a # symbol will not be executed by the software.
+To do this you should always leave **thorough comments** in your code. Comments in R are always preceded by the ````#```` symbol. Anything that follows a # symbol will not be executed by the software.
 
 	> # 2 * 5; everything on this line is a comment none of this will execute if you copy it into R
 	
@@ -202,7 +202,7 @@ If you are ever interested in knowing whether an object is an **array** or a **f
 	> class(array)
 	[1] "function"
 	
-Any time that you want to store the output of a function as an object, you use the ````<-```` operator, also known as the **assign** operator. In the ````MyArray```` example, ````<-```` tells R to store the output of the function on the right, **array( )**, under the name on the left - i.e., ````MyArray````. 
+Any time that you want to store the output of a function as an object, you use the ````<-```` operator, also known as the **assign** operator. In the ````MyArray```` example, ````<-```` tells R to store the output of the function on the right, ````array( )````, under the name on the left - i.e., ````MyArray````. 
 	
 	# Here are some other examples
 	> FirstObject <- sqrt(5)
