@@ -2,6 +2,8 @@
 
 This section covers intermediate R concepts, and is meant to be read through after completeing the [beginnerConcepts](https://github.com/aazaff/startLearn.R/blob/master/beginnerConcepts.md) tutorial and the [beginnerTest](https://github.com/aazaff/startLearn.R/blob/master/beginnerTest.md) exercise.
 
+If you are working through this tutorial as part of the Geoscience 541: Paleobiology course, you must do the [intermediateTest](https://github.com/aazaff/startLearn.R/blob/master/intermediateTest.md) exercises and hand in your answers at the start of the next lab period.
+
 ## Table of Contents
 
 + [Subscripting and subsetting with logicals](#subscripting-and-subsetting-with-logicals)
