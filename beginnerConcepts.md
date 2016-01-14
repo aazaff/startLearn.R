@@ -15,6 +15,7 @@ If you are working through this tutorial as part of the Geoscience 541: Paleobio
 + [Vectors and matrices as special arrays](#vectors-and-matrices-as-special-arrays)
 + [Referencing elements of an array](#referencing-elements-of-an-array)
 + [Multiple data types in an array](#multiple-data-types-in-an-array)
++ [On the proper names of things](#on-the-proper-names-of-things)
 
 ## The most basic R concepts
 
@@ -761,4 +762,4 @@ Joe        3       2      1
 Bob        4       3      2
 ````
 
-Names are very powerful in R. Just by looking at the name of the array and its elements, you could make a reasonable guess that the array ````Delivered```` is a set of tables for how many Pizzas, Burgers, and Salads that Frank, Joe, and Bob delivered on Monday and Tuesday. Remember, conveying constant information to whoever is reading your code is the first and most important rule of R!
+Names are very powerful in R. Just by looking at the name of the array and its elements, you could make a reasonable guess that the array ````Delivered```` is a set of tables for how many **Pizzas**, **Burgers**, and **Salads** that **Frank**, **Joe**, and **Bob** **delivered** on **Monday** and **Tuesday**. Remember, conveying constant information to whoever is reading your code is the first and most important rule of R! Never forget!
