@@ -18,7 +18,7 @@ The only way to learn a new programming language is by writing programs in it. T
 
 
 
- ## Automating repetitive tasks
+## Automating repetitive tasks
   
 The ability to automate repetitive tasks is the whole reason we use computers. There are a number of functions built into R that will allow us to repeat an operation over and over again. 
 
