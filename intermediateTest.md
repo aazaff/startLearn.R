@@ -33,11 +33,9 @@ We are going to make our own dataset for this exercise using random data. Normal
 #### Section 1 Questions
 1. What does the ````REPLACE=```` argument of the ````sample( )```` function do?
 
-2. If you wanted to convert the **matrix** of **logicals** to **numerics** (i.e., 0 and 1) using the ````as( )```` function, how would you do this?
+2. Using````as(MyMatrix,"numeric")```` will not convert ````MyMatrix```` to numeric data! Can you think of a property of logicals that you can use to convert the logicals to 0's and 1's other than the ````as( )```` function?
 
-3. The **as( )** function does not convert ````MyMatrix```` to numeric data! Can you think of a property of logicals that you can use to convert the logicals to 0's and 1's other than the ````as( )```` function?
-
-4. If you wanted to check if **all** of the elements in each row are true, how would you do this?
+3. If you wanted to check if **all** of the elements in each row are true, how would you do this?
 
 ## A numeric matrix
 
@@ -49,6 +47,7 @@ Let's create a numeric matrix next.
 
 # We will randomly sample a vector of numeric data
 > MatrixElements<-sample(c(1,2,3,4,5,6,7,8,9,10), size = 96, replace=TRUE)
+> MyMatrix<-matrix(MatrixElements,8,12)
 
 > MyMatrix
      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12]
@@ -74,3 +73,5 @@ Let's create a numeric matrix next.
 5. How many values in ````MyMatrix```` are greater than 3 and less than 8?
 
 6. How do you change the elements of column 12 into **character data**, while keeping columns 1- 11 as numeric data??
+
+7. Find which rows of MyMatrix have a sum >70. Make a new version of MyMatrix where the 13th column is a set of ````TRUE```` and ````FALSE```` values denoting which rows have a sum >70.
