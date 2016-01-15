@@ -87,10 +87,12 @@ Betweeen ````return( )```` and ````#```` you now know two ways to ensure that R 
 > if ( Condition ) {
     Body
     }
+````
 
-# A function that tells us if a number is even. 
-# We're going to use the %% operator from the very beginning of the beginnerConcepts tutorial.
-# Remember that %% finds the remainder of a x divided by y.
+A function that tells us if a number is even. We're going to use the %% operator from the very beginning of the beginnerConcepts tutorial. Remember that %% finds the remainder of a x divided by y.
+
+````
+# Our Evenness function
 > Evenness<-function(Number) {
     if (Number %% 2 == 0) {
         print("Even!")
