@@ -205,4 +205,4 @@ You supply every ````for( )```` loop with with a **counter** and a **vector**. T
 
 ## The power to accomplish anything.
 
-Although ````function( )````, ````if( )````, and ````for( )```` were presented last in the tutorial, it is not an exaggeration to say that these functions are the backbone of computer programming. If you truly master these three concepts and subscripting, then you there is literally nothing that you cannot accomplish in R or life.
+Although ````function( )````, ````if( )````, and ````for( )```` were presented last in the tutorial, it is not an exaggeration to say that these functions are the backbone of computer programming. If you truly master these three concepts and subscripting, then there is literally nothing that you cannot accomplish in R or life.
