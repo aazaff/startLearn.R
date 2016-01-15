@@ -80,6 +80,10 @@ If you have ever used a scientific or graphing calculator, then you already intu
 	# Exponents
 	> 10^2
 	[1] 100
+	
+	# Modulus (i.e., the remainder)
+	> 4 %% 2
+	[1] 0
 
 	# Make sure you always pay attention to the order of operations (i.e., PEMDAS). Compare the following two 
 	# expressions.
