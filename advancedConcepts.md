@@ -215,7 +215,7 @@ However, as we discussed earlier, it is a little inconvenient to just have a ton
 Error: no function to return from, jumping to top level
 ````
 
-Nope! return( ) only works with functions. How can we get the output of our loop saved as a vector?
+Nope! ````return( )```` only works with functions. How can we get the output of our loop saved as a vector?
 
 ````
 # We could try saving it as a vector?
