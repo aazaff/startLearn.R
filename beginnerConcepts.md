@@ -101,7 +101,7 @@ If you have ever used a scientific or graphing calculator, then you already intu
 	> (-5)^2
 	[1] 25
 
-You can also perform what are called logical operations. A logical returns a value of either ````TRUE```` or ````FALSE````. Logicals are extraordinarily important in R.
+You can also perform what are called **logical operations**. A **logical** returns a value of either ````TRUE```` or ````FALSE````. Logicals are extraordinarily important in R.
 
 	# Let's ask R if 1 is greater than 0
 	> 0 > 1
