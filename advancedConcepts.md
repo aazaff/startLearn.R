@@ -1,6 +1,6 @@
 # Advanced Concepts
 
-This section covers advanced R concepts, and is meant to be read through after completeing the previous tutorials and exercises in this [repository](https://github.com/aazaff/startLearn.R/blob/master/README.md).
+This section covers advanced R concepts, and is meant to be read through after completeing the previous tutorials and exercises in this [repository](https://github.com/aazaff/startLearn.R/blob/master/README.md). Attempt the [advancedTest](https://github.com/aazaff/startLearn.R/blob/master/advancedTest.md) after you are finished reading through this tutorial.
 
 ## Table of Contents
 
