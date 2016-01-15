@@ -203,6 +203,61 @@ You supply every ````for( )```` loop with with a **counter** and a **vector**. T
 # etc..
 ````
 
+However, as we discussed earlier, it is a little inconvenient to just have a ton of text returned by ````print( )````. It would be nice if we could store the output of our ````for( )```` loop, say as a vector.
+
+````
+# Try the function as before using return( ) instead of print( )
+> for (Day in Week) {
+    return(Day)
+    }
+Error: no function to return from, jumping to top level
+
+# Nope! return( ) only works with functions. 
+# How can we get the output of our loop saved as a vector?
+
+# We could try saving it as a vector?
+> for (Day in Week) {
+    NewVector<-c(Day)
+    }
+> NewVector
+[1] "Friday"
+
+# Not quite! The loop creates a new version of NewVector every time. 
+# Only the last element of the loop, "Friday" is saved.
+# What we really want is for NewVector to exist outside of the loop, so it isn't recreated each time.
+
+# Create an array of blank values, and the appropriate length
+> FinalArray<-array(data=NA,dim=5)
+> for (Day in Week) {
+    FinalArray<-Day
+    }
+> FinalArray
+[1] "Friday"
+````
+
+Nope! Still doesn't work! Because we still have ````FinalArray<-Day```` within the loop. What we *really* want is to rewrite individual **elements** of the ````FinalArray```` array, not the entire array. Luckily, we already know how to rewrite specific elements of an array using subscripts.
+
+But how do we specify the correct subscript for each loop? The answer goes back to how we construct the loop in the first place. Instead of having our **counter** be a character specifying the **value** in vector ````Week````, we should have counter reference the **index** of the vector.
+
+````
+# Take a look
+> FinalArray<-array(data=NA,dim=5)
+> WeekIndex<-1:length(Week)
+
+> for (Index in WeekIndex) {
+    FinalArray[Index]<-Week[Index]
+    }
+    
+> FinalArray
+[1] "Monday"    "Tuesday"   "Wednesday" "Thursday"  "Friday" 
+````
+
+Nice! It totally worked. Granted, all we ended up doing is recreating the original ````Week```` vector. However, you could easily imagine adding in additional expressions into the body. The bottom line is that it is often easier to make your **counter** well... *count*. If the counter records which iteration of the loop you are in, you can use this to **index** other arrays (or lists) accordingly.
+
 ## The power to accomplish anything.
 
-Although ````function( )````, ````if( )````, and ````for( )```` were presented last in the tutorial, it is not an exaggeration to say that these functions are the backbone of computer programming. If you truly master these three concepts and subscripting, then there is literally nothing that you cannot accomplish in R or life.
+Although ````function( )````, ````if( )````, and ````for( )```` were presented last in the tutorial, it is not an exaggeration to say that these functions are the backbone of computer programming. If you truly master these three operations and **subscripting**, then there is literally nothing that you cannot accomplish in R or life.
+
+Of course, there are great many functions still out there for you to learn. As you progress you will doubtlessly find more convenient and efficient ways of doing things than constant ````if/else( )```` and  ````for( )```` statements. Indeed, the mark of a truly high-level R progammer is often thought (controversially) to be measurable by how readily he or she can circumvent cumberson loops.
+
+Nevertheless, if you do not know a more efficient way to accomplish something, you can *always* fall back on the these basics. 
