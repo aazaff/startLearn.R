@@ -48,14 +48,14 @@ To do this you should always leave **thorough comments** in your code. Comments 
 
 	> # 2 * 5; everything on this line is a comment none of this will execute if you copy it into R
 	
-	> 2 * 5 # comments can be placed after a statement. Whatever is in front of the # WILL execute.
+	> 2 * 5 # comments can be placed after an expression. Whatever is in front of the # WILL execute.
 	[1] 10
 
 ### The Second Rule of R-Club
 
 ***"The computer is always right."***
 
-As a beginner, you will often encounter errors. It is easy to become frustrated when the computer does not do what you want. However, remember that the computer ***"'tis naught but clockwork"*** and can only do what you tell it to do. If you are getting an error, it is almost certainly **your** fault. Don't despair and don't get mad. Take a deep breath, think about what you are trying to do, and try again.
+As a beginner, you will often encounter errors. It is easy to become frustrated when the computer does not do what you want. However, remember that the computer ***"'tis naught but clockwork"*** and can only do what you tell it to do. If you are getting an error, it is almost certainly *your* fault. Don't despair and don't get mad. Take a deep breath, think about what you are trying to do, and try again.
 
 ## R as a fancy scientific calculator
 
