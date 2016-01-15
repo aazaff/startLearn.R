@@ -61,20 +61,20 @@ Using ````return( )````  automatically stops the function and returns whatever *
 
 ````
 # Create a function that double the argument
-> MyFunction<-function(Argument) {
+> DoubleIt<-function(Argument) {
     Answer<-Argument*2
     return(Answer)
     }
-> MyFunction(2)
+> DoubleIt(2)
 [1] 4
 
 # Importantly, elements of the function after return( ) will not execute.
-> MyFunction<-function(Argument) {
+> DoubleIt<-function(Argument) {
     Answer<-Argument*2
     return(Answer)
     Answer<-Answer*2
     }
-> MyFunction(2)
+> DoubleIt(2)
 [1] 4
 ````
 
