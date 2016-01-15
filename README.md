@@ -1,8 +1,8 @@
 # An Introduction to R
 
-These tutorials are designed to prepare students for the R-intensive lab assignments used in [**GEOSCIENCE 541: Paleobiology**]() at the University of Wisconsin.
+These tutorials are designed to prepare students for the R-intensive lab assignments used in [**GEOSCIENCE 541: Paleobiology**](https://github.com/aazaff/teachPaleobiology/blob/master/README.md) at the University of Wisconsin - Madison. The repository was created and is maintained by Andrew A. Zaffos. 
 
-Importantly, these tutorials focus on the core programming and computer science principles underlying the R language, and do **not** cover methods of data analysis (i.e., statistics). Satistical testing and other aspects of data analysis (e.g., data visualization) are instead presented throughout the course in lab assignments.  
+Importantly, these tutorials focus on the core programming and computer science principles underlying the R language, and do **not** cover methods of data analysis (i.e., statistics). Statistical testing and other aspects of data analysis (e.g., data visualization) are instead presented throughout the course in lab assignments.  
 
 ## Table of Contents
 
