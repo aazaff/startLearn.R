@@ -159,7 +159,7 @@ You may have noticed that we used three ````return( )```` functions in our ````C
  
 While if/else is pretty powerful, especially when combined with your own functions, the most powerful tool at your disposal in R is the ability to automate repetitive tasks. That's actually the whole reason we even use computers. 
 
-There are a number of functions built into R that will allow us to repeat an operation over and over again. The three fundamental units of repetition in R are ````repeat( )````, ````while( )````, and ````for( )````. Luckily, anything that can be achieved with ````repeat( )```` or ````while( )```` can also be achieved with````for( )````, so you only need to learn one of three. Congrats!
+There are a number of functions built into R that will allow us to repeat an operation over and over again. The three fundamental units of repetition in R are ````repeat( )````, ````while( )````, and ````for( )````. Luckily, anything that can be achieved with ````repeat( )```` can also be achieved with````for( )```` and you will rarely need to use ````while( )````, which means you only need to learn one of three. Congrats!
 
 The ````for( )```` function follows a similar format to ````function( )```` and ````if( )````, in that it is followed by ````{ }```` which enclose the **body** of tasks that you wanted automated.
 
