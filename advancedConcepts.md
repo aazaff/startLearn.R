@@ -211,21 +211,22 @@ However, as we discussed earlier, it is a little inconvenient to just have a ton
     return(Day)
     }
 Error: no function to return from, jumping to top level
+````
 
-# Nope! return( ) only works with functions. 
-# How can we get the output of our loop saved as a vector?
+Nope! return( ) only works with functions. How can we get the output of our loop saved as a vector?
 
+````
 # We could try saving it as a vector?
 > for (Day in Week) {
     NewVector<-c(Day)
     }
 > NewVector
 [1] "Friday"
+````
 
-# Not quite! The loop creates a new version of NewVector every time. 
-# Only the last element of the loop, "Friday" is saved.
-# What we really want is for NewVector to exist outside of the loop, so it isn't recreated each time.
+Not quite! The loop creates a new version of NewVector every time. Only the last element of the loop, "Friday" is saved. What we really want is for NewVector to exist outside of the loop, so it isn't recreated each time.
 
+````
 # Create an array of blank values, and the appropriate length
 > FinalArray<-array(data=NA,dim=5)
 > for (Day in Week) {
@@ -235,9 +236,9 @@ Error: no function to return from, jumping to top level
 [1] "Friday"
 ````
 
-Nope! Still doesn't work! Because we still have ````FinalArray<-Day```` within the loop. What we *really* want is to rewrite individual **elements** of the ````FinalArray```` array, not the entire array. Luckily, we already know how to rewrite specific elements of an array using subscripts.
+Nope! Still doesn't work! Because we still have ````FinalArray<-Day```` within the loop, which just rewrites our original version of ````FinalArray````. What we *really* want is to rewrite individual **elements** of the ````FinalArray```` array, not the entire array. Luckily, we already know how to rewrite specific elements of an array using **subscripts**.
 
-But how do we specify the correct subscript for each loop? The answer goes back to how we construct the loop in the first place. Instead of having our **counter** be a character specifying the **value** in vector ````Week````, we should have counter reference the **index** of the vector.
+But how do we specify the correct **subscript** for each loop? The answer goes back to how we construct the loop in the first place. Instead of having our **counter** be a character specifying the **value** in each element of the vector ````Week````, we should have **counter** reference the **index** of elements in the vector.
 
 ````
 # Take a look
@@ -260,4 +261,4 @@ Although ````function( )````, ````if( )````, and ````for( )```` were presented l
 
 Of course, there are great many functions still out there for you to learn. As you progress you will doubtlessly find more convenient and efficient ways of doing things than constant ````if/else( )```` and  ````for( )```` statements. Indeed, the mark of a truly high-level R progammer is often thought (controversially) to be measurable by how readily he or she can circumvent cumberson loops.
 
-Nevertheless, if you do not know a more efficient way to accomplish something, you can *always* fall back on the these basics. 
+Nevertheless, if you do not know a more efficient way to accomplish something, you can *always* fall back on the these basics.
