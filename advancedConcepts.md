@@ -5,8 +5,8 @@ This section covers advanced R concepts, and is meant to be read through after c
 ## Table of Contents
 
 + [Writing your own functions](#writing-your-own-functions)
-+ [Automating repetitive tasks](#automating-repetitive-tasks)
 + [Controlling if code executes](#controlling-if-code-executes)
++ [Automating repetitive tasks](#automating-repetitive-tasks)
 + [The power to accomplish anything](#the-power-to-accomplish-anything)
 
 ## Writing your own functions
@@ -15,9 +15,10 @@ There are lots of great and user-friendly statistics programs out there. The rea
 
 Writing a new function requires the ````function( )```` function. Say that five times fast! 
 
-Functions have a **name**, an **argument**, and one or more **actions** that it performs. All of a functions **actions** are known as the **body**. In order to create a function, you need to define these three things.
+Functions have a **name**, an **argument**, and one or more **actions** that it performs. All of a functions **actions** are known as the **body**. In order to create a function, you need to define these three things using the following format.
 
 ````
+# Importantly, notice the new { } syntax.
 FunctionName <- function ( FunctionArguments ) { Body }
 ````
 
@@ -36,11 +37,11 @@ Let's say that we wanted to make a function that adds **s** to whatever word we 
 Wait a minute nothing happened!? 
 
 #### The sixth rule of R-club.
-***"What happens in the body stays in the body."***
+***"What happens between squiggly brackets stays beteween squiggly brackets."***
 
 Our ````Pluralise```` function didn't work because objects created inside of the function body are not accesible outside of the function. You need to explicitly tell R that you want to see what is inside of the function. There are several ways to do this, but there are only two that are important for you know right now.
 
-The first of these is the ````print( )```` function. This function will *print* whatever object you put insdie of the argument to your R terminal. You can use this inside or outside of function bodies.
+The first of these is the ````print( )```` function. This function will *print* whatever arguments you give it to your R terminal. You can use this inside or outside of function bodies.
 
 ````
 > print("It works, I swear.")
@@ -50,15 +51,43 @@ The first of these is the ````print( )```` function. This function will *print* 
     print(Argument)
     }
     
-> MyFunction("Totally Works")
-[1] "Totally Works" 
+> MyFunction("Totally works.")
+[1] "Totally works." 
 ````
 
-It worked! Okay well, 
+It worked! Unfortunately ````print( )```` isn't very flexible, as it will only print your output as a **character** string. Since we mostly want to use R for math purposes, we'll want something more flexible. Also, if the function output is really large, we probably don't want to flood our screens with unnecessary text. One option is to use the ````return( )```` function.
 
-The only way to learn a new programming language is by writing programs in it. The first program (function) to write is the same for all languages. You must print the words, "Hello, world." *This is a sacred rite of passage, cherish it!*
+Using ````return( )````  automatically stops the function and returns whatever **object** is its **argument**.
 
+````
+# Create a function that double the argument
+> MyFunction<-function(Argument) {
+    Answer<-Argument*2
+    return(Answer)
+    }
+> MyFunction(2)
+[1] 4
 
+# Importantly, elements of the function after return( ) will not execute.
+
+> MyFunction<-function(Argument) {
+    Answer<-Argument*2
+    return(Answer)
+    Answer<-Answer*2
+    }
+> MyFunction(2)
+[1] 4
+````
+
+## Controlling if code executes
+
+Betweeen ````return( )```` and ````#```` you now know two ways to ensure that R doesn't execute code. However, these are fairly crude mechanisms. Much more powerful and explicit is the ````if( )```` statement, which tells R to only execute a command *if its argument is ````TRUE````.*
+
+````
+> if ( Condition ) {
+    Body
+    }
+````
 
 
 ## Automating repetitive tasks
@@ -71,10 +100,10 @@ The ````for( )```` function follows a similar format to the ````function( )```` 
 
 ````
 # The basic format of a for( ) loop
-for (Counter in Vector) { Commands }
+> for (Counter in Vector) { Commands }
 
 # Or better yet, following good coding practice
-for (Counter in Vector) {
+> for (Counter in Vector) {
     Commands
     }
 ````
