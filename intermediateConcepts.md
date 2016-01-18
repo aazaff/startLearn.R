@@ -197,7 +197,7 @@ Each functional is characterized by two features. First, the kinds of objects th
 
 Functionals | Accepted Object | Returned Object | Example Formula
 -------- | -------- | -------- | --------
-````apply( )```` | Array | Vector | apply(object, dimension, function)
+````apply( )```` | Array | Vector or Matrix | apply(object, dimension, function)
 ````sapply( )```` | Vector or List | Vector | sapply(object, function)
 ````lapply( )```` | Vector or List | List | lapply(object, function)
 
