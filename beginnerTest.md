@@ -51,7 +51,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 
 2. Is ````precip```` defined as a **1-dimensional array** or a **vector**? How did you find out?
 
-3. How would you convert ````mtcars```` into a vector?
+3. How would you convert ````trees```` into a matrix?
 
 4. What is the name of the 14th city in the ````precip```` dataset?
 
