@@ -9,7 +9,7 @@ If you are working through this tutorial as part of the Geoscience 541: Paleobio
 + [R is for Statistics](#r-is-for-statistics)
 + [Probabilities and Possibilities](#probabilities-and-possibilities)
 + [What is the purpose of statistics](#what-is-the-purpose-of-statistics)
-+ [Describing probability distributions](#describing-probability-distributions)
++ [Describing distributions with statistics](#describing-distributions)
 + [Common probability distributions](#common-probability-distributions)
 + [Describing probability distributions](#describing-probability-distributions)
 + [The Law of Large Numbers](#the-law-of-large-numbers)
@@ -79,7 +79,7 @@ Importantly, statistics is not really concerned about **probabilities**, but rat
 
 A dizzying variety of tests exist for the purpose of comparing distributions, many of which are pre-programed into R or are available for download. Many people confuse knowing how to use some or many of these tests with a mastery of statistics, but this is like confusing skill with a powersaw as understanding carpentry. They are often related, but neither implies the other.
 
-What is really important for a good statistician is that you never lose sight of your true goal, to accurately describe and compare probability distributions. If you lose sight of this, just take a deep breath and try to envision the barrel(s) and its contents, ask yourself what you are trying to learn about the barrel, how would you answer this if the barrel was literally in front of you, and then proceed from there.
+What is really important for a good statistician is that you never lose sight of your true goal, to accurately describe and compare probability distributions. If you lose sight of this, just take a deep breath and try to envision the barrel(s) and its contents, ask yourself what you are trying to learn about the barrel, how would you answer the question if the "barrel" was *literally in front of you*, and then proceed from there.
 
 ## Describing probability distributions
 
@@ -110,7 +110,7 @@ So, let's make a basic probability distribution. Let's look at how many hours I'
 [1]  6  6  7  7  8  8  8  8  8  8  8  8  8  8  8  9  9  9  9  9  9  9  9 10 10 11 11 12 12 12 13
 ````
 
-We call a numerical description of a distribution a **statistic** or a **parameter**. Because the difference between these two won't matter for this class, and because **parameter** is sometimes used interchangeaby with the the R concept of an **argument**, we will only refer to them as statistics.
+We call a numerical description of a distribution a **statistic** or a **parameter**. Because the difference between these two won't matter for this class, and because **parameter** is sometimes used interchangeaby with the R concept of an **argument**, we will only refer to them as statistics.
 
 ````
 # The arithmetic mean is the most common statistic. It is simply the average of all points.
@@ -146,17 +146,72 @@ We call a numerical description of a distribution a **statistic** or a **paramet
 3
 ````
 
-It is often preferable to visualize distributions rather than to summarize them with a statistic. There are a number of ways to do this. Probably the most common of these is a **frequency bar plot**. As you can guess from the name, it plots the relative frequency of values in a distribution as bars - i.e., hist(x) is a visual form of table(x).
+It is often preferable to visualize distributions rather than to summarize them with a statistic. There are a number of ways to do this. Probably the most common of these is a **frequency bar plot**. As you can guess from the name, it plots the relative frequency of values in a distribution, i.e., ````table(x)````, as bars.
 
-You can make a frequency bar plot in R using the ````hist( )```` function, which is short for **histogram**. The two terms can be used interchangeably, but it is better to think of them as **frequency bar plots** because the word **histogram** has a different meaning in some countries. The former is also the more descriptive name - remember the first rule of R-club!
+You can make a kind of frequency bar plot in R using the ````hist( )```` function, which is short for **histogram**. The two terms can be used interchangeably, though as you will see below that is not entirely accurate. Regardless, it is better to think of them as **frequency bar plots** because the word **histogram** has a different meaning in some countries. The former is also the more descriptive name - remember the first rule of R-club!
 
 ````
 > hist(HoursWorked)
 ````
 
-Although this is a common way of visualizing data, it isn't very good. One thing that you'll notice is how R places the bars *between* the number ranges. This is because ````hist( )```` combines numbers into *bins*. For example, the first bar contains both the 6 and 7 values. The second bar contains just the 8's. That is neither intuitive nor clear nor helpful. You're probably asking yourself why R would do something stupid. It has its reasons, but for now let's try a better way.
+Although this is a common way of visualizing data, it isn't very good. One thing that you'll notice is how R places the bars *between* the number ranges. This is because ````hist( )```` groups values together and plots the groups rather than each unique value. For example, the first bar contains both the 6 and 7 values. The second bar contains just the 8's. That is neither intuitive nor clear nor helpful. You're probably asking yourself why R would do something so stupid. It has its reasons, but for now let's try a better way.
 
-What we *really* want is a true **frequency bar plot**, meaning the output of ````table(HoursWorked)```` represented as bars.
+What we *really* want is a genuine **frequency bar plot**, meaning the output of ````table(HoursWorked)```` represented as bars. Luckily, this is easily achieved.
+
+````
+# The function is literally called barplot( )
+> barplot(table(HoursWorked))
+````
+
+So much clearer! Generally, it is often more helpful to do a ````barplot( )```` of ````table( )```` than ````hist( )````. Of course, this is not to say that ````barplot( ) ```` works in all situations.
+
+ ````
+ > MyVector<-c(1,1,2,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3,4,5)
+ > mean(MyVector)
+[1] 2.566667
+ > median(MyVector)
+ [1] 2.5
+ 
+ > barplot(table(MyVector)
+ ````
+ 
+The output is accurate, but it doesn't adequately give us a sense for the distribution in terms of its spread (standard deviation) or central tendency (mean, median, and mode) of the data. Yes, *techinically* the mode is 1, but the overwhelming majority of data points fall between 2 and 3 - hence the mean and median of ~2.5. Ideally, you want that to be illustrated in your visualization, just like its reflected in the numerical statistics.
+
+````
+# This works much better than barplot( )!
+hist(MyVector)
+````
+
+The difficulty here is that there are, broady speaking, two opposing types of data. **Discrete** data is data that can only take on a specific set of values within a range - e.g., all the integers between 1 and 10. **Continuous** data is data that can take on *any* value within a range. A true bar plot doesn't describe **continuous** data well, but a histogram does - and vice-versa. This is why  ````hist( )```` groups values together, it is a crude attempt to make continuous data visually discrete. 
+
+Just because ````hist( )```` is better than ````barplot( )```` for **continuous** data is no excuse for using it. There are better ways yet to visualize your data. Let's try the ````density( )```` function.
+
+````
+> plot(density(MyVector))
+````
+
+The data is now represented as a curve rather than as bars, leaving you free from making any assumptions about the appropriate width of bars while conveying all of the same information. People generally don't like to use kernal density plots because their underlying [calculation](http://www.mvstat.net/tduong/research/seminars/seminar-2001-05/) is much more complex than a histogram. However, nobody is asking you to do it by hand in this class, R will do it all for you.
+
+## Common probability distributions
+
+**Continuous** data presents more problems then just how to visualize it. How can we randomly sample a continuous distribution? Up until now we've been making a **vector** and sampling from that vector. 
+
+````
+# Set the seed so we all get the same "random" answer
+> set.seed(121)
+> SimpleVector<-c(1,2,3,4,5)
+> sample(SimpleVector,1)
+[1] 2
+````
+
+That certainly won't work for continuous data, since it is literally impossible to type out the infinite number of points in a number range. Luckily, R will do it for us. But first, let's learn about four of the most common distributions.
+
+Distribution | Description | Example
+------ | ----- | ----- 
+Degenerate | A single number | Degenerate<-5
+Uniform | All numbers are equally common | Uniform<-c(1,2,3,4,5)
+Gaussian | Numbers become steadily less common away from the mean | Gaussian<-c(1,2,2,3,3,3,4,4,5)
+Galton | An exponentiated Gaussian distribution | Galton<-exp(Gaussian)
 
 
 
