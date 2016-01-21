@@ -204,14 +204,13 @@ The data is now represented as a curve rather than as bars, leaving you free fro
 [1] 2
 ````
 
-That certainly won't work for continuous data, since it is literally impossible to type out the infinite number of points in a number range. Luckily, R will do it for us. But first, let's learn about four of the most common distributions.
+That certainly won't work for continuous data, since it is literally impossible to type out an infinite number of points. Luckily, R will do it for us. But first, let's learn about three of the most common distributions.
 
 Distribution | Description | Example
 ------ | ----- | ----- 
-Degenerate | A single number | Degenerate<-5
 Uniform | All numbers are equally common | Uniform<-c(1,2,3,4,5)
 Gaussian | Numbers become steadily less common away from the mean | Gaussian<-c(1,2,2,3,3,3,4,4,5)
 Galton | An exponentiated Gaussian distribution | Galton<-exp(Gaussian)
 
-
+There are several other common distributions - e.g., degenerate, binomial, multinomial, and poisson - that you might encounter in a statistics class, but the most important for this class are the three above. A few notes about the above. The Gaussian distribution is also known as the *normal* distribution on account of how common it is or as the *bell curve* distribution on account of its shape. Neither of these is a good term. Many common distributions are approximately bell shaped, so this can end up quite confusing. Similarly, although statisticians, for a variety of complex historical reasons, like to assume that the Gaussian distributon is "normal" (the standard), this is generally untrue in ecological data where the Galton distribution is more common.
 
