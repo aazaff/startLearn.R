@@ -21,37 +21,37 @@ Foremost of these is to understand the concept of **probability**. The best way 
 
 ## Probabilities and Possibilities
 
-Think of a **distribution** as a barrel. The barrel is full of differently colored balls. The **possibility distribution** is the *colors* in the barrel. The **probability distribution** is the *number of balls of each color*. 
+Think of a **distribution** as a barrel. The barrel is full of differently coloured balls. The **possibility distribution** is the *colours* in the barrel. The **probability distribution** is the *number of balls of each colour*. 
 
 Let's visualize the barrel as a **vector** in R.
 
 ````
-# Fill the barrel (a.k.a., our distribution) with colors
+# Fill the barrel (a.k.a., our distribution) with colours
 > Barrel<-c("Blue","Blue","Blue","Pink","Pink","Viridian","Puce")
 
 # Find how many balls are in the barrel
 > length(Barrel)
 [1] 7
 
-# Make a vector of the different colors in the barrel using unique( ) - i.e., the possibility distribution
+# Make a vector of the different colours in the barrel using unique( ) - i.e., the possibility distribution
 > unique(Barrel)
 [1] "Blue"     "Pink"     "Viridian" "Puce" 
 
-# Find the number of unique colors.
+# Find the number of unique colours.
 > length(unique(Barrel))
 [1] 4
 
-# Find how many of each color are in the barrel using table( ) - i.e., the probability distribution
+# Find how many of each colour are in the barrel using table( ) - i.e., the probability distribution
 > table(Barrel)
 Barrel
     Blue     Pink     Puce Viridian 
        3        2        1        1 
 ````
 
-The **probability** of drawing each specific color is simply the probability distribution divided by the ````sum( )```` of the probability distribution.
+The **probability** of drawing each specific colour is simply the probability distribution divided by the ````sum( )```` of the probability distribution.
 
 ````
-# Find the probability of drawing each color
+# Find the probability of drawing each colour
 > table(Barrel) / sum(table(Barrel))
 Barrel
      Blue      Pink      Puce  Viridian 
@@ -66,10 +66,15 @@ Barrel
 
 It's as simple as that, though here is a great example from the Daily Show with Jon Stewart of someone who [does not understand](http://www.cc.com/video-clips/hzqmb9/the-daily-show-with-jon-stewart-large-hadron-collider) the difference between a  **possibility distribution** and a **probability**.
 
+
 ## What is the purpose of statistics
 
-Importantly, statistics is not really about probabilities, but rather about probability distributions. We want to be able to describe probability distributions (**descriptive statistics**) and compare distributions (**inferential statistics**). 
+Importantly, statistics is not really about probabilities, but rather about **probability distributions**. Statistics can be divided into two endeavours: we want to be able to *describe* probability distributions (**descriptive statistics**) and *compare* two or more distributions (**inferential statistics**).
+
+A dizzying variety of tests exist for the purpose of comparing distributions, many of which are pre-programed into R or are available for download. Many people confuse knowing how to use some or many of these tests with a mastery of statistics, but this is like confusing skill with a powersaw as understanding carpentry. They are often related, but neither implies the other.
+
+What is really important for a good statistician is that you never lose sight of your true goal, to accurately describe and compare probability distributions.
 
 ## Common probability distributions
 
-What is not as simple, however, is that we often do not know the underlying probability distribution - i.e., we don't literally have a barrel of balls, deck of cards, set of dice, fliping coin, or whatever in front of us.
+What is not as simple, however, is that we often do not know the underlying probability distribution - i.e., we don't literally have a barrel of balls, deck of cards, set of dice, fliping coin, or whatever in front of us. 
