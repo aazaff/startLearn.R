@@ -212,12 +212,13 @@ Uniform | All numbers are equally common | Uniform<-c(1,2,3,4,5)
 Gaussian | Numbers become steadily less common away from the mean | Gaussian<-c(1,2,2,3,3,3,4,4,5)
 Galton | An exponentiated Gaussian distribution | Galton<-exp(Gaussian)
 
-There are several other common distributions - e.g., degenerate, binomial, multinomial, and poisson - that you might encounter in a statistics class, but the most important for this class are the three above. 
+There are several other common distributions - e.g., degenerate, binomial, multinomial, and poisson - that you might encounter in a statistics class, but the most important for this class are the three above. The Gaussian distribution is also known as the **normal** distribution, and Galton's distribution is also known as the **log-normal** distribution. I mention this only because 
 
 A few notes about names. The Gaussian distribution is also known as the *normal* distribution on account of how common it is. It is also sometimes called the *bell curve* distribution on account of its shape. 
 
-Neither of these is a good term. Many common distributions are approximately bell shaped, so this can end up quite confusing. Similarly, although statisticians, for a variety of complex historical reasons, like to assume that a Gaussian distribution is "normal" (the standard), this is generally untrue in ecological/paleontological/natural earth data where the Galton distribution is more common.
+Neither of these is a good term. Many common distributions are approximately bell shaped, so this can end up quite confusing. Similarly, although statisticians, for a variety of complex historical reasons, like to assume that a Gaussian distribution is "normal" (the standard), this is generally untrue in ecological/paleontological/natural earth data where something closer to the Galton distribution is more common. 
 
 Galton's distribution is also sometimes called the log-normal distribution, because if you log it, you will get a normal/Gaussian distribution.
 
-I only mention this at all because R 
+I only mention this at all because R uses the normal and log-normal terminology for its functions, so you should be aware of it.
+
