@@ -1,6 +1,6 @@
 # Expert Concepts
 
-Obviously this is a bit of a misnomer. Becoming an expert in R will take a lot more work than a single online tutorial - no matter how awesome it is. Happily, you now probably know more than a lot of people who call themselves experts in R, so there is that.
+Expert is an exaggeration. Becoming an expert in R will take a lot more work than a single online tutorial - no matter how awesome it is. Happily, you now probably know more than a lot of people who call themselves experts in R, so there is that.
 
 If you are working through this tutorial as part of the Geoscience 541: Paleobiology course, you *must* do the [expertTest](https://github.com/aazaff/startLearn.R/blob/master/expertTest.md) exercise and hand in your answers at the start of the next lab period.
 
@@ -11,8 +11,8 @@ If you are working through this tutorial as part of the Geoscience 541: Paleobio
 + [What is the purpose of statistics](#what-is-the-purpose-of-statistics)
 + [Describing distributions with statistics](#describing-distributions)
 + [Common probability distributions](#common-probability-distributions)
-+ [Describing probability distributions](#describing-probability-distributions)
 + [The Law of Large Numbers](#the-law-of-large-numbers)
++ [Testing if two distributions are different](#testing-if-two-distributions-are-different)
 
 ## R is for statistics
 
@@ -71,7 +71,7 @@ Barrel
 [1] 1
 ````
 
-It's as simple as that, though here is a great example from the Daily Show with Jon Stewart of someone who [does not understand](http://www.cc.com/video-clips/hzqmb9/the-daily-show-with-jon-stewart-large-hadron-collider) the difference between a  **possibility distribution** and a **probability**.
+Now you know more than [this guy on the Daily Show with Jon Stewart](http://www.cc.com/video-clips/hzqmb9/the-daily-show-with-jon-stewart-large-hadron-collider). You're winning.
 
 ## What is the purpose of statistics
 
@@ -212,13 +212,34 @@ Uniform | All numbers are equally common | Uniform<-c(1,2,3,4,5)
 Gaussian | Numbers become steadily less common away from the mean | Gaussian<-c(1,2,2,3,3,3,4,4,5)
 Galton | An exponentiated Gaussian distribution | Galton<-exp(Gaussian)
 
-There are several other common distributions - e.g., degenerate, binomial, multinomial, and poisson - that you might encounter in a statistics class, but the most important for this class are the three above. The Gaussian distribution is also known as the **normal** distribution, and Galton's distribution is also known as the **log-normal** distribution. I mention this only because 
+There are several other common distributions - e.g., degenerate, binomial, multinomial, and poisson - that you might encounter in a statistics class, but the most important for this class are the three above. The Gaussian distribution is also known as the **normal** distribution and Galtons distribution is also known as the **log-normal** distribution. I mention this because R uses the normal and log-normal terminology for its functions, so you should be aware of it. 
 
-A few notes about names. The Gaussian distribution is also known as the *normal* distribution on account of how common it is. It is also sometimes called the *bell curve* distribution on account of its shape. 
+````
+# You can draw a random sample from a uniform distribution using runif( ) - i.e., random uniform
+# Draw 10 random samples from a uniform distribution ranging from zero to 1
+> runif(10,min=0,max=1)
+[1] 0.9515923 0.5431508 0.7627956 0.5508387 0.4210237 0.4676918 0.6132936 0.2377114 0.2546702 0.9468806
 
-Neither of these is a good term. Many common distributions are approximately bell shaped, so this can end up quite confusing. Similarly, although statisticians, for a variety of complex historical reasons, like to assume that a Gaussian distribution is "normal" (the standard), this is generally untrue in ecological/paleontological/natural earth data where something closer to the Galton distribution is more common. 
+# You can draw a random sample from a Gaussian distribution using rnorm( ) - i.e., random gaussian
+# Draw 10 samples from a gaussian distribution with a mean of zero and a standard deviation of 1
+> rnorm(10,mean=0,sd=1)
+[1]  0.7816194 -1.1589419 -0.5563308  0.2983903  0.6919530 -2.0429660  0.1896299 -0.5431431 -1.1201011 -1.5369761
 
-Galton's distribution is also sometimes called the log-normal distribution, because if you log it, you will get a normal/Gaussian distribution.
+# You can draw a random sample from a Galton distribution using rlnorm( ) - i.e., random log-normal
+# Draw 10 samples from a galton distribution with a mean of zero and a standard deviation of 1
+> rlnorm(10,meanlog=0,sdlog=1)
+[1] 0.1896190 1.4985969 0.2277766 4.4691594 0.8538720 1.1006628 0.1688041 0.2154464 3.7198323 2.0975491
+````
 
-I only mention this at all because R uses the normal and log-normal terminology for its functions, so you should be aware of it.
+## The Law of Large Numbers
+
+You may have noticed for our draw from the random uniform distribution, that it does not seem particularly uniform. Let's take a look at it in a density plot.
+
+````
+# Set the seed so we all get the same "random" answer
+> set.seed(121)
+> plot(density(runif(10,min=0,max=1)))
+````
+
+It doesn't look uniform at all! The density of a uniform function should be flatish across the range from its minimum to maximum. It should look something akin to a plateau or mesa. 
 
