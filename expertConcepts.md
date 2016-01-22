@@ -302,3 +302,20 @@ How can we do that? Well, one thing we can do is rephrase the question a bit to 
 ````
 # Create a hypothetical barrel using BOTH the I. setosa and I. virginica petal lengths
 > Barrel<-c(Versicolor[,"Petal.Length"],Virginica[,"Petal.Length"])
+> Barrel
+  [1] 4.7 4.5 4.9 4.0 4.6 4.5 4.7 3.3 4.6 3.9 3.5 4.2 4.0 4.7 3.6 4.4 4.5 4.1 4.5 3.9 4.8 4.0 4.9 4.7 4.3 4.4 4.8 5.0 4.5 3.5
+ [31] 3.8 3.7 3.9 5.1 4.5 4.5 4.7 4.4 4.1 4.0 4.4 4.6 4.0 3.3 4.2 4.2 4.2 4.3 3.0 4.1 6.0 5.1 5.9 5.6 5.8 6.6 4.5 6.3 5.8 6.1
+ [61] 5.1 5.3 5.5 5.0 5.1 5.3 5.5 6.7 6.9 5.0 5.7 4.9 6.7 4.9 5.7 6.0 4.8 4.9 5.6 5.8 6.1 6.4 5.6 5.1 5.6 6.1 5.6 5.5 4.8 5.4
+ [91] 5.6 5.1 5.1 5.9 5.7 5.2 5.0 5.2 5.4 5.1
+ 
+ # Next, we need to ask if we randomly sampled from this joint distribution, whether the samples would have a different mean.
+ > NewVersicolor<-sample(Barrel,length(Versicolor[,"Petal.Length"]),replace=TRUE)
+ > NewVersicolor
+ [1] 5.1 4.9 4.8 5.6 5.6 4.9 4.9 3.7 4.2 6.1 3.3 3.3 4.8 5.0 5.7 3.8 4.4 5.7 3.5 5.1 4.8 5.1 3.6 5.5 4.5 6.0 5.7 5.6 5.7 5.6
+[31] 3.6 5.6 4.5 4.5 3.6 3.0 4.5 3.9 5.8 3.3 5.7 4.2 5.0 5.0 4.0 5.1 4.7 4.2 3.5 5.6
+
+> NewVirginica<-sample(Barrel,length(Virginica[,"Petal.Length"]),replace=TRUE)
+> NewVirginica
+ [1] 5.0 4.9 4.2 3.5 6.7 4.1 4.6 5.8 3.9 5.7 4.8 5.1 3.8 4.5 4.1 4.6 5.0 5.6 4.9 4.0 4.3 4.8 5.2 4.4 5.6 4.5 5.2 5.1 5.1 5.6
+[31] 4.0 5.5 4.8 3.3 3.9 5.5 6.1 4.0 4.7 5.8 4.8 4.5 4.7 5.2 5.0 3.5 4.8 3.5 5.5 4.5
+````
