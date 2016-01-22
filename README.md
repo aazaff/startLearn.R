@@ -30,4 +30,5 @@ Resource | Description
 [David Bapst](https://drive.google.com/folderview?id=0B_xvEcEvKno_Rm5vSzVOOGc1b0U&usp=sharing) | Another good R tutorial that covers many of the same topics discussed here with some plotting aspects thrown in.
 [Hadley Wickham](http://adv-r.had.co.nz/) | This is an excellent resource that largely focuses on the programming side of R. As its name, **advanced R**, implies, the tutorial is meant for more advanced users.
 [Stack Overflow](http://stackoverflow.com/) | Stack Overflow is the de facto forum for R (and other language) questions. The community is easily irritated by questions from beginners, so it behooves you to search through the forums to see if your question has already been answered.
+[Quick R](http://www.statmethods.net/) | One of the most user-friendly services, but not very in depth.
 [Sublime Text](http://www.sublimetext.com/2) | Sublime Text is a text editing software. It is one of the best (free) text editors for coding in any language, including R.
