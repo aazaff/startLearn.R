@@ -257,9 +257,11 @@ How large is large enough? The honest answer is that the appropriate sample size
 
 In general, you should view any scientific study with <30 samples with *extreme skepticism*. Unfortunatley, an enormous amount of science, especially medical research, is conducted at such sample sizes. Never forget, in the words of Sherlock Holmes, "Data! Data! Data! I cannot make bricks without clay." Despite all of our efforts to the contrary, no amount of statistical manipulation can truly make up for a data shortage.
 
-## Testing if two distributions are identical
+## Testing if two distributions are different
 
-A large part of statistics is comparing two or more distributions in some way. Probably the most common question is to ask whether two distribution are different. What do I mean by different? Great question! There are lots of ways that distributions can be different, and you want to make sure that the difference you are testing for matches the conceptual question you are asking. The most common question is to ask whether the average of two distributions are different.
+A large part of statistics is comparing two or more distributions in some way. Probably the most common question is to ask whether two distribution are different. What do I mean by different? Great question! There are lots of ways that distributions can be different, and you want to make sure that the difference you are testing for matches the conceptual question you are asking. 
+
+Here is a question to start with. In the ````iris```` dataset, is the petal length of *Iris versicolor*, on average, different from the petal length of *Iris virginica*?
 
 ````
 # Take a look at the iris dataset in R
@@ -274,22 +276,29 @@ A large part of statistics is comparing two or more distributions in some way. P
 4          4.6         3.1          1.5         0.2  setosa
 5          5.0         3.6          1.4         0.2  setosa
 6          5.4         3.9          1.7         0.4  setosa
-````
 
-Here is a question, does *Iris setosa*, on average, have a different petal length than *Iris virginica*?
-
-````
 # Make a Virginica subset
 > Virginica<-iris[which(iris[,"Species"]=="virginica"),]
 
 # Make a Virginica subset
-> Setosa<-iris[which(iris[,"Species"]=="setosa"),]
+> Versicolor<-iris[which(iris[,"Species"]=="versicolor"),]
 
 # Ask whether the average petal length of Setosa is equal to the average petal length of virginica
-> mean(Setosa[,"Petal.Length"]) == mean(Virginica[,"Petal.Length"])
+> mean(Versicolor[,"Petal.Length"]) == mean(Virginica[,"Petal.Length"])
 [1] FALSE
+
+# See the difference of the means more precisely
+> mean(Versicolor[,"Petal.Length"])
+[1] 4.260
+
+> mean(Virginica[,"Petal.Length"])
+[1] 5.552
 ````
 
-Awesome, the averge lengths aren't identical and we can go home, right? Not so fast. What if we If you think about it, asking if the two means are exactly identical is an extremely stupid questioEven if there was no difference between the average petal lengths of *I. virginica* and *I. setosa*, why would our random samples be *exactly* identical.
+It seems that *I. versicolor* is shorter, on average, than *I. virginica*. Case solved, right? Not so fast. It's possible that we got different means for each species of flower just by chance (i.e., it just happend that way because of the particular flowers we picked). What we need is some measure of *probability* that tells us how likely it is the two distributions are different.
 
-How can we rephrase the problem in terms of sampling distributions and probability? of We know that the ````iris```` dataset is just a small subset of all the irises in the world. What is the probability that 
+How can we do that? Well, one thing we can do is rephrase the question a bit to make it clearer. Instead of asking if the two distributions are different, we could say that we are asking if the two distributions are the same. In terms of our earlier barrel analogy, we want to know if our petal length measurements for *Iris versicolor* and *Iris virginica* were drawn from the *same* barrel (i.e., sampling distribution), and it just happens that we got two different means. We can test this just like we would if we had a literal barrel full of iris petals in front of us.
+
+````
+# Create a hypothetical barrel using BOTH the I. setosa and I. virginica petal lengths
+> Barrel<-c(Versicolor[,"Petal.Length"],Virginica[,"Petal.Length"])
