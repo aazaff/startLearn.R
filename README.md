@@ -13,6 +13,8 @@ Importantly, these tutorials focus on the core programming and computer science 
 + [Intermediate Test](https://github.com/aazaff/startLearn.R/blob/master/intermediateTest.md)
 + [Advanced Concepts](https://github.com/aazaff/startLearn.R/blob/master/advancedConcepts.md)
 + [Advanced Test](https://github.com/aazaff/startLearn.R/blob/master/advancedTest.md)
++ [Expert Concepts](https://github.com/aazaff/startLearn.R/blob/master/expertConcepts.md)
++ [Expert Test](https://github.com/aazaff/startLearn.R/blob/master/expertTest.md)
 + [Other R Tutorials and Resources](#other-r-tutorials)
 
 ## How to install R
