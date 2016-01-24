@@ -51,7 +51,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 
 2. Is ````precip```` defined as a **1-dimensional array** or a **vector**? How did you find out?
 
-3. How would you convert ````trees```` into a matrix?
+3. How would you convert the **data.frame** ````trees```` into a matrix?
 
 4. What is the name of the 14th city in the ````precip```` dataset?
 
@@ -61,7 +61,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 
 7. Code **four** different ways to **subscript** the **2nd row** and **7th column** of ````mtcars```` using bracket notation - i.e., 17.02.
 
-8. How would you change the precipitation values of "Juneau", "Phoenix", and "Sacramento" to 23, 46, and 12 in the ````precip```` dataset. (Hint: You will need to use **subscripts** and the **<-** operator).
+8. How would you change the precipitation values of "Juneau", "Phoenix", and "Sacramento" to 23, 46, and 12 in the ````precip```` dataset. (Hint: You will need to use **subscripts** and the ````<-````  operator).
 
 9. Are there **any** trees in the ````trees```` dataset with more **girth** than **volume**? How did you find out?
 
