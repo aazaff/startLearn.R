@@ -19,4 +19,4 @@ The only way to learn a new programming language is by writing programs in it. T
 
 4. Write a function that simulates 1,000,000 powerball drawings. A powerball drawing takes a random **sample** of 5 numbers (without replacement) from 1 through 69, plus one powerball number ranging from 1 through 26. The function should return a single object recording all of your draws.
 
-5. Write a fucntion that take a single set of lottery numbers (as a vector) as its **argument**. As before, write a function that simulates 1,000,000 powerball drawings. Have the function return a ````TRUE````  or ````FALSE````  value if you won any of the drawings.
+5. Write a function that take a single set of lottery numbers (as a vector) as its **argument**. As before, write a function that simulates 1,000,000 powerball drawings. Have the function return a ````TRUE```` or ````FALSE````  value if you won any of the drawings.
