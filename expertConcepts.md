@@ -261,61 +261,129 @@ In general, you should view any scientific study with <30 samples with *extreme 
 
 A large part of statistics is comparing two or more distributions in some way. Probably the most common question is to ask whether two distribution are different. What do I mean by different? Great question! There are lots of ways that distributions can be different, and you want to make sure that the difference you are testing for matches the conceptual question you are asking. 
 
-Here is a question to start with. In the ````iris```` dataset, is the petal length of *Iris versicolor*, on average, different from the petal length of *Iris virginica*?
+Let's take a look at the ````PlantGrowth```` dataset. This dataset records the outcomes of an experiments treatment to increase plant growth. There is a control ( ````ctrl ````) group and two experimental groups ( ````tr1 ```` and  ````trt2 ````) that recieved different experimental fertilizer treatments to increase  ````weight```` gain.
 
 ````
-# Take a look at the iris dataset in R
-> data(iris)
+# Load in the dataset
+> data(PlantGrowth)
 
 # Preview the data
-> head(iris)
-  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-1          5.1         3.5          1.4         0.2  setosa
-2          4.9         3.0          1.4         0.2  setosa
-3          4.7         3.2          1.3         0.2  setosa
-4          4.6         3.1          1.5         0.2  setosa
-5          5.0         3.6          1.4         0.2  setosa
-6          5.4         3.9          1.7         0.4  setosa
+> PlantGrowth
+   weight group
+1    4.17  ctrl
+2    5.58  ctrl
+3    5.18  ctrl
+4    6.11  ctrl
+5    4.50  ctrl
+6    4.61  ctrl
+7    5.17  ctrl
+8    4.53  ctrl
+9    5.33  ctrl
+10   5.14  ctrl
+11   4.81  trt1
+12   4.17  trt1
+13   4.41  trt1
+14   3.59  trt1
+15   5.87  trt1
+16   3.83  trt1
+17   6.03  trt1
+18   4.89  trt1
+19   4.32  trt1
+20   4.69  trt1
+21   6.31  trt2
+22   5.12  trt2
+23   5.54  trt2
+24   5.50  trt2
+25   5.37  trt2
+26   5.29  trt2
+27   4.92  trt2
+28   6.15  trt2
+29   5.80  trt2
+30   5.26  trt2
+````
+
+Our question for the day is whether or not plants in treatment group 1 grew more or less, on average, than plants in the control group.
+
+````
+# Make a Control subset
+> Control<-PlantGrowth[which(PlantGrowth[,"group"]=="ctrl"),]
 
 # Make a Virginica subset
-> Virginica<-iris[which(iris[,"Species"]=="virginica"),]
+> Treatment<-PlantGrowth[which(PlantGrowth[,"group"]=="trt1"),]
 
-# Make a Virginica subset
-> Versicolor<-iris[which(iris[,"Species"]=="versicolor"),]
-
-# Ask whether the average petal length of Setosa is equal to the average petal length of virginica
-> mean(Versicolor[,"Petal.Length"]) == mean(Virginica[,"Petal.Length"])
+# Ask whether the average weight of the control group is equal to the average weight of the treated group.
+> mean(Control[,"weight"]) == mean(Treatment[,"weight"])
 [1] FALSE
 
 # See the difference of the means more precisely
-> mean(Versicolor[,"Petal.Length"])
-[1] 4.260
+> mean(Control[,"weight"])
+[1] 5.032
 
-> mean(Virginica[,"Petal.Length"])
-[1] 5.552
+> mean(Treatment[,"weight"])
+[1] 4.661
+
+# Find the difference of the means
+> mean(Control[,"weight"])-mean(Treatment[,"weight"])
+[1] 0.371
 ````
 
-It seems that *I. versicolor* is shorter, on average, than *I. virginica*. Case solved, right? Not so fast. It's possible that we got different means for each species of flower just by chance (i.e., it just happend that way because of the particular flowers we picked). What we need is some measure of *probability* that tells us how likely it is the two distributions are different.
+Wow! The treated group actually grew *less* than the control group. Case solved, right? Not so fast. It's possible that we got different means for the two groups just by chance. What we really want is some measure of *probability* that tells us how likely it is the two distributions are genuinely different. The best way to do this is by repeating (replicating) the experiment over and over again, ideally enough times for the law of large numbers to apply - i.e., >30 replications. Unfortunately, this would take a long time, but we can mimic replication using basic statistical testing in R.
 
-How can we do that? Well, one thing we can do is rephrase the question a bit to make it clearer. Instead of asking if the two distributions are different, we could say that we are asking if the two distributions are the same. In terms of our earlier barrel analogy, we want to know if our petal length measurements for *Iris versicolor* and *Iris virginica* were drawn from the *same* barrel (i.e., sampling distribution), and it just happens that we got two different means. We can test this just like we would if we had a literal barrel full of iris petals in front of us.
+Let's rephrase the question in more statistical terms. We start with an initial hypothesis: there is no difference in weight between the control group and the plants treated witht he first fertilizer. Or phrased differently, we hypothesize that our control group samples and treated samples are just random samples *drawn from the same sampling distribution* - i.e., out of the same barrel.
+
+The best way to test this is to create a simulations where there is indeed no difference between the two groups, and see how many times we see a difference *at least as strong* as the one we originally observed. Here it is probably easier to just show you.
 
 ````
-# Create a hypothetical barrel using BOTH the I. setosa and I. virginica petal lengths
-> Barrel<-c(Versicolor[,"Petal.Length"],Virginica[,"Petal.Length"])
-> Barrel
-  [1] 4.7 4.5 4.9 4.0 4.6 4.5 4.7 3.3 4.6 3.9 3.5 4.2 4.0 4.7 3.6 4.4 4.5 4.1 4.5 3.9 4.8 4.0 4.9 4.7 4.3 4.4 4.8 5.0 4.5 3.5
- [31] 3.8 3.7 3.9 5.1 4.5 4.5 4.7 4.4 4.1 4.0 4.4 4.6 4.0 3.3 4.2 4.2 4.2 4.3 3.0 4.1 6.0 5.1 5.9 5.6 5.8 6.6 4.5 6.3 5.8 6.1
- [61] 5.1 5.3 5.5 5.0 5.1 5.3 5.5 6.7 6.9 5.0 5.7 4.9 6.7 4.9 5.7 6.0 4.8 4.9 5.6 5.8 6.1 6.4 5.6 5.1 5.6 6.1 5.6 5.5 4.8 5.4
- [91] 5.6 5.1 5.1 5.9 5.7 5.2 5.0 5.2 5.4 5.1
- 
- # Next, we need to ask if we randomly sampled from this joint distribution, whether the samples would have a different mean.
- > NewVersicolor<-sample(Barrel,length(Versicolor[,"Petal.Length"]),replace=TRUE)
- > NewVersicolor
- [1] 5.1 4.9 4.8 5.6 5.6 4.9 4.9 3.7 4.2 6.1 3.3 3.3 4.8 5.0 5.7 3.8 4.4 5.7 3.5 5.1 4.8 5.1 3.6 5.5 4.5 6.0 5.7 5.6 5.7 5.6
-[31] 3.6 5.6 4.5 4.5 3.6 3.0 4.5 3.9 5.8 3.3 5.7 4.2 5.0 5.0 4.0 5.1 4.7 4.2 3.5 5.6
+# Reconduct the original experiment by sampling a new set of "hypothetical"
+# Control and Treatment group length by joining their distribution.
+# Find the difference between the means of each. Repeat this process 100 times, 
+# and see in how many instances the difference between the means is greater than
+# 0.371.
 
-> NewVirginica<-sample(Barrel,length(Virginica[,"Petal.Length"]),replace=TRUE)
-> NewVirginica
- [1] 5.0 4.9 4.2 3.5 6.7 4.1 4.6 5.8 3.9 5.7 4.8 5.1 3.8 4.5 4.1 4.6 5.0 5.6 4.9 4.0 4.3 4.8 5.2 4.4 5.6 4.5 5.2 5.1 5.1 5.6
-[31] 4.0 5.5 4.8 3.3 3.9 5.5 6.1 4.0 4.7 5.8 4.8 4.5 4.7 5.2 5.0 3.5 4.8 3.5 5.5 4.5
+> compareWeights<-function(Control,Treatment,Iterations=100) {
+    
+    # Create a hypothetical sampling distribution named barrel 
+    # using BOTH the observed Control and Treatment
+    Barrel<-c(Control[,"weight"],Treatment[,"weight"])
+    
+    # Create a 1-dimensional array to store the output of the replications
+    ReplicatedMeans<-array(data=NA,dim=Iterations)
+    
+    # Create a for( ) loop that repeats the process 100 times.
+    for (Counter in 1:Iterations) {
+        
+        # Make sure that you sample the same number of specimens for each species
+        # as in the original dataset
+        NewControl<-sample(Barrel,nrow(Control),replace=TRUE)
+        NewTreatment<-sample(Barrel,nrow(Treatment),replace=TRUE)
+        
+        # Find the means 
+        ControlMean<-mean(NewControl)
+        TreatmentMean<-mean(NewTreatment)
+        
+        # Find the difference of the means and store it in the ReplicatedMeans array
+        ReplicatedMeans[Counter]<-ControlMean-TreatmentMean
+        
+        }
+        
+    return(ReplicatedMeans)
+    }
+    
+# Run the function for comparing weights
+# Set the seed so we all get the same results
+> set.seed(10)
+> ReplicationResults<-compareWeights(Control,Treatment,100)
+
+# Find how many of the replications showed a difference in the means 
+# more extreme than the one we initially observed.
+> length(which(ReplicationResults>0.371))
+[1] 8
 ````
+
+This means that approximately 8/100 (.08 or 8%) trials of the experiment would give us a difference between the control and treatment groups as large (or larger) than what we observed, even *if* there was no difference between the two groups.
+
+Generally, as a completely arbitrary rule of thumb (with a complex and controversial history), scientists do not accept results of these sorts of tests where the outcome comes out to greater than 5% (i.e., 0.05).
+
+Importantly, this sort of test does not tell us whether there is or is not an effect of the treatment on plant growth - i.e., whether the hypotheis is true or false. In fact, from a philosophical standpoint, it is impossible to estimate the probability whether a hypothesis is true or false. What we *can* estimate is the probability that we would observe the same result (or better) under  different conditions.
+
+We will talk more about the philosophy of statistics in later lab assignments, but this is enough to give you a working idea of what can be achieved in R.
