@@ -165,21 +165,21 @@ What we *really* want is a genuine **frequency bar plot**, meaning the output of
 
 So much clearer! Generally, it is often more helpful to do a ````barplot( )```` of ````table( )```` than ````hist( )````. Of course, this is not to say that ````barplot( ) ```` works in all situations.
 
- ````
- > MyVector<-c(1,1,2,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3,4,5)
- > mean(MyVector)
+````
+> MyVector<-c(1,1,2,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3,4,5)
+> mean(MyVector)
 [1] 2.566667
- > median(MyVector)
- [1] 2.5
- 
- > barplot(table(MyVector)
- ````
+> median(MyVector)
+[1] 2.5
+
+> barplot(table(MyVector)
+````
  
 The output is accurate, but it doesn't adequately give us a sense for the distribution in terms of its spread (standard deviation) or central tendency (mean, median, and mode) of the data. Yes, *techinically* the mode is 1, but the overwhelming majority of data points fall between 2 and 3 - hence the mean and median of ~2.5. Ideally, you want that to be illustrated in your visualization, just like it is reflected in the numerical statistics.
 
 ````
 # This works much better than barplot( )!
-hist(MyVector)
+> hist(MyVector)
 ````
 
 The problem here is that there are, broady speaking, two opposing types of data. **Discrete** data is data that can only take on a specific set of values within a range - e.g., all the integers between 1 and 10. **Continuous** data is data that can take on *any* value within a range. A true bar plot doesn't describe **continuous** data well, but a histogram does - and vice-versa. This is why  ````hist( )```` groups values together, it is a crude attempt to make continuous data visually discrete. 
@@ -187,6 +187,10 @@ The problem here is that there are, broady speaking, two opposing types of data.
 Just because ````hist( )```` is better than ````barplot( )```` for **continuous** data is no excuse for using it. There are better ways yet to visualize your data. Let's try the ````density( )```` function.
 
 ````
+# We need to use two functions. 
+# The density( ) function calculates the kernal density
+# Kernal density( ) is basically a histogram represented as a line
+# rather than as bars. The plot( ) function is for plotting it.
 > plot(density(MyVector))
 ````
 
