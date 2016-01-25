@@ -261,6 +261,6 @@ Nice! It totally worked. Granted, all we ended up doing is recreating the origin
 
 Although ````function( )````, ````if( )````, and ````for( )```` were presented last in the tutorial, it is not an exaggeration to say that these functions are the backbone of computer programming. If you truly master these three operations and **subscripting**, then there is literally nothing that you cannot accomplish in R or life.
 
-Of course, there are great many functions still out there for you to learn. As you progress you will doubtlessly find more convenient and efficient ways of doing things than constant ````if/else( )```` and  ````for( )```` statements. Indeed, the mark of a truly high-level R progammer is often thought (controversially) to be measurable by how readily he or she can circumvent cumberson loops.
+Of course, there are great many functions still out there for you to learn. As you progress you will doubtlessly find more convenient and efficient ways of doing things than constant ````if/else( )```` and  ````for( )```` statements. Indeed, the mark of a truly high-level R progammer is often thought (controversially) to be measurable by how readily he or she can circumvent cumbersome loops.
 
 Nevertheless, if you do not know a more efficient way to accomplish something, you can *always* fall back on the these basics.
