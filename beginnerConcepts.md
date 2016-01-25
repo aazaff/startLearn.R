@@ -423,9 +423,13 @@ Nope, doesn't work! Even though **vectors** are **conceptually identical** to a 
 	> MyArray
 	[1] 1 2 3 4
 
-	# You can what type of array something is by using the is()
+	# You can check what type of array something is by using the is() function
 	> is(MyVector,"vector")
 	[1] TRUE
+
+	# You can also convert between different types of class by using the as( ) function.
+	# Be warned that not all classes can be converted to other classes in this way.
+	> as(MyVector,"array")
 
 	# Let's test if the 1-D array, MyArray, is identical with the previous vector, MyVector.
 	> identical(MyVector,MyArray)
