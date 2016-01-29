@@ -13,7 +13,7 @@ The only way to learn a new programming language is by writing programs in it. T
 
 1. Load the ````iris```` dataset we used in the earlier tests. Write a function that takes ````iris```` as its argument, and returns three subsets of the data.frame split by the three different types of species (saved as a single object).
 
-2. Write a function that takes ````iris```` as its argument. The function should, for each row, *add* **Sepal.Length** and **Petal.Length** *if* **Sepal.Width** is > 3.1. It should *substract* **Petal.Length** from **Sepal.Length** *if* **Sepal.Width** is <3.1. The answer should be returned as a vector.
+2. Write a function that takes ````iris```` as its argument. The function should, *for* each row, add **Sepal.Length** and **Petal.Length** *if* **Sepal.Width** is > 3.1. It should substract **Petal.Length** from **Sepal.Length** *if* **Sepal.Width** is <3.1. The answer should be returned as a vector.
 
 3. Load the ````mtcars```` dataset we used in the earlier tests. Write a function that takes a number of cylinders as its argument. Have the function return the average miles per gallon (column **mpg**) for *all* cars with that many cylinder (column **cyl**).
 
