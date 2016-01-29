@@ -15,7 +15,7 @@ There are lots of great and user-friendly statistics programs out there. The rea
 
 Writing a new function requires the ````function( )```` function. Say that five times fast! 
 
-Functions have a **name**, an **argument**, and one or more actions that it performs. All of a functions actions are known as the **body**. In order to create a function, you need to define these three things using the following format.
+Functions have a **name**, an **argument**, and one or more actions that it performs. All of a function's actions are known as the **body**. You need to define each of these three things using the following format to create a new function.
 
 ````
 # Importantly, notice the new { } syntax.
