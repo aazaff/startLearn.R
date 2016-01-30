@@ -358,8 +358,8 @@ The best way to test this is to create a simulations where there is indeed no di
         
         # Make sure that you sample the same number of specimens for each species
         # as in the original dataset
-        NewControl<-sample(Barrel,nrow(Control),replace=TRUE)
-        NewTreatment<-sample(Barrel,nrow(Treatment),replace=TRUE)
+        NewControl<-sample(Barrel,dim(Control)[[1]],replace=TRUE)
+        NewTreatment<-sample(Barrel,dim(Treatment)[[1]],replace=TRUE)
         
         # Find the means 
         ControlMean<-mean(NewControl)
