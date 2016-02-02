@@ -109,6 +109,7 @@ Mazda RX4 Wag 17.02
 1. What does the REPLACE= argument of the sample( ) function do?
 
 IF TRUE: Return sampled values back to the pool of potential values for the next draw.
+
 IF FALSE: Do not return sampled values back to the pool of potential values for the next draw.
 
 2. Using as(MyMatrix,"numeric") will not convert MyMatrix to numeric data! Can you think of a property of logicals that you can use to convert the logicals to 0's and 1's other than the as( ) function?
