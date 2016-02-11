@@ -30,8 +30,8 @@ Resource | Description
 [Kelly Black](http://www.cyclismo.org/tutorial/R/) | A good R tutorial, but be warned that it splits its attention between R programming principles and statistics.
 [Steve Holland](http://strata.uga.edu/software/pdf/Rtutorial.pdf) | Another good R tutorial that also covers basic plotting principles, which are not covered here.
 [David Bapst](https://drive.google.com/folderview?id=0B_xvEcEvKno_Rm5vSzVOOGc1b0U&usp=sharing) | Another good R tutorial that covers many of the same topics discussed here with some plotting aspects thrown in.
+[Mark Graph](https://docs.google.com/folderview?pli=1&docId=0ByIrJAE4KMTtRnI5WHM0QzBZQXc&id=0ByIrJAE4KMTtcVBmdm1BOEZoeEk#) | A google document of some "cheat sheets" for remembering common funcitons and basic concepts. Very concise, very helpful.
 [Hadley Wickham](http://adv-r.had.co.nz/) | This is an excellent resource that largely focuses on the programming side of R. As its name, **advanced R**, implies, the tutorial is meant for more advanced users.
 [Stack Overflow](http://stackoverflow.com/) | Stack Overflow is the de facto forum for R (and other language) questions. The community is easily irritated by questions from beginners, so it behooves you to search through the forums to see if your question has already been answered.
 [Quick R](http://www.statmethods.net/) | One of the most user-friendly services, but not very in depth.
-[R Cheat Sheets](https://docs.google.com/folderview?pli=1&docId=0ByIrJAE4KMTtRnI5WHM0QzBZQXc&id=0ByIrJAE4KMTtcVBmdm1BOEZoeEk#) | A google document of some "cheat sheets" for remembering common funcitons and basic concepts.
 [Sublime Text](http://www.sublimetext.com/2) | Sublime Text is a text editing software. It is one of the best (free) text editors for coding in any language, including R.
