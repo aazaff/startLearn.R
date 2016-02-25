@@ -15,7 +15,7 @@ If you are working through this tutorial as part of the Geoscience 541: Paleobio
 
 Perhaps the biggest benefit of ````[ ]```` notation is that we can perform complex subscripting operations within them. The most powerful of these is the ````which( )```` function, which finds the **index** (a.k.a., the position) of ````TRUE```` values in a logical array. In other words ````which( )```` is short for the phrase: *which of the elements in this array are TRUE values*.
 
-````
+````R
 # Create a vector of logical values, where the first element and fifth element are TRUE
 > MyLogical<-c(TRUE,FALSE,FALSE,FALSE,TRUE)
 > MyLogical
@@ -28,7 +28,7 @@ Perhaps the biggest benefit of ````[ ]```` notation is that we can perform compl
 
 Now, you might ask, how does this help? Well now that you you have the index positions, you can reference those elements of the array directly.
 
-````
+````R
 # Display the elements of MyLogical that are TRUE
 > MyLogical[which(MyLogical)]
 [1] TRUE TRUE
@@ -36,7 +36,7 @@ Now, you might ask, how does this help? Well now that you you have the index pos
 
 This isn't very impressive since it is circular. We asked which elements had a value of ````TRUE````, so of course the values of those elements is ````TRUE````. But, what if we don't start out with logical data?
 
-````
+````R
 # What if we want to see all the elements in array that are greater than 5 and what those elements are?
 > MyVector<-c(2,6,4,5,6,1,3,4,7,9,3)
 > MyVector
@@ -58,7 +58,7 @@ This isn't very impressive since it is circular. We asked which elements had a v
 
 You can combine logical statements using the ````&```` (and) and ````|```` (or) operators.
 
-````
+````R
 # Find numbers that are greater than 5 AND less than 9
 > MyVector[which(MyVector > 5 & MyVector < 9)]
 [1] 6 6 7
@@ -72,7 +72,7 @@ You can combine logical statements using the ````&```` (and) and ````|```` (or) 
 
 The true power of ````which( )```` doesn't become apparent until you want to start **rewriting** elements of a data object. 
 
-````
+````R
 # Let's make a practice data frame
 > MyArray<-array(data=c(5,6,4,5,5,6),dim=6)
 > MyArray
@@ -93,7 +93,7 @@ The true power of ````which( )```` doesn't become apparent until you want to sta
 
 That's fairly straightforward, but what if we want to overwrite multiple elements in an array?
 
-````
+````R
 # Create an array
 > MyArray<-array(data=c(5,6,4,5,5,6),dim=6)
 > MyArray
@@ -109,7 +109,7 @@ We can also perform logicals on two and three-dimensional arrays, but it can be 
 
 Each row represents a different year. Each column represents a different country. The value of each cell represents how many phones were present in that country that year.
 
-````
+````R
 # We can load any of R's example datasets using the data( ) function.
 > data(WorldPhones)
 
@@ -131,7 +131,7 @@ Each row represents a different year. Each column represents a different country
 
 Let's say that we recently learned that because of an error in the original study, any value indicating less than 2,000 or greater than 77,000 phones is unreliable. To reflect our uncertainty, we want to change all instances <2,000 or >77000 to **NA**. **NA** is R's way of saying that there is no data.
 
-````
+````R
 # Let's attempt to do some logical subsetting with which() on the WorldPhones matrix.
 > which(WorldPhones < 2000 | WorldPhones > 77000)
 [1]  7 22 29 36 37 38 39 40 41 43 44 45 46 47 48 49
@@ -151,7 +151,7 @@ Let's say that we recently learned that because of an error in the original stud
 
 What if we are only concerned with years where there were more than 118,000 phones worldwide? Logically, the first step would be to find the total number (sum) of phones for each year (row). 
 
-````
+````R
 # Reload the data
 > data(WorldPhones)
 
@@ -162,7 +162,7 @@ What if we are only concerned with years where there were more than 118,000 phon
 
 The ````sum( )```` function doesn't give us what we want! It sums all elements in an object, not each row. What we need is a way to *apply* the ````sum( )```` function to each individual row of the matrix. Luckily, there is an aptly named function, ````apply( )````, that we can use. 
 
-````
+````R
 # Find the sum of each row in WorldPhones with apply( )
 > apply(WorldPhones,1,sum)
  1951   1956   1957   1958   1959   1960   1961 
@@ -176,7 +176,7 @@ N.Amer   Europe     Asia   S.Amer  Oceania   Africa Mid.Amer
 
 Notice that apply returned a vector of sums for each row or column. We can perform a logical operation on that vector, and use the logical vector to define the rows we want from the matrix.
 
-````
+````R
 # Isolate which rows have more than 118,000 phones
 > which(apply(WorldPhones,1,sum) > 118000)
 1958 1959 1960 1961 
@@ -209,7 +209,7 @@ Sometimes you can avoid logical subscripting all together by subsetting your dat
 
 Iris is a **data.frame** consisting of different sepal and petal measurements of different iris flowers. It is a data.frame because, in addition to the numeric measurements, there is a column of non-numeric data that denotes which of three different species the specimen belonged to: *Iris setosa*, *Iris virginica*, and *Iris versicolor*.   
 
-````
+````R
 # Let's load in and take a look at the data
 > data(iris)
 
@@ -225,7 +225,7 @@ Iris is a **data.frame** consisting of different sepal and petal measurements of
 
 What if we wanted to find which **species** has the largest **sepal length**? Using what we've already learned, we could use ````which( )```` to subset the dataset by species. We could then find the ````max( )```` sepal length of each species. Let's try it.
 
-````
+````R
 # Subset the iris data.frame into three separate data frames by species using which( ). 
 # Beware of upper and lower case!
 > Setosa<-iris[which(iris[,"Species"]=="setosa"),]
@@ -245,7 +245,7 @@ Nice! We were able to figure out that a specimen of *Iris virginica* had the lon
 
 The ````tapply( )```` function takes a two-dimensional array, splits it into subsets, and then applies a function to a specific **column** in the subset.
 
-````
+````R
 # Find the maximum sepal length of each species
 > tapply(iris[,"Sepal.Length"],iris[,"Species"],max)
     setosa versicolor  virginica 
