@@ -108,7 +108,7 @@ If you have ever used a scientific or graphing calculator, then you already intu
 You can also perform what are called **logical operations**. A **logical** returns a value of either ````TRUE```` or ````FALSE````. Logicals are extraordinarily important in R.
 
 ````R
-# Let's ask R if 1 is greater than 0
+# Let's ask R if 0 is greater than 1
 > 0 > 1
 [1] FALSE
 
