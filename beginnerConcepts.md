@@ -117,7 +117,7 @@ You can also perform what are called **logical operations**. A **logical** retur
 [1] TRUE
 ````
 	
-Notice that we used ````==````  to ask if these two quantities are equal, rather than a single ````=```` sign. Most **operators** in R are  straightforward, but there are some - e.g., ````==```` - that are not intuitive.. Here is a list of the basics. There are a few other operators in R, but we will worry about them later.
+Notice that we used ````==````  to ask if these two quantities are equal, rather than a single ````=```` sign. Most **operators** in R are  straightforward, but there are some - e.g., ````==```` - that are not intuitive. Here is a list of the basics. There are a few other operators in R, but we will worry about them later.
 
 Operator Example | Operator Definition
 ---------------- | -------------------
