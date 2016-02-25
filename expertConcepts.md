@@ -194,11 +194,11 @@ Just because ````hist( )```` is better than ````barplot( )```` for **continuous*
 > plot(density(MyVector))
 ````
 
-The data is now represented as a curve rather than as bars, leaving you free from making any assumptions about the appropriate width of bars while conveying all of the same information. People generally don't like to use kernal density plots because their underlying [calculation](http://www.mvstat.net/tduong/research/seminars/seminar-2001-05/) is much more complex than a histogram. However, nobody is asking you to do it by hand in this class, R will do it all for you.
+The data is now represented as a curve rather than as bars, leaving you free from making any assumptions about the appropriate width of bars while conveying all of the same information. People generally don't like to use kernal density plots because their underlying [calculation](http://www.mvstat.net/tduong/research/seminars/seminar-2001-05/) is  more complex than a histogram. However, nobody is asking you to do it by hand in this class, R will do it all for you.
 
 ## Common sampling distributions
 
-**Continuous** data presents more problems then just how to visualize it. How can we randomly sample a continuous distribution? Up until now we've been making a **vector** and sampling from that vector. 
+**Continuous** data presents more problems thsn just how to visualize it. How can we randomly sample a continuous distribution? Up until now we've been making a **vector** and sampling from that vector. 
 
 ````R
 # Set the seed so we all get the same "random" answer
