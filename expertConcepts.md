@@ -333,9 +333,9 @@ Our question for the day is whether or not plants in treatment group 1 grew more
 
 Wow! The treated group actually grew *less* than the control group. Case solved, right? Not so fast. It's possible that we got different means for the two groups just by chance. What we really want is some measure of *probability* that tells us how likely it is the two distributions are genuinely different. The best way to do this is by repeating (replicating) the experiment over and over again, ideally enough times for the law of large numbers to apply - i.e., >30 replications. Unfortunately, this would take a long time, but we can mimic replication using basic statistical testing in R.
 
-Let's rephrase the question in more statistical terms. We start with an initial hypothesis: there is no difference in weight between the control group and the plants treated witht he first fertilizer. Or phrased differently, we hypothesize that our control group samples and treated samples are just random samples *drawn from the same sampling distribution* - i.e., out of the same barrel.
+Let's rephrase the question in more statistical terms. We start with an initial hypothesis: there is no difference in weight between the control group and the plants treated with the first fertilizer. Or phrased differently, we hypothesize that our control group samples and treated samples are just random samples *drawn from the same sampling distribution* - i.e., out of the same barrel.
 
-The best way to test this is to create a simulations where there is indeed no difference between the two groups, and see how many times we see a difference *at least as strong* as the one we originally observed. Here it is probably easier to just show you.
+The best way to test this is to create a simulation where there is indeed no difference between the two groups, and see how many times we see a difference *at least as strong* as the one we originally observed. Here it is probably easier to just show you.
 
 ````R
 # Reconduct the original experiment by sampling a new set of "hypothetical"
