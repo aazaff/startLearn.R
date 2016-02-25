@@ -6,7 +6,7 @@ The following are a set of self-test questions designed to complement the [inter
 
 We are going to make our own dataset for this exercise using random data. Normally, because the data is random, we would not be able to see the same results. However, if we use the ````set.seed( )```` function, we will all generate the same "random" results.
 
-````
+````R
 # First we need to set the seed
 > set.seed(541)
 
@@ -41,7 +41,7 @@ We are going to make our own dataset for this exercise using random data. Normal
 
 Let's create a numeric matrix next.
 
-````
+````R
 # First we need to set the seed
 > set.seed(154)
 
