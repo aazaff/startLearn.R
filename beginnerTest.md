@@ -6,7 +6,7 @@ The following are a set of self-test questions designed to complement the [begin
 
 We will be using several pre-built in datasets that come with R for this exercise. You can load them into R using the ````data( )```` function.
 
-````
+````R
 # Data from the 1974 Motor Trend US magazine. 
 > data(mtcars)
 
@@ -19,7 +19,7 @@ We will be using several pre-built in datasets that come with R for this exercis
   
 Note that you would normally expect to define the name of new objects using the ````<-```` operator, but the ````data( )```` function creates a new object for you automatically.
 
-````
+````R
 # Take a quick look at the structure of each dataset.
 # You can use the head( ) function to only display the first few rows of the dataset.
 > head(mtcars)
