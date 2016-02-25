@@ -17,14 +17,14 @@ Writing a new function requires the ````function( )```` function. Say that five 
 
 Functions have a **name**, an **argument**, and one or more actions that it performs. All of a function's actions are known as the **body**. You need to define each of these three things using the following format to create a new function.
 
-````
+````R
 # Importantly, notice the new { } syntax.
 FunctionName <- function ( FunctionArguments ) { Body }
 ````
 
 Let's say that we wanted to make a function that adds **s** to whatever singular word we give it.
 
-````
+````R
 # Write out a function that takes a "SingularWord" as an argument and adds s
 > Pluralise<-function(SingularWord) {
     PluralWord<-c(SingularWord,"s")
@@ -43,7 +43,7 @@ Our ````Pluralise```` function didn't work because objects created inside of the
 
 The first of these is the ````print( )```` function. This function will *print* whatever arguments you give it to your R terminal. You can use this inside or outside of function bodies.
 
-````
+````R
 > print("It works, I swear.")
 [1] "It works, I swear."
 
@@ -59,7 +59,7 @@ It worked! Unfortunately ````print( )```` isn't very flexible, as it will only p
 
 Using ````return( )````  automatically stops the function and returns whatever **object** is its **argument**.
 
-````
+````R
 # Create a function that double the argument
 > DoubleIt<-function(Argument) {
     Answer<-Argument*2
@@ -82,7 +82,7 @@ Using ````return( )````  automatically stops the function and returns whatever *
 
 Betweeen ````return( )```` and ````#```` you now know two ways to ensure that R doesn't execute code. However, these are fairly crude mechanisms. Much more powerful and explicit is the ````if( )```` statement, which tells R to only execute a command *if its argument is TRUE.*
 
-````
+````R
 # The basic if( ) statement format
 > if ( Condition ) {
     Body
@@ -91,7 +91,7 @@ Betweeen ````return( )```` and ````#```` you now know two ways to ensure that R 
 
 A function that tells us if a number is even. We're going to use the %% operator from the very beginning of the beginnerConcepts tutorial. Remember that %% finds the remainder of a x divided by y.
 
-````
+````R
 # Our Evenness function
 > Evenness<-function(Number) {
     if (Number %% 2 == 0) {
@@ -128,7 +128,7 @@ The if/else paradigm is intimately linked to a binary TRUE/FALSE paradigm, but w
 
 For example, a function that convert from pounds to kilometers if we give it a weight measurement, from inches to centimeters if we give it a length, and from farenheit to centigrade for a temperature.
 
-````
+````R
 # We can use the else if ( ) { } format!
 > Conversion<-function(Unit, Value) {
     if (Unit=="Pounds") {
@@ -165,7 +165,7 @@ There are a number of functions built into R that will allow us to repeat an ope
 
 The ````for( )```` function follows a similar format to ````function( )```` and ````if( )````, in that it is followed by ````{ }```` which enclose the **body** of tasks that you wanted automated.
 
-````
+````R
 # The basic format of a for( ) loop
 > for (Counter in Vector) { Commands }
 
@@ -177,7 +177,7 @@ The ````for( )```` function follows a similar format to ````function( )```` and 
 
 You supply every ````for( )```` loop with with a **counter** and a **vector**. The loop will execute the commands of the loop one time for each element in the vector. For example, the loop will repeat six times if you supply it an initial vector with six elements. The **counter** will sucessively take on the value of all the elements in the vector.
 
-````
+````R
 # Here's another way to think of it. Start with a vector.
 > Week<-c("Monday","Tuesday","Wednesday","Thursday","Friday")
 
@@ -207,7 +207,7 @@ You supply every ````for( )```` loop with with a **counter** and a **vector**. T
 
 However, as we discussed earlier, it is a little inconvenient to just have a ton of text returned by ````print( )````. It would be nice if we could store the output of our ````for( )```` loop, say as a vector.
 
-````
+````R
 # Try the function as before using return( ) instead of print( )
 > for (Day in Week) {
     return(Day)
@@ -217,7 +217,7 @@ Error: no function to return from, jumping to top level
 
 Nope! ````return( )```` only works with functions. How can we get the output of our loop saved as a vector?
 
-````
+````R
 # We could try saving it as a vector?
 > for (Day in Week) {
     NewVector<-c(Day)
@@ -228,7 +228,7 @@ Nope! ````return( )```` only works with functions. How can we get the output of 
 
 Not quite! The loop creates a new version of NewVector every time. Only the last element of the loop, "Friday" is saved. What we really want is for NewVector to exist outside of the loop, so it isn't recreated each time.
 
-````
+````R
 # Create an array of blank values, and the appropriate length
 > FinalArray<-array(data=NA,dim=5)
 > for (Day in Week) {
@@ -242,7 +242,7 @@ Nope! Still doesn't work! Because we still have ````FinalArray<-Day```` within t
 
 But how do we specify the correct **subscript** for each loop? The answer goes back to how we construct the loop in the first place. Instead of having our **counter** be a character specifying the **value** in each element of the vector ````Week````, we should have **counter** reference the **index** of elements in the vector.
 
-````
+````R
 # Take a look
 > FinalArray<-array(data=NA,dim=5)
 > WeekIndex<-1:length(Week)
