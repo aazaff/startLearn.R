@@ -39,7 +39,7 @@ Wait a minute nothing happened!?
 #### The sixth rule of R-club.
 ***"What happens in the function body, stays in the function body."***
 
-Our ````Pluralise```` function didn't work because objects created inside of the function body are not accesible outside of the function. You need to explicitly tell R that you want to see what is inside of the function. There are several ways to do this, but there are only two that are important for you know right now.
+Our ````Pluralise( )```` function didn't work because objects created inside of the function body are not accesible outside of the function. You need to explicitly tell R that you want to see what is inside of the function. There are several ways to do this, but there are only two that are important for you know right now.
 
 The first of these is the ````print( )```` function. This function will *print* whatever arguments you give it to your R terminal. You can use this inside or outside of function bodies.
 
