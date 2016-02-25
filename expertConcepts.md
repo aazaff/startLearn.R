@@ -28,7 +28,7 @@ Think of a **distribution** as a wooden barrel. The barrel is full of differentl
 
 Let's visualize the barrel as a **vector** in R.
 
-````
+````R
 # Fill the barrel (a.k.a., our distribution) with colours
 > Barrel<-c("Blue","Blue","Blue","Pink","Pink","Viridian","Puce")
 
@@ -53,7 +53,7 @@ Barrel
 
 The **probability** of drawing each specific colour is simply the sampling distribution divided by its ````sum( )````.
 
-````
+````R
 # Find the probability of drawing each colour
 > table(Barrel) / sum(table(Barrel))
 Barrel
@@ -85,7 +85,7 @@ What is really important for a good statistician is that you never lose sight of
 
 Let's start by making ourselves a basic sampling distribution. Because I don't feel like typing out a lengthy distribution, we're going to make use of the ````rep( )```` function, short for *repeat*. Here's a quick rundown of how it works.
 
-````
+````R
 # Make a new vector that repeats each element of an existing vector twice
 > OriginalVector<-c(1,2,3)
 > OriginalVector
@@ -104,7 +104,7 @@ Let's start by making ourselves a basic sampling distribution. Because I don't f
 
 So, let's make a basic sampling distribution using ````rep( )````. Let's look at how many hours I've worked each day for the past 31 days.
 
-````
+````R
 > HoursWorked<-rep(c(6,7,8,9,10,11,12,13),times=c(2,2,8,10,2,2,3,2))
 > HoursWorked
 [1]  6  6  7  7  8  8  8  8  8  8  8  8  9  9  9  9  9  9  9  9  9  9 10 10 11 11 12 12 12 13 13
@@ -112,7 +112,7 @@ So, let's make a basic sampling distribution using ````rep( )````. Let's look at
 
 We call a numerical description of a distribution a **statistic** or a **parameter**. Because the difference between these two won't matter for this class, and because **parameter** is sometimes used interchangeaby with the R concept of an **argument**, we will only refer to them as statistics.
 
-````
+````R
 # The arithmetic mean is the most common statistic. It is simply the average of all points.
 > mean(HoursWorked)
 [1] 9.16129
@@ -150,7 +150,7 @@ It is often preferable to visualize distributions rather than to summarize them 
 
 You can make a kind of frequency bar plot in R using the ````hist( )```` function, which is short for **histogram**. The two terms can be used interchangeably, though as you will see below that is not entirely accurate. Regardless, it is better to think of them as **frequency bar plots** because the word **histogram** has a different meaning in some countries. The former is also the more descriptive name - remember the first rule of R-club!
 
-````
+````R
 > hist(HoursWorked)
 ````
 
@@ -158,14 +158,14 @@ Although this is a common way of visualizing data, it isn't very good. One thing
 
 What we *really* want is a genuine **frequency bar plot**, meaning the output of ````table(HoursWorked)```` represented as bars. Luckily, this is easily achieved.
 
-````
+````R
 # The function is literally called barplot( )
 > barplot(table(HoursWorked))
 ````
 
 So much clearer! Generally, it is often more helpful to do a ````barplot( )```` of ````table( )```` than ````hist( )````. Of course, this is not to say that ````barplot( ) ```` works in all situations.
 
-````
+````R
 > MyVector<-c(1,1,2,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3,4,5)
 > mean(MyVector)
 [1] 2.566667
@@ -177,7 +177,7 @@ So much clearer! Generally, it is often more helpful to do a ````barplot( )```` 
  
 The output is accurate, but it doesn't adequately give us a sense for the distribution in terms of its spread (standard deviation) or central tendency (mean, median, and mode) of the data. Yes, *techinically* the mode is 1, but the overwhelming majority of data points fall between 2 and 3 - hence the mean and median of ~2.5. Ideally, you want that to be illustrated in your visualization, just like it is reflected in the numerical statistics.
 
-````
+````R
 # This works much better than barplot( )!
 > hist(MyVector)
 ````
@@ -186,7 +186,7 @@ The problem here is that there are, broady speaking, two opposing types of data.
 
 Just because ````hist( )```` is better than ````barplot( )```` for **continuous** data is no excuse for using it. There are better ways yet to visualize your data. Let's try the ````density( )```` function.
 
-````
+````R
 # We need to use two functions. 
 # The density( ) function calculates the kernal density
 # Kernal density( ) is basically a histogram represented as a line
@@ -200,7 +200,7 @@ The data is now represented as a curve rather than as bars, leaving you free fro
 
 **Continuous** data presents more problems then just how to visualize it. How can we randomly sample a continuous distribution? Up until now we've been making a **vector** and sampling from that vector. 
 
-````
+````R
 # Set the seed so we all get the same "random" answer
 > set.seed(121)
 > SimpleVector<-c(1,2,3,4,5)
@@ -218,7 +218,7 @@ Galton | An exponentiated Gaussian distribution | Galton<-exp(Gaussian)
 
 There are several other common distributions - e.g., degenerate, binomial, multinomial, and poisson - that you might encounter in a statistics class, but the most important for this class are the three above. The Gaussian distribution is also known as the **normal** distribution and Galton is also known as the **log-normal** distribution - because it will be Gaussian if you log it. I mention this because R uses the normal and log-normal terminology for its functions. 
 
-````
+````R
 # Set the seed
 > set.seed(121)
 
@@ -242,7 +242,7 @@ There are several other common distributions - e.g., degenerate, binomial, multi
 
 You may have noticed for our draw from the random uniform distribution, that it does not seem particularly uniform. Let's take a look at it in a density plot.
 
-````
+````R
 # Set the seed so we all get the same "random" answer
 > set.seed(121)
 > plot(density(runif(10,min=0,max=1)))
@@ -250,7 +250,7 @@ You may have noticed for our draw from the random uniform distribution, that it 
 
 It doesn't look uniform at all! The density of a uniform function should be flatish across the range from its minimum to maximum. It should look something akin to a plateau or mesa. Let's try again, but this time using a large number of draws.
 
-````
+````R
 # Try it again with 100,000 draws
 > plot(density(runif(100000,min=0,max=1)))
 ````
@@ -267,7 +267,7 @@ A large part of statistics is comparing two or more distributions in some way. P
 
 Let's take a look at the ````PlantGrowth```` dataset. This dataset records the outcomes of an experiments treatment to increase plant growth. There is a control ( ````ctrl ````) group and two experimental groups ( ````tr1 ```` and  ````trt2 ````) that recieved different experimental fertilizer treatments to increase  ````weight```` gain.
 
-````
+````R
 # Load in the dataset
 > data(PlantGrowth)
 
@@ -308,7 +308,7 @@ Let's take a look at the ````PlantGrowth```` dataset. This dataset records the o
 
 Our question for the day is whether or not plants in treatment group 1 grew more or less, on average, than plants in the control group.
 
-````
+````R
 # Make a Control subset
 > Control<-PlantGrowth[which(PlantGrowth[,"group"]=="ctrl"),]
 
@@ -337,7 +337,7 @@ Let's rephrase the question in more statistical terms. We start with an initial 
 
 The best way to test this is to create a simulations where there is indeed no difference between the two groups, and see how many times we see a difference *at least as strong* as the one we originally observed. Here it is probably easier to just show you.
 
-````
+````R
 # Reconduct the original experiment by sampling a new set of "hypothetical"
 # Control and Treatment group length by joining their distribution.
 # Find the difference between the means of each. Repeat this process 100 times, 
