@@ -259,4 +259,4 @@ Although this might seem like a trivial improvement at the moment, don't forget 
 
 Automating boring and repetitive tasks is the whole reason that we invented computers in the first place! If it seems like an operation will take an inordinate amount of code, consider taking a break and formulating a more elegant solution. I assure you, one exists.
 
-Don't worry, we will cover automatic repetition (iterating) in the [advancedConcepts]() tutorial.
+Don't worry, we will cover automatic repetition (iterating) in the [advancedConcepts](https://github.com/aazaff/startLearn.R/blob/master/advancedConcepts.md) tutorial.
