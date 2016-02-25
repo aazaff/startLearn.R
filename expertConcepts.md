@@ -208,7 +208,7 @@ The data is now represented as a curve rather than as bars, leaving you free fro
 [1] 2
 ````
 
-That certainly won't work for continuous data, since it is literally impossible to type out an infinite number of points. Luckily, R will do it for us. Here are three of the most important sampling distributions that you can randomly sample form in R.
+That certainly won't work for continuous data, since it is literally impossible to type out an infinite number of points. Luckily, R will do it for us. Here are three of the most important sampling distributions that you can randomly sample from in R.
 
 Distribution | Description | Example
 ------ | ----- | ----- 
