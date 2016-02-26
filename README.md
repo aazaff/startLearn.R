@@ -16,6 +16,7 @@ Importantly, these tutorials largely focus on the core programming and computer 
 + [Expert Concepts](https://github.com/aazaff/startLearn.R/blob/master/expertConcepts.md)
 + [Expert Test](https://github.com/aazaff/startLearn.R/blob/master/expertTest.md)
 + [Other R Tutorials and Resources](#other-r-tutorials)
++ [Acknowledgements](acknowledgments)
 
 ## How to install R
 
@@ -35,3 +36,7 @@ Resource | Description
 [Stack Overflow](http://stackoverflow.com/) | Stack Overflow is the de facto forum for R (and other language) questions. The community is easily irritated by questions from beginners, so it behooves you to search through the forums to see if your question has already been answered.
 [Quick R](http://www.statmethods.net/) | One of the most user-friendly services, but not very in depth.
 [Sublime Text](http://www.sublimetext.com/2) | Sublime Text is a text editing software. It is one of the best (free) text editors for coding in any language, including R.
+
+## Acknowledgments
+
+This tutorial and all of its publically available content is funded by the University of Wisconsin - Madison and the National Science Foundation as part of the NSF Geoinformatics grant 0949416 (supplement) initiative for enhancing geoscience education.
