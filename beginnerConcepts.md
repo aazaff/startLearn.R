@@ -126,7 +126,7 @@ x **>=** y |	Is x **greter than or equal** to y
 x **<**  y |	Is x **less than** y
 x **<=** y |	Is x **less than or equal** to y
 x **==** y |	Is x **equal** to y
-x **!=** y |	Is **x *not* equal** to y
+x **!=** y |	Is x **not equal** to y
 
 ## Using functions for basic math
 
