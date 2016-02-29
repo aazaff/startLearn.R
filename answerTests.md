@@ -6,14 +6,14 @@ Possible answers to the questions in the [beginnerTest](), [intermediateTest](),
 
 1) What class of object is ````mtcars````? What function did you use to find out?
 
-````
+````R
 > class(mtcars)
 [1] "data.frame"
 ````
 
 2) Is ````precip```` defined as a 1-dimensional array or a vector? How did you find out?
 
-````
+````R
 > is(precip,"vector")
 [1] TRUE
 
@@ -25,7 +25,7 @@ Possible answers to the questions in the [beginnerTest](), [intermediateTest](),
 
 3) How would you convert the data.frame ````trees```` into a matrix?
 
-````
+````R
 # You can use various versions of the as( ) function
 > NewMatrix<-as(trees,"matrix")
 > NewMatrix<-as.matrix(trees)
@@ -38,19 +38,19 @@ Possible answers to the questions in the [beginnerTest](), [intermediateTest](),
 
 4) What is the name of the 14th city in the ````precip```` dataset?
 
-````
+````R
 > precip[14]
 ````
 
 5) What function would you use if you wanted to combine all three data sets into a single object?
 
-````
+````R
 > MyList<-list(precip,trees,mtcars)
 ````
 
 6) Does precip consist of **numeric** data? How did you find out?
 
-````
+````R
 > is(precip,"numeric")
 [1] TRUE
 
@@ -61,7 +61,7 @@ Possible answers to the questions in the [beginnerTest](), [intermediateTest](),
 
 7) Code four different ways to subscript the 2nd row and 7th column of ````mtcars```` using bracket notation - i.e., 17.02.
 
-`````
+`````R
 > mtcars[2,7]
 [1] 17.02
 
@@ -81,7 +81,7 @@ Mazda RX4 Wag 17.02
 
 8) How would you change the precipitation values of "Juneau", "Phoenix", and "Sacramento" to 23, 46, and 12 in the precip dataset. (Hint: You will need to use subscripts and the <- operator).
 
-````
+````R
 > precip[c("Juneau","Phoenix","Sacramento")]<-c(23,46,12)
 # or
 > precip[which(names(precip)=="Juneau" | names(precip)=="Phoenix" | names(precip)=="Sacramento")]<-c(23,46,12)
@@ -89,14 +89,14 @@ Mazda RX4 Wag 17.02
 
 9) Are there **any** ````trees```` in the ````trees```` dataset with more girth than volume? How did you find out?
 
-````
+````R
 > any(trees[,"Girth"]>trees[,"Volume"])
 [1] FALSE
 ````
 
 10) Take the sum of all elements in column height of the trees dataset, call this value A. Take the sum of all elements in row Valiant of the mtcars dataset, call this value B. Take the sum of the first 8 elements of the precip dataset, call this value C. Divide C by B and add A. What is your final answer?
 
-````
+````R
 > A<-sum(trees[,"Height"])
 > B<-sum(mtcars["Valiant",])
 > C<-sum(precip[1:8])
@@ -114,20 +114,20 @@ IF FALSE: Do not return sampled values back to the pool of potential values for 
 
 2) Using as(MyMatrix,"numeric") will not convert MyMatrix to numeric data! Can you think of a property of logicals that you can use to convert the logicals to 0's and 1's other than the as( ) function?
 
-````
+````R
 > MyMatrix*1
 ````
 
 3) If you wanted to check if all of the elements in each row are true, how would you do this?
 
-````
+````R
 > apply(MyMatrix,1,all)
 [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 ````
 
 4) How many times does the number 7 occur in MyMatrix?
 
-````
+````R
 > table(MyMatrix)
  1  2  3  4  5  6  7  8  9 10 
  9 10  7  5  6  6 16 10 13 14 
@@ -142,7 +142,7 @@ IF FALSE: Do not return sampled values back to the pool of potential values for 
 
 5) How do you find the sum of each column?
 
-````
+````R
 > apply(MyMatrix,1,sum)
 
 > for (i in 1:dim(MyMatrix)[[1]]) {
@@ -152,7 +152,7 @@ IF FALSE: Do not return sampled values back to the pool of potential values for 
 
 6) How do you find the product of each column?
 
-````
+````R
 > apply(MyMatrix,2,prod)
 
 > for (i in 1:dim(MyMatrix)[[2]]) {
@@ -162,19 +162,19 @@ IF FALSE: Do not return sampled values back to the pool of potential values for 
 
 7) How would you change every instance of the number 10 to 12?
 
-````
+````R
 > MyMatrix[which(MyMatrix==10)]<-12
 ````
 
 8) How many values in MyMatrix are greater than 3 and less than 8?
 
-````
+````R
 > length(which(MyMatrix>3 & Mymatrix<8))
 ````
 
 9) How do you change the elements of column 12 into character data, while keeping columns 1- 11 as numeric data??
 
-````
+````R
 # Change the matrix into a data frame
 > MyFrame<-data.frame(MyMatrix)
 # or
@@ -186,7 +186,7 @@ IF FALSE: Do not return sampled values back to the pool of potential values for 
 
 10) Find which rows of MyMatrix have a sum >70. Make a new version of MyMatrix where the 13th column is a set of TRUE and FALSE values denoting which rows have a sum >70. (Hint: What type of object allows you to store both logical and numeric data at once?)
 
-````
+````R
 # Find the row sums (see previous questions)
 > Sums<-apply(MyMatrix,1,sum)
 
@@ -219,7 +219,7 @@ IF FALSE: Do not return sampled values back to the pool of potential values for 
 
 1) Write a function that returns the phrase "Hello, World."
 
-````
+````R
 > greetWorld<-function(Message) {
       print(Message)
       }
@@ -245,7 +245,7 @@ IF FALSE: Do not return sampled values back to the pool of potential values for 
 
 2) Load the ````iris```` dataset we used in the earlier tests. Write a function that takes ````iris```` as its argument, and returns three subsets of the data.frame split by the three different types of species (saved as a single object).
 
-````
+````R
 # An easy version
 IrisFunction<-function(iris) {
   Setosa<-iris[which(iris[,"Species"]=="setosa"),]
@@ -269,7 +269,7 @@ IrisFunction<-function(Dataset,Column) {
 
 3) Write a function that takes ````iris```` as its argument. The function should, for each row, add Sepal.Length and Petal.Length if Sepal.Width is > 3.1. It should substract Petal.Length from Sepal.Length if Sepal.Width is <3.1. The answer should be returned as a vector.
 
-````
+````R
 # Using if/else version
 # Roughly how I intended for you to do it.
 IrisFunction<-function(iris) {
@@ -294,7 +294,7 @@ IrisFunction<-function(iris) {
 
 4) Load the ````mtcars```` dataset we used in the earlier tests. Write a function that takes a number of cylinders as its argument. Have the function return the average miles per gallon (column mpg) for all cars with that many cylinder (column cyl).
 
-````
+````R
 findMPG<-function(NumCylinders) {
   # Subset the mtcars dataset to just rows where cyl is equal to NumCylinders
   CylinderSubset<-mtcars[which(mtcars[,"cyl"]==NumCylinders),]
@@ -306,7 +306,7 @@ findMPG<-function(NumCylinders) {
 
 5) Write a function that simulates 1,000,000 powerball drawings. A powerball drawing takes a random sample of 5 numbers (without replacement) from 1 through 69, plus one powerball number ranging from 1 through 26. The function should return a single object recording all of your draws.
 
-````
+````R
 PowerballDraw<-function(NumDrawings) {
   # Create a matrix to store the output
   # You want 6 columns, one for each lottery number.
@@ -324,7 +324,7 @@ PowerballDraw<-function(NumDrawings) {
 
 6) Write a function that take a single set of lottery numbers (as a vector) as its argument. As before, write a function that simulates 1,000,000 powerball drawings. Have the function return a TRUE or FALSE value if you won any of the drawings.
 
-````
+````R
 # Make a function that takes a vector of lottery numbers
 PowerballDraw<-function(MyNumbers) {
   # Create a matrix to store the output
@@ -350,7 +350,8 @@ PowerballDraw<-function(MyNumbers) {
 ## Expert Test
 
 1) What is the mean, median, and standard deviation of precip?
-````
+
+````R
 > mean(precip)
 [1] 34.91571
 > median(precip)
@@ -365,13 +366,13 @@ PowerballDraw<-function(MyNumbers) {
 
 3) Generate a vector of random numbers drawn from a normal distribution with the same mean, standard deviation, and number of elements as in the precip dataset. Name this vector RandomNormal.
 
-````
+````R
 RandomNormal<-rnorm(length(precip),mean(precip),sd(precip))
 ````
 
 4) Write a function that tests, based on the means of each distribution, whether it is likely that RandomNormal and precip were drawn from the same underlying distribution.
 
-````
+````R
 comparePrecip<-function(precip,RandomNormal,Iterations=100) {
     # Find the current difference in means between precip and RandomNormal
     MeanDifference<-mean(precip)-mean(RandomNormal)
