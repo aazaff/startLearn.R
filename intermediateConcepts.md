@@ -8,7 +8,7 @@ If you are working through this tutorial as part of the Geoscience 541: Paleobio
 
 + [Subscripting and subsetting with logicals](#subscripting-and-subsetting-with-logicals)
 + [Rewriting elements using logical subscripts](#rewriting-elements-using-logical-subscripts)
-+ [Logical subsetting with functionals](#logical=subsetting-data-with-functionals)
++ [Direct subsetting with functionals](#direct-subsetting-data-with-functionals)
 + [Direct subsetting with functionals](#direct-subsetting-with-functionals)
 
 ## Subscripting and subsetting with logicals
