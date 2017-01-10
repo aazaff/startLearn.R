@@ -198,7 +198,7 @@ The data is now represented as a curve rather than as bars, leaving you free fro
 
 ## Common sampling distributions
 
-**Continuous** data presents more problems thsn just how to visualize it. How can we randomly sample a continuous distribution? Up until now we've been making a **vector** and sampling from that vector. 
+**Continuous** data presents more problems than just how to visualize it. How can we randomly sample a continuous distribution? Up until now we've been making a **vector** and sampling from that vector. 
 
 ````R
 # Set the seed so we all get the same "random" answer
