@@ -757,7 +757,7 @@ arguments imply differing number of rows: 4, 3
  	
 In other words, data frames will only accept a series of 1-dimensional arrays (vectors) of ***equal length***. Only **lists** can be **asymmetrical**.
 
-A second, lesser consideration, is that data frames are less computationaly efficient than matrices. Even something as simple as referencing a single element can be 10x slower on a data.frame than a matrix. However, smaller matrices and data frames are so fast (nanoseconds) that people rarely notice the difference. Nevertheless, it is worth using matcies whenever possible because you never know if a **Big Data** worker might use one of your functions in the future.
+A second, lesser consideration, is that data frames are less computationaly efficient than matrices. Even something as simple as referencing a single element can be 10x slower on a data.frame than a matrix. Smaller matrices and data frames are so fast (nanoseconds) that people rarely notice the difference. Nevertheless, it is worth using matrices whenever possible because you never know if a **Big Data** worker might use one of your functions in the future.
 
 The final consideration with data.frames is that they will, by default, convert your data of type **character** to type **factor**. **Factors** are one of R's best features, but will be covered in the [advancedConcepts](\advancedConcepts.md) tutorial. For now, if you want to preserve your **characters**, you need to change the ````stringsAsFactors=```` argument of the ````data.frame( )```` function to ````FALSE````.
 
