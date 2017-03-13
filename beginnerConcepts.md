@@ -491,7 +491,7 @@ NULL
 [1] 4
 ````
 
-If you look carefully at how we define arrays, you will notice that we need to first create a vector using the function ````c( )```` - e.g., ````MyArray<-array(**c(1,2,3,4)**,4)````.  Generally, vectors are used more often than 1-dimensional arrays because vectors are more fundamental. So, fair warning, be careful as to whether you are using **vectors**, **matrices**, or **arrays**.
+If you look carefully at how we define arrays, you will notice that we need to first create a vector using the function ````c( )```` - e.g., ````MyArray<-array(````**c(1,2,3,4)**````,4)````.  Generally, vectors are used more often than 1-dimensional arrays because vectors are more fundamental. So, fair warning, be careful as to whether you are using **vectors**, **matrices**, or **arrays**.
 
 ## Referencing elements of an array
 
@@ -507,7 +507,7 @@ Each array is made up of a set of values. Each value within an array is known as
 In the above example, ````MyArray```` has six **elements**, the numbers 5, 6, 7, 8, 9, and 10. If you want to reference a specific element within the array, you use single brackets around the **index** or **position** of the element. 
 
 ````R
-# Refernce the 6th element of MyArray
+# Reference the 6th element of MyArray
 > MyArray[6]
 [1] 10
 	
@@ -757,9 +757,9 @@ arguments imply differing number of rows: 4, 3
  	
 In other words, data frames will only accept a series of 1-dimensional arrays (vectors) of ***equal length***. Only **lists** can be **asymmetrical**.
 
-A second, lesser consideration, is that data frames are less computationaly efficient than matrices. Even something as simple as referencing a single element can be 10x slower on a data.frame than a matrix. However, since smaller matrices and data frames are so fast (nanoseconds) people rarely notice this difference. Nevertheless, because you never know if a **Big Data** worker might use one of your functions in the future, it is worth using matrices whenever possible.
+A second, lesser consideration, is that data frames are less computationaly efficient than matrices. Even something as simple as referencing a single element can be 10x slower on a data.frame than a matrix. However, smaller matrices and data frames are so fast (nanoseconds) that people rarely notice the difference. Nevertheless, it is worth using matcies whenever possible because you never know if a **Big Data** worker might use one of your functions in the future.
 
-The final consideration with data.frames is that they will, by default, convert your data of type **character** to type **factor**. **Factors** are one of R's best features, but will be covered in the advancedConcepts tutorial. For now, if you want to preserve your **characters**, you need to change the ````stringsAsFactors=```` argument of the ````data.frame( )```` function to ````FALSE````.
+The final consideration with data.frames is that they will, by default, convert your data of type **character** to type **factor**. **Factors** are one of R's best features, but will be covered in the [advancedConcepts](\advancedConcepts.md) tutorial. For now, if you want to preserve your **characters**, you need to change the ````stringsAsFactors=```` argument of the ````data.frame( )```` function to ````FALSE````.
 
 ````R
 # Set stringsAsFactors= to FALSE in order to preserve characters as characters
@@ -770,7 +770,7 @@ Be very mindful of this behavior, it is a common source of frustration.
 
 ## On the proper names of things.
 
-A few parting notes on the different types of data object. First, **vectors**, **matrices**, **arrays**, **data.frames**, and **lists** are the most common classes of data object, but there are a variety of other - more specialized - data objects out there. Some programmers will create custom data object classes that only work with their own functions. So don't panick if you run across some class that you've never heard of before.
+A few parting notes on the different types of data object. First, **vectors**, **matrices**, **arrays**, **data.frames**, and **lists** are the most common classes of data object, but there are a variety of other - more specialized - data objects out there. Some programmers will create custom data object classes that only work with their own functions. So don't panic if you run across some class that you've never heard of before.
 
 Also, be warned that there are two different funtions for naming elements in a data object, depending on the **class** of the object. If you are naming elements in a **vector** or **list** you should use the ````names( )```` function that we've already illustrated. If you are naming the elements in an **array** (including **data.frames** and **matrices**, of course), you will need to use the ````dimnames( )```` function.
 
