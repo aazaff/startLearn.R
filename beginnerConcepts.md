@@ -169,17 +169,20 @@ Let's consider a quadratic equation, ````5x^2+3x+7````. Let's say we want to sol
 # 5x^2+3x+7, where x=4
 > 5*(4^2)+(3*4)+7
 [1] 99
+````
 
-# But what if we want to solve this equation for multiple values of x? Let's try solving for x = 1,2,3, and 4.
-# We can do this by telling R to perform the function on all four numbers at once using the c() command. 
+But what if we want to solve this equation for multiple values of x? Let's try solving for x = 1,2,3, and 4. We can do this by telling R to perform the function on all four numbers at once using the `c()` command. 
+
+````R
 # The c() function tells R to treat the values inside the parentheses, separated by commas, as a single object.
-
 > 5*c(1,2,3,4)^2+3*c(1,2,3,4)+7
 [1] 15 33 61 99
+````
 
-# But what if we had a very long equation and/or a very long list of x values we want solve for? Typing out 
-# all of the x values with c() every time x appears in the equation could get very hard to read very quickly.
+But what if we had a very long equation and/or a very long list of x values we want solve for? Typing out all of the x values with c() every time x appears in the equation could get very hard to read very quickly.
 
+````R
+# Typing things out every time woudl defeat the whole point of using computers.
 > 9*c(1,2,3,4,5,6,7,8,9,10)^3+6*c(1,2,3,4,5,6,7,8,9,10)^2+8*c(1,2,3,4,5,6,7,8,9,10)+2
 [1]   25  114  323  706 1317 2210 3439 5058 7121 9682
 ````
