@@ -2,7 +2,7 @@
 
 These tutorials are designed to prepare students for the R-intensive lab assignments used in [**GEOSCIENCE 541: Paleobiology**](https://github.com/aazaff/teachPaleobiology/blob/master/README.md) at the University of Wisconsin - Madison. The repository was created and is maintained by Andrew A. Zaffos. 
 
-Importantly, these tutorials largely focus on the core programming and computer science principles underlying the R language, and do and do not focus on data analysis (i.e., statistics). Although basic statistical concepts are introduced in the [expertConcepts](https://github.com/aazaff/startLearn.R/blob/master/expertConcepts.md) tutorial, the majority of data analysis principles are instead presented throughout the course in other lab assignments.  
+Importantly, these tutorials largely focus on the core programming and computer science principles underlying the R language, and do not focus on data analysis (i.e., statistics). Although basic statistical concepts are introduced in the [expertConcepts](https://github.com/aazaff/startLearn.R/blob/master/expertConcepts.md) tutorial, the majority of data analysis principles are instead presented throughout the course in other lab assignments.  
 
 ## Table of Contents
 
